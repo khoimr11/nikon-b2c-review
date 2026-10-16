@@ -1,0 +1,1305 @@
+<title>Nikon B2C Review</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout concept: a cinematic, dark "through-the-viewfinder" story. Content sits on the ink layer;
+   only navigation, present controls, tooltips and sheets live on a floating Liquid-Glass layer above it. */
+@font-face{font-family:"Archivo X";src:url(fonts/archivo-latin-wdth-normal.woff2) format("woff2");font-weight:100 900;font-stretch:62% 125%;font-display:swap}
+@font-face{font-family:"Archivo X";src:url(fonts/archivo-latin-ext-wdth-normal.woff2) format("woff2");font-weight:100 900;font-stretch:62% 125%;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Archivo X";src:url(fonts/archivo-vietnamese-wdth-normal.woff2) format("woff2");font-weight:100 900;font-stretch:62% 125%;font-display:swap;unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}
+@font-face{font-family:"Instrument Sans";src:url(fonts/instrument-sans-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Instrument Sans";src:url(fonts/instrument-sans-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Instrument Sans";src:url(fonts/instrument-sans-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Plex Mono";src:url(fonts/ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Plex Mono";src:url(fonts/ibm-plex-mono-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Plex Mono";src:url(fonts/ibm-plex-mono-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+
+:root{
+  color-scheme:dark;
+  --ink:#0C0B09;        /* camera-body black, warm bias toward the yellow */
+  --ink-2:#14120E;
+  --ink-3:#1D1A14;
+  --paper:#F3F0E6;      /* primary text */
+  --mute:#A7A192;       /* secondary text */
+  --mute-2:#6F6A5D;     /* tertiary, gridlines labels */
+  --nikon:#FFE100;      /* Nikon yellow: the one loud colour */
+  --nikon-ink:#141100;  /* text on yellow */
+  --coral:#FF7A5C;      /* negative / decline */
+  --mint:#86D9B9;       /* positive status (live) */
+  --line:rgba(243,240,230,.10);
+  --line-2:rgba(243,240,230,.18);
+  --glass:rgba(38,35,28,.42);
+  --glass-hi:rgba(255,255,255,.30);
+  --glass-edge:rgba(255,255,255,.16);
+  --shadow:rgba(0,0,0,.55);
+  --f-display:"Archivo X","Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"Plex Mono","IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --r-s:12px;--r-m:20px;--r-l:28px;
+  --max:1240px;
+  --gut-l:max(16px, env(safe-area-inset-left,0px));
+  --gut-r:max(16px, env(safe-area-inset-right,0px));
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;background:var(--ink);overflow-x:clip}
+body{background:var(--ink);color:var(--paper);font:400 16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:clip}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
+::selection{background:var(--nikon);color:var(--nikon-ink)}
+a{color:inherit}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--nikon);outline-offset:3px;border-radius:6px}
+.wrap{max-width:calc(var(--max) + 64px);margin-inline:auto;padding-left:var(--gut-l);padding-right:var(--gut-r)}
+@media (min-width:900px){.wrap{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
+
+/* ---------- type ---------- */
+.eyebrow{font:500 12px/1.2 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute);display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.eyebrow b{color:var(--nikon);font-weight:600}
+.eyebrow .rule{flex:0 0 40px;height:1px;background:var(--line-2)}
+h1,h2,h3,h4{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:-.01em}
+.h-xl{font-size:clamp(30px,8.4vw,128px);font-weight:850;font-stretch:118%;line-height:.9;letter-spacing:-.025em;text-transform:uppercase}
+.h-l{font-size:clamp(34px,5.2vw,72px);font-weight:800;font-stretch:112%;line-height:.96;letter-spacing:-.02em}
+.h-m{font-size:clamp(24px,2.8vw,36px);font-weight:700;font-stretch:105%;line-height:1.08}
+.h-s{font-size:19px;font-weight:700;font-stretch:100%;line-height:1.25}
+.lede{font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:var(--mute);max-width:62ch;margin:0}
+.lede strong,.body strong{color:var(--paper);font-weight:600}
+.body{color:var(--mute);max-width:65ch;margin:0}
+.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.y{color:var(--nikon)}
+.small{font-size:13px;color:var(--mute-2);line-height:1.5}
+.src{font:400 12px/1.5 var(--f-mono);color:var(--mute-2);margin-top:14px}
+
+/* ---------- sections ---------- */
+.slide{position:relative;padding-block:clamp(72px,11vh,136px);border-top:1px solid var(--line)}
+.slide.flush{border-top:0}
+.chap{display:grid;gap:22px;margin-bottom:clamp(36px,5vw,64px)}
+.chap .h-l{max-width:16ch}
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.g2>*,.g3>*,.g4>*{min-width:0}
+.panel{background:var(--ink-2);border:1px solid var(--line);border-radius:var(--r-l);padding:clamp(20px,2.4vw,32px);min-width:0}
+.panel-h{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap;margin-bottom:18px}
+.panel-h p{margin:6px 0 0;color:var(--mute);font-size:14px;max-width:56ch}
+
+/* KPI tiles */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-l);overflow:hidden}
+.kpi{background:var(--ink);padding:24px 22px 22px;display:grid;gap:8px;align-content:start;min-width:0}
+.kpi .lab{font:500 11px/1.3 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.kpi .val{font:600 clamp(34px,3.6vw,48px)/1 var(--f-mono);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.kpi .val small{font-size:.42em;letter-spacing:0;color:var(--mute);margin-left:4px;font-weight:500}
+.kpi .cmp{font-size:13px;color:var(--mute)}
+.kpi .cmp b{color:var(--nikon);font-weight:600}
+.kpi.hero-k{background:linear-gradient(160deg,rgba(255,225,0,.14),rgba(255,225,0,.02) 60%),var(--ink)}
+.kpi.hero-k .val{color:var(--nikon)}
+
+/* chips */
+.chip{display:inline-flex;align-items:center;gap:8px;font:600 11px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;padding:7px 11px;border-radius:999px;border:1px solid var(--line-2);color:var(--paper);white-space:nowrap}
+.chip.live{color:var(--mint);border-color:color-mix(in srgb,var(--mint) 50%,transparent)}
+.chip.live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 0 var(--mint);animation:pulse 2s infinite}
+.chip.wait{color:var(--nikon);border-color:color-mix(in srgb,var(--nikon) 45%,transparent)}
+.chip.wait::before{content:"";width:7px;height:7px;border-radius:50%;border:1.5px solid var(--nikon)}
+.chip.neg{color:var(--coral);border-color:color-mix(in srgb,var(--coral) 45%,transparent)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--mint) 70%,transparent)}70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
+
+/* ---------- Liquid Glass (navigation layer only) ---------- */
+.glass{position:relative;background:var(--glass);-webkit-backdrop-filter:blur(22px) saturate(180%);backdrop-filter:blur(22px) saturate(180%);
+  border:1px solid var(--glass-edge);
+  box-shadow:inset 0 1px 0 var(--glass-hi),inset 0 -1px 0 rgba(0,0,0,.25),0 18px 50px -12px var(--shadow)}
+.glass::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:radial-gradient(120px 60px at var(--mx,30%) var(--my,0%),rgba(255,255,255,.22),transparent 70%);mix-blend-mode:screen;opacity:.8}
+@media (prefers-reduced-transparency:reduce){.glass{background:var(--ink-3);-webkit-backdrop-filter:none;backdrop-filter:none}.glass::after{display:none}}
+
+.dock{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:50;border-radius:999px;padding:6px;display:flex;align-items:center;gap:4px;max-width:calc(100vw - 32px);transition:padding .45s cubic-bezier(.2,.9,.2,1),gap .45s}
+.dock nav{display:flex;gap:2px;position:relative;overflow:hidden;transition:max-width .5s cubic-bezier(.2,.9,.2,1),opacity .3s;max-width:900px}
+.dock a{position:relative;z-index:1;text-decoration:none;font:500 13px/1 var(--f-body);color:var(--mute);padding:11px 14px;border-radius:999px;white-space:nowrap;transition:color .25s}
+.dock a:hover{color:var(--paper)}
+.dock a.on{color:var(--nikon-ink)}
+.dock .lens{position:absolute;top:0;bottom:0;left:0;width:0;border-radius:999px;background:var(--nikon);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 4px 18px rgba(255,225,0,.35);transition:transform .5s cubic-bezier(.2,1.3,.3,1),width .5s cubic-bezier(.2,1.3,.3,1);z-index:0}
+.dock .mark{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto;text-decoration:none}
+.dock .mark svg{width:22px;height:22px}
+.dock .act{border:0;background:rgba(255,255,255,.08);border-radius:999px;height:38px;padding:0 14px;display:inline-flex;gap:8px;align-items:center;cursor:pointer;font:600 12px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;flex:0 0 auto}
+.dock .act:hover{background:rgba(255,255,255,.16)}
+.dock .act svg{width:14px;height:14px}
+.dock .count{font:500 12px/1 var(--f-mono);color:var(--mute);padding:0 10px;white-space:nowrap;display:none}
+.dock.min nav{max-width:0;opacity:0}
+.dock.min .count{display:inline}
+@media (max-width:760px){.dock nav{display:none}.dock .count{display:inline}}
+.prog{position:fixed;left:0;top:env(safe-area-inset-top,0px);height:2px;background:var(--nikon);width:100%;transform-origin:0 50%;transform:scaleX(0);z-index:61}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:min(100svh,980px);display:grid;grid-template-columns:minmax(0,1fr);align-content:end;overflow:hidden;isolation:isolate;padding-block:120px 64px}
+.hero-bg{position:absolute;inset:-6% 0 0;z-index:-2}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;transform:scale(calc(1.06 + var(--hp,0)*.12));filter:saturate(.9) brightness(.7)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(180deg,rgba(12,11,9,.55) 0%,rgba(12,11,9,.1) 30%,rgba(12,11,9,.75) 72%,var(--ink) 100%),
+  linear-gradient(90deg,rgba(12,11,9,.85) 0%,rgba(12,11,9,0) 65%)}
+.vf{position:absolute;inset:clamp(16px,3vw,40px);pointer-events:none;z-index:0}
+.vf i{position:absolute;width:34px;height:34px;border:2px solid rgba(243,240,230,.7)}
+.vf i:nth-child(1){top:0;left:0;border-right:0;border-bottom:0}
+.vf i:nth-child(2){top:0;right:0;border-left:0;border-bottom:0}
+.vf i:nth-child(3){bottom:0;left:0;border-right:0;border-top:0}
+.vf i:nth-child(4){bottom:0;right:0;border-left:0;border-top:0}
+.vf .rec{position:absolute;top:6px;left:52px;font:500 12px/1 var(--f-mono);letter-spacing:.12em;color:var(--paper);display:flex;gap:8px;align-items:center}
+.vf .rec::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--coral);animation:blink 1.6s steps(2) infinite}
+@keyframes blink{50%{opacity:.2}}
+.vf .af{position:absolute;width:64px;height:44px;border:1.5px solid var(--nikon);left:var(--afx,62%);top:var(--afy,38%);transform:translate(-50%,-50%);transition:left .6s cubic-bezier(.2,.9,.2,1),top .6s cubic-bezier(.2,.9,.2,1);box-shadow:0 0 0 1px rgba(0,0,0,.3)}
+.vf .af::after{content:"AF-C";position:absolute;top:-18px;left:0;font:500 10px/1 var(--f-mono);color:var(--nikon);letter-spacing:.1em}
+.hero-in{display:grid;gap:26px;position:relative}
+.hero .h-xl>span{display:block}
+.hero .h-xl .amp{color:var(--nikon)}
+.hud{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));border-radius:var(--r-m);overflow:hidden;margin-top:14px}
+.hud div{padding:16px 18px;display:grid;gap:6px;border-right:1px solid var(--glass-edge);min-width:0}
+.hud div:last-child{border-right:0}
+.hud .k{font:500 10.5px/1.2 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.hud .v{font:600 22px/1.1 var(--f-mono);letter-spacing:-.02em}
+.hud .v.y{color:var(--nikon)}
+@media (max-width:640px){.h-xl{font-stretch:108%}.hud div{border-right:0;border-bottom:1px solid var(--glass-edge)}.vf .af{display:none}}
+
+/* aperture intro */
+.iris{position:fixed;inset:0;z-index:100;pointer-events:none;animation:irisOut .01s linear 2.3s forwards}
+.iris svg{width:100%;height:100%}
+.iris .blade{transform-box:view-box;transform-origin:50% 50%;fill:#0A0907;stroke:rgba(255,225,0,.35);stroke-width:.25;animation:bladeOpen 1.5s cubic-bezier(.65,0,.2,1) .35s both}
+@keyframes bladeOpen{from{transform:rotate(calc(var(--k)*45deg)) translateY(0px)}to{transform:rotate(calc(var(--k)*45deg + 28deg)) translateY(260px)}}
+@keyframes irisOut{to{visibility:hidden;opacity:0}}
+.iris .lbl{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:600 12px/1 var(--f-mono);letter-spacing:.3em;color:var(--nikon);animation:fadeOut .4s ease .5s forwards}
+@keyframes fadeOut{to{opacity:0}}
+
+/* agenda */
+.agenda{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1px;background:var(--line);border-radius:var(--r-l);overflow:hidden;border:1px solid var(--line)}
+.agenda a{background:var(--ink);padding:28px 24px 26px;text-decoration:none;display:grid;gap:14px;align-content:start;transition:background .3s;min-width:0}
+.agenda a:hover{background:var(--ink-2)}
+.agenda .n{font:600 13px/1 var(--f-mono);color:var(--nikon);letter-spacing:.08em}
+.agenda h3{font-size:22px;font-weight:750;font-stretch:108%;line-height:1.1}
+.agenda p{margin:0;color:var(--mute);font-size:14.5px}
+.agenda .go{font:500 12px/1 var(--f-mono);color:var(--mute-2);letter-spacing:.1em;text-transform:uppercase}
+
+/* reveal (content is visible at rest; motion only polishes entry) */
+.rv{transition:transform .9s cubic-bezier(.2,.8,.2,1),opacity .9s,filter .9s}
+.js .rv.pre{transform:translateY(28px);opacity:.25;filter:blur(4px)}
+.mask{overflow:hidden;display:block}
+.mask>span{display:block;transition:transform 1s cubic-bezier(.2,.9,.1,1)}
+.js .pre .mask>span{transform:translateY(60%)}
+
+/* ---------- charts ---------- */
+.seg{display:inline-flex;padding:4px;border-radius:999px;gap:2px;position:relative}
+.seg button{border:0;background:transparent;padding:9px 14px;border-radius:999px;cursor:pointer;font:500 12.5px/1 var(--f-body);color:var(--mute);position:relative;z-index:1;transition:color .25s}
+.seg button[aria-pressed="true"]{color:var(--nikon-ink)}
+.seg .lens{position:absolute;top:4px;bottom:4px;left:0;border-radius:999px;background:var(--nikon);transition:transform .45s cubic-bezier(.2,1.25,.3,1),width .45s cubic-bezier(.2,1.25,.3,1);z-index:0;box-shadow:inset 0 1px 0 rgba(255,255,255,.55)}
+.chart{position:relative;width:100%;overflow-x:auto}
+.chart svg{display:block;width:100%;height:auto;min-width:560px;overflow:visible}
+.chart text{font-family:var(--f-mono);fill:var(--mute)}
+.chart .grid-l{stroke:var(--line);stroke-width:1}
+.chart .zero{stroke:var(--line-2);stroke-width:1}
+.chart .band{fill:rgba(255,225,0,.07)}
+.chart .band-l{fill:var(--nikon);font-size:11px;letter-spacing:.12em}
+.chart .bar{transition:transform .9s cubic-bezier(.2,.9,.2,1),opacity .3s;transform-box:fill-box}
+.chart .bar.pos{fill:var(--nikon)}
+.chart .bar.neg{fill:var(--coral);opacity:.75}
+.chart .bar.dim{fill:var(--mute-2)}
+.chart .bar.y25{fill:#4A463C}
+.chart .bar.y26{fill:var(--nikon)}
+.chart .bar:hover{opacity:.85}
+.chart .vlab{font-size:12px;font-weight:600;fill:var(--paper)}
+.chart .vlab.y{fill:var(--nikon)}
+.chart .xl{font-size:11.5px}
+.chart .ev{font-size:10.5px;fill:var(--paper)}
+.chart .evl{stroke:var(--line-2);stroke-dasharray:2 3}
+.chart .line{fill:none;stroke:var(--nikon);stroke-width:2.5;stroke-linejoin:round}
+.chart .dot{fill:var(--ink);stroke:var(--nikon);stroke-width:2}
+.js .chart.pre .bar{transform:scaleY(0)}
+.chart .bar{transform-origin:50% 100%}
+.chart .bar.neg{transform-origin:50% 0%}
+.tip{position:fixed;z-index:70;pointer-events:none;padding:10px 12px;border-radius:14px;font:500 12px/1.45 var(--f-mono);opacity:0;transform:translateY(4px);transition:opacity .15s,transform .15s;max-width:240px}
+.tip.on{opacity:1;transform:none}
+.tip b{color:var(--nikon);font-weight:600}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font:500 12px/1 var(--f-mono);color:var(--mute)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:7px;vertical-align:-1px}
+
+/* insight list */
+.ins{display:grid;gap:14px;margin:0;padding:0;list-style:none}
+.ins li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline;color:var(--mute);font-size:15px}
+.ins li b{color:var(--paper);font-weight:600}
+.ins li::before{content:"";width:8px;height:8px;background:var(--nikon);border-radius:2px;transform:rotate(45deg) translateY(-2px)}
+
+/* hour dial */
+.dial{display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:28px;align-items:center}
+@media (max-width:760px){.dial{grid-template-columns:1fr}}
+.dial svg{width:100%;max-width:320px;height:auto;margin-inline:auto}
+.dial text{font-family:var(--f-mono);fill:var(--mute)}
+
+/* mix bar */
+.mix{display:flex;height:14px;border-radius:999px;overflow:hidden;gap:2px;margin:12px 0 10px}
+.mix span{display:block;height:100%}
+
+/* ---------- promo: stack ---------- */
+.stack{display:grid;gap:10px}
+.stack .row{display:grid;grid-template-columns:150px 1fr auto;gap:14px;align-items:center;font-size:14px;color:var(--mute)}
+.stack .track{height:30px;border-radius:8px;background:var(--ink-3);position:relative;overflow:hidden}
+.stack .fill{position:absolute;top:0;bottom:0;border-radius:8px;display:flex;align-items:center;padding-left:10px;font:600 12px/1 var(--f-mono);color:var(--nikon-ink)}
+@media (max-width:560px){.stack .row{grid-template-columns:1fr auto}.stack .row .track{grid-column:1/-1}}
+
+/* horizontal campaign wall */
+.hwall{position:relative}
+.hwall .stick{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr);align-content:center;gap:28px}
+.hwall .track{display:flex;gap:22px;will-change:transform;padding-left:max(32px,var(--gut-l));width:max-content}
+.card-b{flex:0 0 auto;width:clamp(260px,26vw,360px);display:grid;gap:12px;cursor:zoom-in;border:0;background:none;padding:0;text-align:left}
+.card-b .ph{aspect-ratio:4/5;border-radius:var(--r-m);overflow:hidden;background:var(--ink-3);border:1px solid var(--line)}
+.card-b .ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.card-b:hover .ph img{transform:scale(1.04)}
+.card-b .d{font:600 12px/1 var(--f-mono);color:var(--nikon);letter-spacing:.1em}
+.card-b h4{font-size:17px;font-weight:700;font-stretch:104%;line-height:1.25}
+.card-b p{margin:0;font-size:13.5px;color:var(--mute);line-height:1.5}
+@media (max-width:760px){
+  .hwall{height:auto!important}
+  .hwall .stick{position:relative;height:auto;padding-block:8px}
+  .hwall .track{overflow-x:auto;scroll-snap-type:x mandatory;transform:none!important;padding-bottom:12px;padding-right:var(--gut-r)}
+  .card-b{scroll-snap-align:start;width:78vw}
+}
+
+/* table */
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th{font:500 11px/1.3 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute-2);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line-2)}
+.tbl td{padding:12px;border-bottom:1px solid var(--line);color:var(--mute);vertical-align:top}
+.tbl td.num,.tbl th.num{text-align:right}
+.tbl td b{color:var(--paper);font-weight:600}
+.tbl tr:last-child td{border-bottom:0}
+.tscroll{overflow-x:auto}
+
+/* price ladder (private voucher) */
+.ladder{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:end}
+.rung{border-radius:var(--r-m);padding:18px;display:grid;gap:8px;align-content:end;border:1px solid var(--line);background:var(--ink-3)}
+.rung .p{font:600 clamp(20px,2.4vw,30px)/1 var(--f-mono);letter-spacing:-.02em}
+.rung .w{font:500 11px/1.3 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.rung p{margin:0;font-size:13px;color:var(--mute)}
+.rung.r1{min-height:250px}.rung.r2{min-height:205px}.rung.r3{min-height:160px;background:var(--nikon);color:var(--nikon-ink);border-color:transparent}
+.rung.r3 .w,.rung.r3 p{color:rgba(20,17,0,.72)}
+@media (max-width:640px){.ladder{grid-template-columns:1fr}.rung.r1,.rung.r2,.rung.r3{min-height:0}}
+.proof{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-radius:var(--r-m);overflow:hidden;border:1px solid var(--line)}
+.proof div{background:var(--ink);padding:18px;display:grid;gap:6px}
+.proof .k{font:500 11px/1.3 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.proof .v{font:600 24px/1 var(--f-mono)}
+.proof .full{grid-column:1/-1;background:linear-gradient(90deg,rgba(255,225,0,.12),transparent),var(--ink)}
+
+/* media tiles */
+.shot{border-radius:var(--r-m);overflow:hidden;border:1px solid var(--line);background:var(--ink-3);cursor:zoom-in;padding:0;display:block;width:100%}
+.shot img{width:100%;height:auto;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.shot:hover img{transform:scale(1.025)}
+.vouch{display:grid;gap:12px}
+.vouch .shot{aspect-ratio:1100/642}
+.vouch .shot img{height:100%;object-fit:cover}
+
+/* live */
+.livegrid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px}
+@media (max-width:900px){.livegrid{grid-template-columns:1fr}}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:1px;background:var(--line);border-radius:var(--r-m);overflow:hidden;border:1px solid var(--line)}
+.metrics div{background:var(--ink-2);padding:14px 14px 12px;display:grid;gap:4px}
+.metrics .k{font:500 10.5px/1.3 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute-2)}
+.metrics .v{font:600 22px/1.05 var(--f-mono);font-variant-numeric:tabular-nums}
+.vids{display:grid;gap:10px}
+.vid{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.vid:last-child{border-bottom:0}
+.vid .pl{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--ink-3);border:1px solid var(--line-2)}
+.vid .pl svg{width:14px;height:14px;fill:var(--nikon)}
+.vid .t{font-size:14px;color:var(--paper);line-height:1.35}
+.vid .t small{display:block;color:var(--mute-2);font:400 12px/1.4 var(--f-mono);margin-top:3px}
+.vid .bar{height:6px;border-radius:3px;background:var(--nikon);margin-top:6px}
+.vid .n{font:600 15px/1 var(--f-mono)}
+
+/* listing sticky story */
+.story{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);gap:clamp(24px,5vw,80px)}
+.story .steps{display:grid}
+.step{min-height:62vh;display:grid;align-content:center;gap:12px;padding-block:24px;opacity:.35;transition:opacity .5s}
+.step.on{opacity:1}
+.step .n{font:600 12px/1 var(--f-mono);letter-spacing:.12em;color:var(--nikon)}
+.step h3{font-size:clamp(24px,2.6vw,34px);font-weight:750;font-stretch:108%;line-height:1.08}
+.story .stage{position:sticky;top:max(80px,calc(50svh - 360px));align-self:start;display:grid;gap:16px}
+.phone{position:relative;width:100%;max-width:380px;margin-inline:auto;aspect-ratio:9/18.5;border-radius:48px;padding:12px;background:linear-gradient(145deg,#2a2722,#0d0c0a);box-shadow:0 0 0 1px #3a362e,0 40px 80px -20px rgba(0,0,0,.8)}
+.phone .scr{position:relative;width:100%;height:100%;border-radius:38px;overflow:hidden;background:#fff;color:#111;display:grid;grid-template-rows:auto auto 1fr}
+.phone .bar-top{display:flex;justify-content:space-between;align-items:center;padding:14px 18px 8px;font:600 12px/1 var(--f-body)}
+.phone .pdp-img{position:relative;aspect-ratio:1/1;background:#000}
+.phone .pdp-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity .6s,transform .9s cubic-bezier(.2,.8,.2,1)}
+.phone .pdp-img img.on{opacity:1;transform:none}
+.phone .pdp-img .cnt{position:absolute;right:10px;bottom:10px;background:rgba(0,0,0,.55);color:#fff;font:500 11px/1 var(--f-mono);padding:5px 8px;border-radius:999px}
+.phone .pdp{padding:12px 14px;display:grid;gap:7px;align-content:start;font-size:12.5px;line-height:1.35}
+.phone .mall{display:inline-block;background:#d0011b;color:#fff;font:700 9.5px/1 var(--f-body);padding:3px 5px;border-radius:3px;margin-right:6px;vertical-align:1px}
+.phone .pr{font:700 19px/1 var(--f-body);color:#ee4d2d}
+.phone .thumbs{display:flex;gap:5px;overflow:hidden}
+.phone .thumbs img{width:44px;height:44px;object-fit:cover;border-radius:6px;border:2px solid transparent;opacity:.75;flex:0 0 auto}
+.phone .thumbs img.on{border-color:#ee4d2d;opacity:1}
+.prodtabs{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.prodtabs button{border:1px solid var(--line-2);background:transparent;border-radius:999px;padding:8px 12px;font:500 12.5px/1 var(--f-body);color:var(--mute);cursor:pointer}
+.prodtabs button[aria-pressed="true"]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+@media (max-width:900px){
+  .story{grid-template-columns:1fr}
+  .story .stage{position:relative;top:0;order:-1}
+  .step{min-height:0;opacity:1;padding-block:14px;border-top:1px solid var(--line)}
+}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ba figure{margin:0;display:grid;gap:10px}
+.ba .before{aspect-ratio:1;border-radius:var(--r-m);background:#fff;display:grid;place-items:center;border:1px solid var(--line)}
+.ba .before div{width:52%;aspect-ratio:1.45;background:linear-gradient(180deg,#d9d9d9,#bdbdbd);border-radius:10px;position:relative;box-shadow:0 10px 20px rgba(0,0,0,.12)}
+.ba .before div::after{content:"";position:absolute;width:40%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#8d8d8d 30%,#a9a9a9 31%,#a9a9a9 55%,#c7c7c7 56%);left:30%;top:22%}
+.ba figcaption{font:500 12px/1.4 var(--f-mono);color:var(--mute);letter-spacing:.04em}
+.ba .after{aspect-ratio:1;border-radius:var(--r-m);overflow:hidden;border:1px solid var(--line)}
+.ba .after img{width:100%;height:100%;object-fit:cover}
+.mosaic{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:6px}
+.mosaic button{padding:0;border:0;border-radius:10px;overflow:hidden;aspect-ratio:1;cursor:zoom-in;background:var(--ink-3)}
+.mosaic img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.mosaic button:hover img{transform:scale(1.08)}
+
+/* mall */
+.mallc{display:grid;gap:22px;align-content:start}
+.tl{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.tl li{display:grid;grid-template-columns:22px 1fr;gap:14px;padding-bottom:18px;position:relative}
+.tl li::before{content:"";width:12px;height:12px;border-radius:50%;margin-top:5px;margin-left:5px;background:var(--ink);border:2px solid var(--mute-2);z-index:1}
+.tl li::after{content:"";position:absolute;left:10px;top:20px;bottom:0;width:2px;background:var(--line-2)}
+.tl li:last-child::after{display:none}
+.tl li.done::before{background:var(--mint);border-color:var(--mint)}
+.tl li.now::before{background:var(--nikon);border-color:var(--nikon);box-shadow:0 0 0 5px rgba(255,225,0,.18)}
+.tl .d{font:500 12px/1.3 var(--f-mono);color:var(--mute-2);letter-spacing:.06em}
+.tl .t{color:var(--paper);font-weight:500}
+.tl .s{color:var(--mute);font-size:14px}
+.docs{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.docs li{display:grid;grid-template-columns:auto 1fr;gap:12px;padding:14px;border-radius:var(--r-s);border:1px solid var(--line);background:var(--ink)}
+.docs li.req{border-color:color-mix(in srgb,var(--nikon) 45%,transparent);background:linear-gradient(90deg,rgba(255,225,0,.08),transparent 70%),var(--ink)}
+.docs .ic{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font:700 12px/1 var(--f-mono);background:var(--ink-3);color:var(--mute)}
+.docs li.req .ic{background:var(--nikon);color:var(--nikon-ink)}
+.docs li.ok .ic{background:rgba(134,217,185,.16);color:var(--mint)}
+.docs b{display:block;color:var(--paper);font-weight:600;font-size:15px;margin-bottom:3px}
+.docs span{color:var(--mute);font-size:13.5px}
+
+/* calendar */
+.cal{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(250px,1fr);gap:14px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory}
+.ev{scroll-snap-align:start;border-radius:var(--r-l);border:1px solid var(--line);background:var(--ink-2);padding:22px;display:grid;gap:12px;align-content:start;min-height:100%}
+.ev .date{font:700 clamp(30px,3vw,40px)/1 var(--f-display);font-stretch:118%;letter-spacing:-.02em}
+.ev .date.y{color:var(--nikon)}
+.ev .nm{font:600 12px/1.2 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.ev ul{margin:0;padding-left:16px;color:var(--mute);font-size:14px;display:grid;gap:6px}
+.ev ul b{color:var(--paper);font-weight:600}
+.ev .tags{display:flex;gap:6px;flex-wrap:wrap}
+.ev.big{background:linear-gradient(170deg,rgba(255,225,0,.12),transparent 55%),var(--ink-2);border-color:color-mix(in srgb,var(--nikon) 30%,transparent)}
+
+/* omni funnel */
+.omni{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:12px}
+.omni div{border-radius:var(--r-m);padding:18px;border:1px solid var(--line);display:grid;gap:8px;align-content:start;background:var(--ink-2)}
+.omni .role{font:600 11px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--nikon)}
+.omni h4{font-size:18px;font-weight:700}
+.omni p{margin:0;font-size:13.5px;color:var(--mute)}
+
+/* posters (content KVs) */
+.posters{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:18px}
+.poster{position:relative;aspect-ratio:4/5;border-radius:22px;overflow:hidden;isolation:isolate;container-type:inline-size;color:#fff;background:#0b0a08}
+.poster img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.poster .sh{position:absolute;inset:0;z-index:-1}
+.poster .in{position:absolute;inset:0;padding:7cqw;display:grid;grid-template-rows:auto 1fr auto;gap:3cqw}
+.poster .top{display:flex;justify-content:space-between;align-items:center;font:600 3.2cqw/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase}
+.poster .lg{background:var(--nikon);color:var(--nikon-ink);font:900 italic 3.6cqw/1 var(--f-display);padding:1.6cqw 2.2cqw;border-radius:1.4cqw;letter-spacing:-.02em}
+.poster .hl{font:900 14cqw/.86 var(--f-display);font-stretch:122%;letter-spacing:-.035em;text-transform:uppercase;align-self:end}
+.poster .sub{font:600 4.4cqw/1.25 var(--f-display);font-stretch:100%;margin-top:2.5cqw;max-width:26ch}
+.poster .foot{display:flex;justify-content:space-between;align-items:end;gap:3cqw}
+.poster .cta{background:var(--nikon);color:var(--nikon-ink);font:800 3.6cqw/1 var(--f-display);font-stretch:110%;padding:3cqw 4cqw;border-radius:99px;text-transform:uppercase;letter-spacing:.02em;white-space:nowrap}
+.poster .meta{font:500 3cqw/1.4 var(--f-mono);opacity:.85;letter-spacing:.04em}
+.poster .big{font:900 26cqw/.8 var(--f-display);font-stretch:125%;letter-spacing:-.05em}
+.pcap{display:grid;gap:4px;margin-top:10px}
+.pcap b{font-size:14.5px;color:var(--paper);font-weight:600}
+.pcap span{font-size:13px;color:var(--mute)}
+
+/* support */
+.asks{display:grid;gap:12px;counter-reset:a}
+.ask{display:grid;grid-template-columns:92px minmax(0,1fr) auto;gap:18px;align-items:start;padding:20px 22px;border-radius:var(--r-m);border:1px solid var(--line);background:var(--ink-2)}
+.ask .pr{justify-self:start;font:700 11px/1 var(--f-mono);letter-spacing:.1em;padding:7px 9px;border-radius:7px;text-transform:uppercase;white-space:nowrap}
+.ask .p0{background:var(--nikon);color:var(--nikon-ink)}
+.ask .p1{background:rgba(255,225,0,.14);color:var(--nikon)}
+.ask .p2{background:var(--ink-3);color:var(--mute)}
+.ask h4{font-size:18px;font-weight:700;margin-bottom:6px}
+.ask p{margin:0;color:var(--mute);font-size:14.5px}
+.ask ul{margin:8px 0 0;padding-left:18px;color:var(--mute);font-size:14px;display:grid;gap:4px}
+.ask .when{font:500 12px/1.4 var(--f-mono);color:var(--mute);text-align:right;white-space:nowrap}
+.ask .when b{display:block;color:var(--paper);font-weight:600}
+@media (max-width:700px){.ask{grid-template-columns:1fr}.ask .when{text-align:left}}
+
+/* roadmap */
+.road{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-l);overflow:hidden}
+.road div{background:var(--ink);padding:22px;display:grid;gap:10px;align-content:start}
+.road .m{font:700 26px/1 var(--f-display);font-stretch:118%}
+.road ul{margin:0;padding-left:16px;color:var(--mute);font-size:14px;display:grid;gap:6px}
+
+/* marquee */
+.marq{overflow:hidden;border-block:1px solid var(--line);padding-block:18px;white-space:nowrap;background:var(--ink-2)}
+.marq .tr{display:inline-flex;gap:48px;animation:marq 38s linear infinite;padding-left:48px}
+.marq span{font:800 clamp(28px,4vw,52px)/1 var(--f-display);font-stretch:122%;color:transparent;-webkit-text-stroke:1px var(--mute-2);letter-spacing:-.01em}
+.marq span.y{color:var(--nikon);-webkit-text-stroke:0}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* sheet / lightbox */
+.sheet{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:max(20px,env(safe-area-inset-top,0px)) var(--gut-r) max(20px,env(safe-area-inset-bottom,0px)) var(--gut-l);background:rgba(8,7,5,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.sheet .box{border-radius:32px;padding:14px;max-width:min(1100px,100%);max-height:100%;display:grid;gap:10px;grid-template-rows:minmax(0,1fr) auto;animation:pop .45s cubic-bezier(.2,1.2,.3,1)}
+.sheet img{max-height:calc(100svh - 140px);width:auto;max-width:100%;margin-inline:auto;border-radius:22px;object-fit:contain}
+.sheet .cap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:0 8px 4px;font-size:13.5px;color:var(--mute)}
+.sheet .x{border:0;background:rgba(255,255,255,.1);border-radius:999px;padding:9px 14px;cursor:pointer;font:600 12px/1 var(--f-mono);letter-spacing:.08em}
+@keyframes pop{from{transform:scale(.94);opacity:0}}
+
+/* appendix */
+.ux{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px}
+.ux div{border-radius:var(--r-m);border:1px solid var(--line);padding:20px;display:grid;gap:8px;align-content:start}
+.ux h4{font-size:16px;font-weight:700}
+.ux p{margin:0;color:var(--mute);font-size:14px}
+.ux .ap{font:500 11px/1.3 var(--f-mono);color:var(--nikon);letter-spacing:.1em;text-transform:uppercase}
+footer{padding-block:48px 120px;color:var(--mute-2);font-size:13px;border-top:1px solid var(--line)}
+
+/* present mode */
+html.present{scroll-snap-type:y proximity}
+html.present .slide,html.present .hero{scroll-snap-align:start;min-height:100svh}
+html.present .slide{display:grid;align-content:center}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  .iris{display:none}
+  .js .rv.pre{transform:none;opacity:1;filter:none}
+  .js .pre .mask>span{transform:none}
+  .js .chart.pre .bar{transform:none}
+  .marq .tr{animation:none}
+}
+</style>
+
+<div class="iris" aria-hidden="true">
+  <svg viewBox="-100 -100 200 200" preserveAspectRatio="xMidYMid slice">
+    <g>
+      <path class="blade" style="--k:0" d="M-260 -2 L260 -2 L260 260 L-260 260 Z"/>
+      <path class="blade" style="--k:1" d="M-260 -2 L260 -2 L260 260 L-260 260 Z"/>
+      <path class="blade" style="--k:2" d="M-260 -2 L260 -2 L260 260 L-260 260 Z"/>
+      <path class="blade" style="--k:3" d="M-260 -2 L260 -2 L260 260 L-260 260 Z"/>
+      <path class="blade" style="--k:4" d="M-260 -2 L260 -2 L260 260 L-260 260 Z"/>
+      <path class="blade" style="--k:5" d="M-260 -2 L260 -2 L260 260 L-260 260 Z"/>
+      <path class="blade" style="--k:6" d="M-260 -2 L260 -2 L260 260 L-260 260 Z"/>
+      <path class="blade" style="--k:7" d="M-260 -2 L260 -2 L260 260 L-260 260 Z"/>
+    </g>
+  </svg>
+  <div class="lbl">NIKON × VHG</div>
+</div>
+
+<div class="prog" id="prog"></div>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="hero-bg"><img src="assets/l-nikon-zf--5.webp" alt="" fetchpriority="high"></div>
+  <div class="vf" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="rec">REC · B2C 2026</span><span class="af"></span></div>
+  <div class="wrap hero-in">
+    <div class="eyebrow"><b>Nikon Singapore × VHG</b><span class="rule"></span>Business review · Ho Chi Minh City · October 2026</div>
+    <h1 class="h-xl"><span>B2C Activation</span><span><span class="amp">&amp;</span> Channel</span><span>Development</span></h1>
+    <p class="lede">What the VHG B2C team ran on the <strong>Nikon Vietnam official stores on Shopee and TikTok Shop</strong> from June to October 2026, what it delivered, where the Mall programmes stand, and the plan and support we need for Q4.</p>
+    <div class="hud glass" role="list">
+      <div role="listitem"><span class="k">Shopee NMV · Jun–Sep</span><span class="v y num">×6.5 YoY</span></div>
+      <div role="listitem"><span class="k">Revenue from 12 peak days</span><span class="v num">71%</span></div>
+      <div role="listitem"><span class="k">TikTok Shop Mall</span><span class="v num">Live · 21.09</span></div>
+      <div role="listitem"><span class="k">Shopee Mall</span><span class="v num">In review</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ AGENDA ============ -->
+<section class="slide flush" id="agenda" data-title="Agenda">
+  <div class="wrap">
+    <div class="chap rv">
+      <div class="eyebrow">Agenda<span class="rule"></span>Four parts, in this order</div>
+    </div>
+    <div class="agenda rv">
+      <a href="#results"><span class="n">01</span><h3>Activation &amp; results</h3><p>Promotions, Flash Sales, Private Vouchers, livestream, video, peak-hour ads and the listing upgrade, with the revenue they produced.</p><span class="go">Results →</span></a>
+      <a href="#mall"><span class="n">02</span><h3>Shop Mall progress</h3><p>TikTok Shop Mall is live. Shopee Mall is in review and waiting on two brand documents.</p><span class="go">Mall →</span></a>
+      <a href="#next"><span class="n">03</span><h3>Q4 proposals</h3><p>Halloween to Tết: Private Sales, the Z5IIC launch, peak-day plans and how the channels work together.</p><span class="go">Plan →</span></a>
+      <a href="#support"><span class="n">04</span><h3>Support from Nikon</h3><p>Mall documents first, then launch assets, co-funding and price governance.</p><span class="go">Asks →</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 01 RESULTS ============ -->
+<section class="slide" id="results" data-title="Results">
+  <div class="wrap">
+    <div class="chap rv">
+      <div class="eyebrow"><b>01</b> Activation &amp; results<span class="rule"></span>Shopee · Nikon Vietnam store</div>
+      <h2 class="h-l">June was the turning point. July set the record.</h2>
+      <p class="lede">From June, VHG B2C began running a fixed peak-day playbook: Flash Sales, Private Vouchers with Nikon Marketing, livestreams and ads bid up for peak hours. <strong>Jun–Sep NMV reached ₫739.1M, 6.5× the same period in 2025.</strong></p>
+    </div>
+
+    <div class="kpis rv">
+      <div class="kpi hero-k"><span class="lab">NMV · Jun–Sep 2026</span><span class="val num" data-count="739.1" data-dec="1">739.1<small>M ₫</small></span><span class="cmp">vs ₫113.4M in 2025 · <b>+552%</b></span></div>
+      <div class="kpi"><span class="lab">Orders</span><span class="val num" data-count="85">85</span><span class="cmp">vs 35 in 2025 · <b>2.4×</b></span></div>
+      <div class="kpi"><span class="lab">Average order value</span><span class="val num" data-count="8.70" data-dec="2">8.70<small>M ₫</small></span><span class="cmp">vs ₫3.24M · camera-led basket</span></div>
+      <div class="kpi"><span class="lab">Best month · July</span><span class="val num" data-count="295.4" data-dec="1">295.4<small>M ₫</small></span><span class="cmp">vs ₫30.7M Jul 2025 · <b>9.6×</b></span></div>
+    </div>
+
+    <div class="panel rv" style="margin-top:20px">
+      <div class="panel-h">
+        <div>
+          <h3 class="h-s" id="yoyTitle">Year-over-year growth by month, 2026 vs 2025</h3>
+          <p id="yoySub">Growth rate of monthly NMV. Shaded: the activation period, June to September.</p>
+        </div>
+        <div class="seg glass" role="group" aria-label="Chart view" id="yoySeg">
+          <span class="lens"></span>
+          <button type="button" aria-pressed="true" data-v="g">Growth rate</button>
+          <button type="button" aria-pressed="false" data-v="n">NMV ₫</button>
+          <button type="button" aria-pressed="false" data-v="o">Orders</button>
+        </div>
+      </div>
+      <div class="chart pre" id="yoy" role="img" aria-label="Year over year growth by month"></div>
+      <div class="legend" id="yoyLeg" style="margin-top:12px"></div>
+      <p class="src">Source: Shopee order exports, Nikon Vietnam store (Jan 2024 – 30 Sep 2026; September from the full-month export). NMV = buyer-paid amount, cancelled orders excluded. Jan–May 2026 ran below a strong Q1 2025, so Jan–Sep year to date is −13%; the run rate since June now clearly exceeds 2025.</p>
+    </div>
+
+    <div class="grid g2" style="margin-top:20px">
+      <div class="panel rv">
+        <div class="panel-h"><div><h3 class="h-s">Revenue lands on peak days</h3><p>Daily NMV, 1 Jun – 30 Sep 2026. Twelve campaign days produced 71% of the period's revenue.</p></div></div>
+        <div class="chart pre" id="daily" role="img" aria-label="Daily NMV with campaign days marked"></div>
+      </div>
+      <div class="panel rv">
+        <div class="panel-h"><div><h3 class="h-s">When Vietnam checks out</h3><p>Share of Jun–Sep NMV by hour of order. This is the schedule our ads and Flash Sale slots follow.</p></div></div>
+        <div class="dial">
+          <svg id="dial" viewBox="-160 -160 320 320" role="img" aria-label="NMV share by hour of day"></svg>
+          <ul class="ins">
+            <li><span><b>00:00–01:00 · 24%</b> of NMV. Midnight openers on double days are the biggest single hour.</span></li>
+            <li><span><b>10:00–12:00 · 23%</b>. The late-morning voucher drop is the second wave.</span></li>
+            <li><span><b>20:00–00:00 · 19%</b>. Evening is when livestreams and the last voucher calls run.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel rv" style="margin-top:20px">
+      <div class="panel-h"><div><h3 class="h-s">What sold, Jun–Sep 2026</h3><p>Cameras carry the store. The Z30 alone is 70% of NMV, so price discipline on the Z30 matters most (see Private Voucher).</p></div></div>
+      <div class="mix" aria-hidden="true"><span style="width:81.5%;background:var(--nikon)"></span><span style="width:10.7%;background:#C9B54A"></span><span style="width:5.2%;background:#8A7F45"></span><span style="width:2.6%;background:#4A463C"></span></div>
+      <div class="legend"><span><i style="background:var(--nikon)"></i>Cameras 81.5% · ₫602.4M</span><span><i style="background:#C9B54A"></i>Accessories 10.7% · ₫78.8M</span><span><i style="background:#8A7F45"></i>Binoculars 5.2% · ₫38.7M</span><span><i style="background:#4A463C"></i>Lenses 2.6% · ₫19.2M</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="marq" aria-hidden="true"><div class="tr" id="marq">
+  <span class="y">7.7</span><span>8.8</span><span class="y">9.9</span><span>10.10</span><span class="y">11.11</span><span>12.12</span><span class="y">15 · MID-MONTH</span><span>25 · PAYDAY</span>
+</div></div>
+
+<!-- ============ PROMOTIONS ============ -->
+<section class="slide" id="promo" data-title="Promotions">
+  <div class="wrap">
+    <div class="chap rv">
+      <div class="eyebrow"><b>01.1</b> Promotions &amp; Flash Sales<span class="rule"></span>Jun – Oct 2026</div>
+      <h2 class="h-l">Every peak day got a campaign, a banner and a Flash Sale.</h2>
+      <p class="lede">The mechanic stacks Shopee's platform voucher with a targeted Nikon subsidy, so buyers see a strong headline discount while Nikon funds only part of it.</p>
+    </div>
+    <div class="grid g2">
+      <div class="panel rv">
+        <h3 class="h-s" style="margin-bottom:16px">How a buyer reaches "up to 35% off"</h3>
+        <div class="stack">
+          <div class="row"><span>Shopee platform voucher</span><div class="track"><div class="fill" style="left:0;width:57%;background:#C9B54A">13–20%</div></div><span class="num small">Shopee-funded</span></div>
+          <div class="row"><span>Nikon subsidy</span><div class="track"><div class="fill" style="left:0;width:49%;background:var(--nikon)">2–17%</div></div><span class="num small">by model</span></div>
+          <div class="row"><span><b style="color:var(--paper)">Buyer sees</b></span><div class="track"><div class="fill" style="left:0;width:100%;background:linear-gradient(90deg,#C9B54A 0 52%,var(--nikon) 52%)">up to 35%</div></div><span class="num small">headline</span></div>
+        </div>
+        <p class="src">Mechanic from the 25.6 Mega Sale brief: hero SKUs Zf, Zfc (Black / Coral Pink / Mint) and Z30.</p>
+      </div>
+      <div class="panel rv">
+        <div class="kpis" style="border-radius:var(--r-m)">
+          <div class="kpi"><span class="lab">Flash Sale slots</span><span class="val num" data-count="148">148</span><span class="cmp">25 Jun – 15 Oct</span></div>
+          <div class="kpi"><span class="lab">Confirmed sales</span><span class="val num" data-count="414.9" data-dec="1">414.9<small>M ₫</small></span><span class="cmp">₫675.1M placed</span></div>
+          <div class="kpi"><span class="lab">Orders</span><span class="val num" data-count="57">57</span><span class="cmp">57 units</span></div>
+          <div class="kpi"><span class="lab">Product views</span><span class="val num" data-count="3953">3,953</span><span class="cmp">283 clicks</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hwall" id="hwall">
+    <div class="stick">
+      <div class="wrap"><div class="eyebrow">Campaign wall<span class="rule"></span>Scroll to move · tap to enlarge</div></div>
+      <div class="track" id="htrack">
+        <button class="card-b" data-img="assets/b-0625.webp" data-cap="25.6 & 7.7 · Mega Sale, up to 35% on Nikon Z"><div class="ph"><img src="assets/b-0625.webp" alt="25.6 and 7.7 Nikon Mega Sale banner" loading="lazy"></div><span class="d">25.06 · 07.07</span><h4>Mid-year Mega Sale</h4><p>Up to 35% on Zfc, Zf and Z30. July 7 became the best day of the year: ₫139.5M.</p></button>
+        <button class="card-b" data-img="assets/b-0808.webp" data-cap="8.8 · Săn deal"><div class="ph"><img src="assets/b-0808.webp" alt="8.8 Nikon deal banner" loading="lazy"></div><span class="d">08.08 · 10.08</span><h4>8.8 deal hunt</h4><p>Flash Sale plus Private Voucher. Peak voucher day 10.8 delivered ₫99.2M.</p></button>
+        <button class="card-b" data-img="assets/b-0825.webp" data-cap="25.8 · Z30 creator gift set"><div class="ph"><img src="assets/b-0825.webp" alt="25.8 Z30 creator gift banner" loading="lazy"></div><span class="d">25.08</span><h4>Z30 creator gift set</h4><p>Payday sale with a creator gift set, run alongside the 25.8 livestream.</p></button>
+        <button class="card-b" data-img="assets/b-0909.webp" data-cap="9.9 · Z30 creator gift set"><div class="ph"><img src="assets/b-0909.webp" alt="9.9 Z30 banner" loading="lazy"></div><span class="d">09.09</span><h4>9.9 Z30 push</h4><p>The same creator offer, refreshed for 9.9: ₫81.0M on the day.</p></button>
+        <button class="card-b" data-img="assets/b-sandisk.webp" data-cap="Nikon × SanDisk bundle · 25.09 – 15.10"><div class="ph"><img src="assets/b-sandisk.webp" alt="Nikon and SanDisk bundle banner" loading="lazy"></div><span class="d">25.09 – 15.10</span><h4>Nikon × SanDisk bundle</h4><p>Co-brand collab: buy a Nikon camera or lens, add SanDisk memory at a bundle price.</p></button>
+        <button class="card-b" data-img="assets/b-sandisk-guide.webp" data-cap="Bundle buying guide"><div class="ph"><img src="assets/b-sandisk-guide.webp" alt="Bundle buying guide" loading="lazy"></div><span class="d">How-to</span><h4>4-step bundle guide</h4><p>Shopper education creative so the bundle converts without chat support.</p></button>
+        <button class="card-b" data-img="assets/b-sandisk-4.webp" data-cap="Bundle KV · Zfc"><div class="ph"><img src="assets/b-sandisk-4.webp" alt="Zfc SanDisk bundle KV" loading="lazy"></div><span class="d">Per-SKU KVs</span><h4>One KV per hero SKU</h4><p>Zfc, Z 28mm f/2.8 (SE) and Z DX MC 35mm, each with its bundle price.</p></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="grid g2" style="margin-top:8px">
+      <div class="panel rv">
+        <div class="panel-h"><div><h3 class="h-s">Flash Sale by month</h3><p>Confirmed sales vs placed sales (₫M). October covers the 1st to the 15th.</p></div></div>
+        <div class="chart pre" id="fs" role="img" aria-label="Flash sale sales by month"></div>
+        <div class="legend" style="margin-top:10px"><span><i style="background:var(--nikon)"></i>Confirmed</span><span><i style="background:#4A463C"></i>Placed</span></div>
+      </div>
+      <div class="panel rv">
+        <div class="panel-h"><div><h3 class="h-s">Best Flash Sale slots</h3><p>Ranked by sales placed in the slot.</p></div></div>
+        <div class="tscroll"><table class="tbl">
+          <thead><tr><th>Slot</th><th class="num">Views</th><th class="num">Orders</th><th class="num">Placed ₫M</th></tr></thead>
+          <tbody>
+            <tr><td><b>01.07</b> · 12:00–12:30</td><td class="num">19</td><td class="num">3</td><td class="num"><b>56.3</b></td></tr>
+            <tr><td><b>07.07</b> · 18:00–21:00</td><td class="num">106</td><td class="num">4</td><td class="num"><b>54.8</b></td></tr>
+            <tr><td><b>25.06</b> · 09:00–10:00</td><td class="num">43</td><td class="num">1</td><td class="num"><b>54.5</b></td></tr>
+            <tr><td><b>07.08</b> · 21:00–00:00</td><td class="num">82</td><td class="num">3</td><td class="num"><b>40.7</b></td></tr>
+            <tr><td><b>10.08</b> · 09:00–12:00</td><td class="num">116</td><td class="num">3</td><td class="num"><b>40.1</b></td></tr>
+            <tr><td><b>08.08</b> · 00:00–00:30</td><td class="num">10</td><td class="num">2</td><td class="num"><b>39.0</b></td></tr>
+          </tbody>
+        </table></div>
+        <p class="src">Source: Shopee Flash Sale performance export, 16 Oct 2026.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRIVATE VOUCHER ============ -->
+<section class="slide" id="voucher" data-title="Private Voucher">
+  <div class="wrap">
+    <div class="chap rv">
+      <div class="eyebrow"><b>01.2</b> Private Vouchers<span class="rule"></span>With Nikon Marketing</div>
+      <h2 class="h-l">A sharp price for the right buyer, without a public price war.</h2>
+      <p class="lede">In August a public Flash Sale at ₫19.2–19.5M on the Z30 triggered dealer complaints. We moved the deep discount into a <strong>Private Voucher</strong>: the listed price stays safe, and only buyers who receive the code from Nikon events, livestreams or social DMs get the final price.</p>
+    </div>
+    <div class="grid g2">
+      <div class="panel rv">
+        <h3 class="h-s" style="margin-bottom:16px">Nikon Z30 kit · what each audience sees</h3>
+        <div class="ladder">
+          <div class="rung r1"><span class="w">Listed price</span><span class="p num">22.4M</span><p>No public Flash Sale on the Z30.</p></div>
+          <div class="rung r2"><span class="w">+ Shopee voucher</span><span class="p num">18.0–19.5M</span><p>What dealers and the public see.</p></div>
+          <div class="rung r3"><span class="w">+ Private Voucher</span><span class="p num">15.0–16.5M</span><p>Only for buyers holding the code.</p></div>
+        </div>
+        <p class="src">Single code, capped redemptions matched to live stock, valid 5–7 days so buyers can wait for the highest platform-voucher day.</p>
+      </div>
+      <div class="panel rv">
+        <h3 class="h-s" style="margin-bottom:6px">Proof from two real orders, same SKU</h3>
+        <p class="body" style="font-size:14px;margin-bottom:16px">One order used a low Shopee voucher (₫1.94M), the other a high one (₫4.5M).</p>
+        <div class="proof">
+          <div><span class="k">Order 1 · shop receives</span><span class="v num">₫16.728M</span></div>
+          <div><span class="k">Order 2 · shop receives</span><span class="v num">₫16.555M</span></div>
+          <div class="full"><span class="k">Buyer price gap vs shop revenue gap</span><span class="v num"><span class="y">₫2.76M</span> vs ₫0.17M (~1%)</span></div>
+        </div>
+        <p class="body" style="font-size:14px;margin-top:14px">Shopee funds most of the extra discount on high-voucher days, so timing the code to those days costs Nikon almost nothing.</p>
+      </div>
+    </div>
+    <div class="grid g3" style="margin-top:20px">
+      <div class="vouch rv">
+        <button class="shot" data-img="assets/v-contest.webp" data-cap="Photo contest 2.9 · prize vouchers ₫2–3M on Z30 kit, valid 14–30.09 on Shopee and at the Showroom"><img src="assets/v-contest.webp" alt="Photo contest voucher" loading="lazy"></button>
+        <div><b class="h-s" style="font-size:16px">Photo contest 2.9</b><p class="small">8 prize vouchers worth ₫2–3M on the Z30 kit. Redeemable on Shopee or at the Nikon Showroom, 14–30 Sep.</p></div>
+      </div>
+      <div class="vouch rv">
+        <button class="shot" data-img="assets/v-workshop.webp" data-cap="Workshop 19.9 · ₫3M voucher on orders from ₫25M"><img src="assets/v-workshop.webp" alt="Workshop voucher" loading="lazy"></button>
+        <div><b class="h-s" style="font-size:16px">Workshop 19.9</b><p class="small">7 vouchers, top prize ₫3M on orders from ₫25M. It turns workshop attendees into full-frame buyers.</p></div>
+      </div>
+      <div class="vouch rv">
+        <button class="shot" data-img="assets/doc-pv.webp" data-cap="Private Voucher mechanism, from the 25.08 plan"><img src="assets/doc-pv.webp" alt="Private voucher plan slide" loading="lazy" style="height:100%;object-fit:cover"></button>
+        <div><b class="h-s" style="font-size:16px">Livestream &amp; social codes</b><p class="small">Codes are released during lives and sent by Marketing to buyers who ask about the Z30 on fanpage, Instagram or TikTok.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIVESTREAM & VIDEO ============ -->
+<section class="slide" id="live" data-title="Livestream">
+  <div class="wrap">
+    <div class="chap rv">
+      <div class="eyebrow"><b>01.3</b> Livestream &amp; shoppable video<span class="rule"></span>Shopee Live · Shopee Video</div>
+      <h2 class="h-l">Live selling started on 7.7 and pulled in 3,201 viewers.</h2>
+      <p class="lede">Livestreams run on peak days with a live-only voucher and a gift (Nikon tote). Short shoppable videos keep working between campaigns: in September they produced ₫61.2M of confirmed sales.</p>
+    </div>
+    <div class="livegrid">
+      <div class="panel rv">
+        <div class="panel-h"><div><span class="chip live">7.7 · 3h 09m</span><h3 class="h-m" style="margin-top:12px">"Săn deal Nikon cực đã"</h3></div></div>
+        <div class="metrics">
+          <div><span class="k">Viewers</span><span class="v">3,201</span></div>
+          <div><span class="k">Views</span><span class="v">3,924</span></div>
+          <div><span class="k">Peak concurrent</span><span class="v">85</span></div>
+          <div><span class="k">Likes</span><span class="v">2,417</span></div>
+          <div><span class="k">Add to cart</span><span class="v">52</span></div>
+          <div><span class="k">New followers</span><span class="v">16</span></div>
+          <div><span class="k">Placed sales</span><span class="v y">₫67.6M</span></div>
+          <div><span class="k">Confirmed</span><span class="v">₫33.6M</span></div>
+        </div>
+        <p class="body" style="font-size:14px;margin-top:16px"><strong>25.8 follow-up:</strong> two shorter sessions (1h 37m), 350 viewers and 0 orders. Learning: lives only convert when they coincide with a high platform-voucher day and carry a live-exclusive price. The Q4 plan schedules them that way.</p>
+        <button class="shot" style="margin-top:16px" data-img="assets/s-live77.webp" data-cap="Shopee Live analytics · 7.7"><img src="assets/s-live77.webp" alt="Shopee live analytics screenshot" loading="lazy"></button>
+      </div>
+      <div class="panel rv">
+        <div class="panel-h"><div><span class="chip">6 shoppable videos</span><h3 class="h-m" style="margin-top:12px">Video keeps selling between peaks</h3></div></div>
+        <div class="tscroll"><table class="tbl" style="margin-bottom:16px">
+          <thead><tr><th>Month</th><th class="num">Views</th><th class="num">Product CTR</th><th class="num">Confirmed ₫M</th></tr></thead>
+          <tbody>
+            <tr><td><b>Jul</b></td><td class="num">585</td><td class="num">30.2%</td><td class="num">0</td></tr>
+            <tr><td><b>Aug</b></td><td class="num">942</td><td class="num">43.8%</td><td class="num">19.5</td></tr>
+            <tr><td><b>Sep</b></td><td class="num">647</td><td class="num">43.1%</td><td class="num"><b class="y">61.2</b></td></tr>
+          </tbody>
+        </table></div>
+        <div class="vids" id="vids"></div>
+        <p class="src">Source: Shopee Video monthly overview; video list as of 16 Oct 2026.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ADS ============ -->
+<section class="slide" id="ads" data-title="Peak-hour ads">
+  <div class="wrap">
+    <div class="chap rv">
+      <div class="eyebrow"><b>01.4</b> Peak-hour ads<span class="rule"></span>Shopee Ads</div>
+      <h2 class="h-l">Small budget, fired only when traffic peaks.</h2>
+      <p class="lede">Budgets are pulsed: bids go up on double days, mid-month (15) and payday (25) during the high-impression hours, and are held back the rest of the month. Product ads with custom ROAS targets cover the hero SKUs, and GMV Max auto-bidding covers the shop.</p>
+    </div>
+    <div class="kpis rv">
+      <div class="kpi hero-k"><span class="lab">Ads-attributed sales · Jun–Sep</span><span class="val num" data-count="734.9" data-dec="1">734.9<small>M ₫</small></span><span class="cmp">Shopee attribution, direct + indirect</span></div>
+      <div class="kpi"><span class="lab">Ad spend</span><span class="val num" data-count="8.29" data-dec="2">8.29<small>M ₫</small></span><span class="cmp">≈ ₫2.1M per month</span></div>
+      <div class="kpi"><span class="lab">ROAS</span><span class="val num" data-count="88.6" data-dec="1">88.6<small>×</small></span><span class="cmp">40× in Jun → 111× in Sep</span></div>
+      <div class="kpi"><span class="lab">Impressions · clicks</span><span class="val num">138K</span><span class="cmp">2,672 clicks · 1.93% CTR</span></div>
+    </div>
+    <div class="grid g2" style="margin-top:20px">
+      <div class="panel rv">
+        <div class="panel-h"><div><h3 class="h-s">Spend and ROAS by month</h3><p>Bars: ad spend (₫M). Line: ROAS.</p></div></div>
+        <div class="chart pre" id="adsc" role="img" aria-label="Ad spend and ROAS by month"></div>
+      </div>
+      <div class="panel rv">
+        <div class="panel-h"><div><h3 class="h-s">September: three pulses</h3><p>Spend and impressions rise only around 9.9, 15.9 and 25.9, the peak-day windows.</p></div></div>
+        <button class="shot" data-img="assets/s-ads-sep.webp" data-cap="Shopee Ads · product ads, 1–30 Sep 2026"><img src="assets/s-ads-sep.webp" alt="Shopee ads dashboard for September" loading="lazy"></button>
+        <p class="src">Attributed sales use Shopee's own model and include indirect conversions, so they are not additive with NMV.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LISTING ============ -->
+<section class="slide" id="listing" data-title="Listing upgrade">
+  <div class="wrap">
+    <div class="chap rv">
+      <div class="eyebrow"><b>01.5</b> Listing upgrade<span class="rule"></span>Product page imagery</div>
+      <h2 class="h-l">From white packshots to a story in eight frames.</h2>
+      <p class="lede">Most listings used to show only white-background studio shots. The B2C team has rebuilt <strong>25 SKUs with 89 new images</strong>: key visual with spec strip, feature grid, lifestyle stories, close-ups and a warranty card. The rollout continues across the whole Nikon Vietnam range.</p>
+    </div>
+
+    <div class="story">
+      <div class="steps" id="steps">
+        <div class="step on" data-i="0"><span class="n">Frame 1 · Key visual</span><h3>Name, positioning line, three spec badges</h3><p class="body">The thumbnail shoppers see in search. It states the product and the three facts that decide the click, such as processor, resolution and the 24-month warranty.</p></div>
+        <div class="step" data-i="1"><span class="n">Frame 2 · Feature grid</span><h3>Four reasons to buy, at a glance</h3><p class="body">A numbered 01–04 grid over a lifestyle photo, matching the order of the frames that follow.</p></div>
+        <div class="step" data-i="2"><span class="n">Frames 3–7 · Lifestyle stories</span><h3>One benefit per frame, shown in use</h3><p class="body">Vlogging, 4K video, eye-detection AF, audio and stabilisation, each a real scene with a single caption. It answers "is this camera for me?" without opening a spec sheet.</p></div>
+        <div class="step" data-i="6"><span class="n">Close-ups</span><h3>Details that remove doubt</h3><p class="body">Card slot, ports and controls, the questions that would otherwise go to chat.</p></div>
+        <div class="step" data-i="7"><span class="n">Frame 8 · Trust card</span><h3>Genuine Nikon Vietnam warranty</h3><p class="body">100% genuine, free shipping, 24-month warranty by Nikon Vietnam (VHG). This frame is ready for the Mall badge.</p></div>
+      </div>
+      <div class="stage">
+        <div class="prodtabs" role="group" aria-label="Product" id="ptabs">
+          <button type="button" aria-pressed="true" data-p="z30">Z30</button>
+          <button type="button" aria-pressed="false" data-p="zf">Zf</button>
+          <button type="button" aria-pressed="false" data-p="zfc">Zfc</button>
+          <button type="button" aria-pressed="false" data-p="act">Action 10x50</button>
+        </div>
+        <div class="phone" aria-label="Shopee product page preview">
+          <div class="scr">
+            <div class="bar-top"><span>9:41</span><span style="font-weight:700">Nikon Vietnam</span><span>•••</span></div>
+            <div class="pdp-img" id="pimg"><span class="cnt" id="pcnt">1/8</span></div>
+            <div class="pdp">
+              <div><span class="mall">Mall</span><b id="pname">Máy ảnh Nikon Z30 kit 16-50mm</b></div>
+              <div class="pr" id="pprice">₫22.400.000</div>
+              <div style="color:#777;font-size:11.5px">Genuine Nikon Vietnam · 24-month warranty · free shipping</div>
+              <div class="thumbs" id="pthumbs"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-top:48px">
+      <div class="panel rv">
+        <h3 class="h-s" style="margin-bottom:14px">Before → after</h3>
+        <div class="ba">
+          <figure><div class="before"><div></div></div></figure>
+          <figure><div class="after"><img src="assets/l-nikon-z30--3.webp" alt="New Z30 lifestyle listing image" loading="lazy"></div></figure>
+        </div>
+        <div class="ba" style="margin-top:8px"><figcaption>Before (illustration): one white packshot, no copy</figcaption><figcaption>After: lifestyle frame with one clear benefit</figcaption></div>
+      </div>
+      <div class="panel rv">
+        <div class="panel-h"><div><h3 class="h-s">Rollout status</h3><p>25 SKUs done. Next wave follows the binocular priority list, then lenses and new bodies.</p></div></div>
+        <table class="tbl">
+          <tbody>
+            <tr><td><b>Cameras</b> · Z30, Zf, Zfc</td><td class="num">30 images</td><td><span class="chip live">Done</span></td></tr>
+            <tr><td><b>Binoculars</b> · Action 7x50, 10x50, 16x50</td><td class="num">21 images</td><td><span class="chip live">Done</span></td></tr>
+            <tr><td><b>Accessories</b> · 19 SKUs (batteries, chargers, caps, filters, TC)</td><td class="num">38 images</td><td><span class="chip live">Done</span></td></tr>
+            <tr><td><b>Next</b> · Monarch M7/M5, Action EX 7x35, 6x15/7x15 CF</td><td class="num">8 SKUs</td><td><span class="chip wait">Q4</span></td></tr>
+            <tr><td><b>Then</b> · Z lenses, Z5II, Z50II, ZR, Z5IIC</td><td class="num">rolling</td><td><span class="chip">Planned</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="panel rv" style="margin-top:20px">
+      <div class="panel-h"><div><h3 class="h-s">The new library</h3><p>All 89 images, tap any to open.</p></div></div>
+      <div class="mosaic" id="mosaic"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 MALL ============ -->
+<section class="slide" id="mall" data-title="Shop Mall">
+  <div class="wrap">
+    <div class="chap rv">
+      <div class="eyebrow"><b>02</b> Shop Mall progress<span class="rule"></span>Shopee · TikTok Shop</div>
+      <h2 class="h-l">One Mall is live. The other needs two documents from Nikon.</h2>
+      <p class="lede">Mall status gives the official badge, access to Mall-only campaigns and vouchers, and buyer trust that we are the genuine Nikon store.</p>
+    </div>
+    <div class="grid g2">
+      <div class="panel mallc rv">
+        <div class="panel-h" style="margin:0"><h3 class="h-m">TikTok Shop Mall</h3><span class="chip live">Live since 21.09</span></div>
+        <ul class="tl">
+          <li class="done"><div><span class="d">21.09.2026</span><div class="t">Mall approved, store live</div><div class="s">Official Mall badge on the Nikon Vietnam TikTok store.</div></div></li>
+          <li class="done"><div><span class="d">Catalogue</span><div class="t">23 products listed</div><div class="s">Cameras, lenses, battery &amp; charger accessories, lens accessories.</div></div></li>
+          <li class="now"><div><span class="d">10.10 campaign</span><div class="t">Joined two platform campaigns</div><div class="s">[TikTok Shop 10.10] Electronics Superstar Voucher · Extra Special Voucher (Upsized).</div></div></li>
+          <li><div><span class="d">Next</span><div class="t">Content-led growth</div><div class="s">Shoppable short videos, affiliate creators and a first TikTok live for the Z5IIC launch.</div></div></li>
+        </ul>
+      </div>
+      <div class="panel mallc rv">
+        <div class="panel-h" style="margin:0"><h3 class="h-m">Shopee Mall</h3><span class="chip wait">In review since 01.10</span></div>
+        <ul class="tl">
+          <li class="done"><div><span class="d">01.10.2026</span><div class="t">Application submitted</div><div class="s">Store already meets the operating criteria (catalogue, fulfilment, no penalty points).</div></div></li>
+          <li class="now"><div><span class="d">Now</span><div class="t">Shopee asked for two more documents</div><div class="s">Both must come from Nikon as the brand owner. See below.</div></div></li>
+          <li><div><span class="d">Target</span><div class="t">Mall badge before 11.11</div><div class="s">Unlocks Shopee Mall campaigns and Mall vouchers for 11.11, 12.12 and Tết.</div></div></li>
+        </ul>
+      </div>
+    </div>
+    <div class="panel rv" style="margin-top:20px">
+      <div class="panel-h"><div><h3 class="h-s">Documents for Mall, brand owner → VHG</h3><p>Highlighted items are what Shopee is waiting for today. The rest keep both Malls valid over time.</p></div></div>
+      <ul class="docs">
+        <li class="req"><span class="ic">1</span><div><b>Distribution agreement, Nikon → VHG</b><span>The agreement referenced in the authorization certificate. Shopee needs it to confirm the certificate's validity period.</span></div></li>
+        <li class="req"><span class="ic">2</span><div><b>Original authorization / distribution certificate, colour scan</b><span>Issued by Nikon to the shop's legal entity, signed and stamped, showing the validity dates. Black-and-white copies are rejected.</span></div></li>
+        <li class="ok"><span class="ic">✓</span><div><b>VHG business registration</b><span>Held by VHG and already submitted.</span></div></li>
+        <li><span class="ic">3</span><div><b>Authorization chain, if issued regionally</b><span>If the certificate comes from Nikon Singapore rather than Nikon Corporation, a letter showing Nikon Singapore may appoint distributors in Vietnam.</span></div></li>
+        <li><span class="ic">4</span><div><b>Renewal before expiry</b><span>TikTok removes Mall status when a brand authorization lapses. Renewals should be issued at least 30 days before the end date.</span></div></li>
+      </ul>
+      <p class="src">Requirements from the Shopee review notes in our Mall tracker, plus published Shopee and TikTok Shop Mall criteria (brand authorization valid for the whole Mall period; TikTok requires at least 80% of listed products under the authorized brand).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 NEXT ============ -->
+<section class="slide" id="next" data-title="Q4 plan">
+  <div class="wrap">
+    <div class="chap rv">
+      <div class="eyebrow"><b>03</b> Proposals<span class="rule"></span>31.10.2026 → Tết 2027</div>
+      <h2 class="h-l">Six moments, one playbook, two Malls.</h2>
+      <p class="lede">Each moment reuses what worked: a Private Voucher with Nikon Marketing, Flash Sale slots at midnight and 10:00, a live on the highest voucher day, and ads pulsed to peak hours. What is new is the <strong>Z5IIC launch</strong> and running every campaign on <strong>TikTok Shop</strong> as well.</p>
+    </div>
+    <div class="cal rv" tabindex="0" aria-label="Q4 campaign calendar">
+      <div class="ev"><span class="nm">Halloween · Sat</span><span class="date">31.10</span><div class="tags"><span class="chip">Zf</span><span class="chip">Z30</span></div><ul><li><b>"After Dark"</b> night-shooting theme for low-light bodies</li><li>Flash Sale 00:00–02:00 on 1.11</li><li>Short videos: night street and portraits</li></ul></div>
+      <div class="ev big"><span class="nm">Biggest day of the year</span><span class="date y">11.11</span><div class="tags"><span class="chip">All hero SKUs</span></div><ul><li><b>Private Voucher</b> via Nikon CRM and events, valid 7–12.11</li><li>Live 20:00–23:00 with live-only price + gift</li><li>Ads bid-up 00:00–02:00 · 10:00–12:00 · 20:00–23:00</li></ul></div>
+      <div class="ev big"><span class="nm">New product launch</span><span class="date y">Z5IIC</span><div class="tags"><span class="chip">Launch Nov</span></div><ul><li><b>First 30 buyers</b> gift: SanDisk card + tote</li><li>TikTok launch series + creator unboxing</li><li>Launch live on Shopee and TikTok the same night</li></ul></div>
+      <div class="ev"><span class="nm">Black Friday · Fri</span><span class="date">27.11</span><div class="tags"><span class="chip">Zf</span><span class="chip">Z5II</span></div><ul><li><b>"Black Edition"</b> 72-hour Insider Private Sale</li><li>Body + lens bundles, black colourways</li><li>Follower-only voucher on TikTok</li></ul></div>
+      <div class="ev"><span class="nm">Double day + Christmas</span><span class="date">12.12 · 25.12</span><div class="tags"><span class="chip">Zfc</span><span class="chip">Binoculars</span></div><ul><li><b>"Gift a Nikon"</b>: Zfc colour sets, binoculars under ₫6M</li><li>Gift wrap + card, SanDisk bundle back</li><li>Corporate gifting enquiries to Showroom</li></ul></div>
+      <div class="ev"><span class="nm">Lunar New Year · 6 Feb 2027</span><span class="date">Tết</span><div class="tags"><span class="chip">Family</span></div><ul><li><b>"Capture the reunion"</b> family-photo story</li><li>Year-end 15.1 and 25.1 payday peaks</li><li>Ship-before-Tết cut-off messaging</li></ul></div>
+    </div>
+
+    <div class="grid g2" style="margin-top:28px">
+      <div class="panel rv">
+        <span class="chip wait">Private Sales</span>
+        <h3 class="h-m" style="margin-top:14px">Nikon Insider: invitation-only prices</h3>
+        <p class="body" style="margin-top:10px">This scales the Private Voucher into a programme. Codes go only to warm audiences: warranty registrants, workshop and contest participants, Showroom visitors and followers. Each code works on Shopee, TikTok Shop and at the Showroom, as the 2.9 and 19.9 vouchers already did.</p>
+        <ul class="ins" style="margin-top:16px">
+          <li><span><b>Protects dealer pricing.</b> No public price drop.</span></li>
+          <li><span><b>Measurable.</b> One code per audience shows which Nikon event drives sales.</span></li>
+          <li><span><b>Cheap.</b> Codes go live on high platform-voucher days, when Shopee funds most of the discount.</span></li>
+        </ul>
+      </div>
+      <div class="panel rv">
+        <span class="chip">Multi-channel</span>
+        <h3 class="h-m" style="margin-top:14px">Each channel has one job</h3>
+        <div class="omni" style="margin-top:16px">
+          <div><span class="role">Discover</span><h4>TikTok + Nikon social</h4><p>Short video, creators, affiliate. Builds demand for new bodies.</p></div>
+          <div><span class="role">Convert</span><h4>Shopee Mall</h4><p>Search intent, vouchers, Flash Sale, peak-day ads.</p></div>
+          <div><span class="role">Experience</span><h4>Showroom &amp; events</h4><p>Hands-on, workshops, code hand-off, after-sales.</p></div>
+          <div><span class="role">Retain</span><h4>Insider list</h4><p>Owners get accessory and lens upgrade offers.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTENT KVs ============ -->
+<section class="slide" id="content" data-title="Content">
+  <div class="wrap">
+    <div class="chap rv">
+      <div class="eyebrow"><b>03.1</b> Campaign key visuals<span class="rule"></span>Drafts built from our listing photography</div>
+      <h2 class="h-l">Q4 creative, ready to brief.</h2>
+      <p class="lede">First-pass key visuals for each moment, sized 4:5 for Shopee and TikTok feeds. Final versions need Nikon brand approval, and the Z5IIC visual needs official product imagery.</p>
+    </div>
+    <div class="posters" id="posters">
+      <div>
+        <div class="poster" id="kv-halloween" style="background:#0b0603">
+          <img class="bg" src="assets/kv-night.webp" alt="" style="height:78%;object-position:50% 40%">
+          <div class="sh" style="background:linear-gradient(180deg,rgba(20,6,0,.8) 0%,rgba(20,6,0,.05) 30%,rgba(11,6,3,.55) 55%,#0b0603 78%),radial-gradient(70% 45% at 60% 30%,rgba(255,110,20,.32),transparent 70%)"></div>
+          <div class="in">
+            <div class="top"><span class="lg">Nikon</span><span>31.10 · Halloween</span></div>
+            <div style="align-self:end"><div class="hl">After<br><span style="color:#FF8A3D">Dark</span></div><div class="sub">Săn deal máy ảnh chụp đêm · Flash Sale 00:00 ngày 1.11</div></div>
+            <div class="foot"><span class="meta">Zf · Z30<br>Shopee · TikTok Shop</span><span class="cta">Shop now</span></div>
+          </div>
+        </div>
+        <div class="pcap"><b>Halloween · "After Dark"</b><span>Low-light angle for Zf and Z30, midnight Flash Sale.</span></div>
+      </div>
+      <div>
+        <div class="poster" id="kv-1111" style="background:#FFE100;color:#141100">
+          <div class="in">
+            <div class="top"><span class="lg" style="background:#141100;color:#FFE100">Nikon</span><span>Mega Sale</span></div>
+            <div style="display:grid;gap:3cqw;align-content:center">
+              <div class="big">11.11</div>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2cqw">
+                <img src="assets/kv-zfc-mint.webp" alt="" style="border-radius:3cqw;aspect-ratio:1;object-fit:cover;width:100%">
+                <img src="assets/kv-zfc-pink.webp" alt="" style="border-radius:3cqw;aspect-ratio:1;object-fit:cover;width:100%">
+                <img src="assets/kv-zfc-black.webp" alt="" style="border-radius:3cqw;aspect-ratio:1;object-fit:cover;width:100%">
+              </div>
+              <div class="sub" style="font-size:5.2cqw">Ưu đãi đến 35% · Voucher riêng cho Nikon Insider</div>
+            </div>
+            <div class="foot"><span class="meta">Zfc · Mint · Coral Pink · Black</span><span class="cta" style="background:#141100;color:#FFE100">Get code</span></div>
+          </div>
+        </div>
+        <div class="pcap"><b>11.11 · Mega Sale</b><span>Zfc colours as the hero, Insider code as the hook.</span></div>
+      </div>
+      <div>
+        <div class="poster" id="kv-bf" style="background:#000">
+          <img class="bg" src="assets/kv-zf.webp" alt="" style="top:auto;bottom:4%;height:auto;aspect-ratio:1200/684;-webkit-mask-image:linear-gradient(180deg,transparent,#000 30%);mask-image:linear-gradient(180deg,transparent,#000 30%)">
+          <div class="in">
+            <div class="top"><span class="lg">Nikon</span><span>27.11 – 29.11</span></div>
+            <div><div class="hl" style="font-size:15cqw">Black<br><span style="color:#FFE100">Friday</span></div><div class="sub">72 giờ giá Insider · Combo body + lens</div></div>
+            <div class="foot"><span class="meta">Black Edition<br>Zf · Z5II · Zfc Black</span><span class="cta">Unlock price</span></div>
+          </div>
+        </div>
+        <div class="pcap"><b>Black Friday · "Black Edition"</b><span>72-hour Insider sale on black bodies and kits.</span></div>
+      </div>
+      <div>
+        <div class="poster" id="kv-xmas" style="background:linear-gradient(180deg,#123528 0%,#0a1d16 45%,#000 70%)">
+          <img class="bg" src="assets/kv-zfc-pink.webp" alt="" style="top:auto;bottom:6%;height:auto;aspect-ratio:1200/684;-webkit-mask-image:linear-gradient(180deg,transparent,#000 35%);mask-image:linear-gradient(180deg,transparent,#000 35%)">
+          <div class="in">
+            <div class="top"><span class="lg">Nikon</span><span>12.12 → 25.12</span></div>
+            <div><div class="hl" style="font-size:14cqw">Gift a<br><span style="color:#FF8F86">Nikon</span></div><div class="sub">Quà Giáng Sinh · Gói quà miễn phí · Combo thẻ nhớ SanDisk</div></div>
+            <div class="foot"><span class="meta">Zfc Coral Pink · Mint<br>Ống nhòm từ ₫4.5M</span><span class="cta">Gift now</span></div>
+          </div>
+        </div>
+        <div class="pcap"><b>12.12 + Christmas · "Gift a Nikon"</b><span>Colour Zfc and binoculars as gifts, bundle and wrap.</span></div>
+      </div>
+      <div>
+        <div class="poster" id="kv-z5iic" style="background:radial-gradient(120% 80% at 50% 110%,#2a2410,#0b0a08 60%)">
+          <div class="in">
+            <div class="top"><span class="lg">Nikon</span><span>New · Full frame</span></div>
+            <div style="display:grid;gap:3cqw;align-content:center">
+              <div class="hl" style="font-size:20cqw;align-self:auto">Z5<span style="color:#FFE100">II</span>C</div>
+              <div style="aspect-ratio:16/9;border:1px dashed rgba(255,225,0,.6);border-radius:3cqw;display:grid;place-items:center;font:500 3cqw/1.4 var(--f-mono);color:rgba(255,225,0,.85);text-align:center;padding:3cqw">Official product image<br>from Nikon (requested)</div>
+              <div class="sub">Full frame trong thân máy gọn nhẹ · 4K · màn hình xoay lật</div>
+            </div>
+            <div class="foot"><span class="meta">Shopee Mall · TikTok Shop Mall<br>Quà cho 30 khách đầu tiên</span><span class="cta">Notify me</span></div>
+          </div>
+        </div>
+        <div class="pcap"><b>Z5IIC launch</b><span>Typographic draft until Nikon's launch imagery arrives.</span></div>
+      </div>
+      <div>
+        <div class="poster" id="kv-insider" style="background:#0b0a08">
+          <div class="in">
+            <div class="top"><span class="lg">Nikon</span><span>Private Sale</span></div>
+            <div style="display:grid;place-items:center">
+              <div style="width:86%;aspect-ratio:1.6;border-radius:4cqw;padding:5cqw;display:grid;align-content:space-between;background:linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.3);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 6cqw 12cqw rgba(0,0,0,.6),0 0 0 .5cqw rgba(255,225,0,.25)">
+                <div style="display:flex;justify-content:space-between;font:600 3cqw/1 var(--f-mono);letter-spacing:.14em"><span>INSIDER PASS</span><span style="color:#FFE100">●</span></div>
+                <div style="font:900 9cqw/.9 var(--f-display);font-stretch:120%;letter-spacing:-.03em">NIKON<br><span style="color:#FFE100">INSIDER</span></div>
+                <div style="font:500 3cqw/1 var(--f-mono);opacity:.8">CODE · ••••••</div>
+              </div>
+            </div>
+            <div class="foot"><span class="meta">Chỉ dành cho khách mời<br>Shopee · TikTok · Showroom</span><span class="cta">Join list</span></div>
+          </div>
+        </div>
+        <div class="pcap"><b>Nikon Insider · Private Sale</b><span>Invitation card for CRM, events and DMs.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 SUPPORT ============ -->
+<section class="slide" id="support" data-title="Support">
+  <div class="wrap">
+    <div class="chap rv">
+      <div class="eyebrow"><b>04</b> Support from Nikon<span class="rule"></span>Ordered by urgency</div>
+      <h2 class="h-l">What we need from Nikon.</h2>
+      <p class="lede">Item 1 is the only blocker. The rest decide how big Q4 gets.</p>
+    </div>
+    <div class="asks">
+      <div class="ask rv"><span class="pr p0">Blocker</span><div><h4>Shopee Mall documents</h4><p>To clear the Shopee review in time for 11.11:</p><ul><li>Distribution agreement Nikon → VHG, as referenced in the certificate (validity period)</li><li>Original authorization certificate, colour scan, signed and stamped</li><li>Authorization chain letter if issued by Nikon Singapore</li></ul></div><span class="when"><b>Nikon SG Legal</b>by 25 Oct</span></div>
+      <div class="ask rv"><span class="pr p1">High</span><div><h4>Z5IIC launch kit for e-commerce</h4><p>Vietnam launch date and price, product images and key visual, a 15–30s video cut, spec sheet, plus one demo unit for livestreams and creator unboxing.</p></div><span class="when"><b>Nikon Marketing</b>before launch</span></div>
+      <div class="ask rv"><span class="pr p1">High</span><div><h4>Co-funded Q4 subsidy on hero SKUs</h4><p>A fixed subsidy pool for 11.11, Black Friday and 12.12 on Z30, Zfc, Zf, Z5II and Z5IIC, used through Private Vouchers so the public price stays protected.</p></div><span class="when"><b>Nikon Sales</b>by 31 Oct</span></div>
+      <div class="ask rv"><span class="pr p2">Medium</span><div><h4>Online price corridor</h4><p>Agreed minimum public prices per SKU and sign-off on the Private Voucher model, so dealer complaints are handled with one rule.</p></div><span class="when"><b>Nikon Sales</b>Nov</span></div>
+      <div class="ask rv"><span class="pr p2">Medium</span><div><h4>E-commerce stock allocation</h4><p>Reserved units for peak days, especially Z30 kits (70% of NMV) and colour Zfc, so Flash Sale slots do not sell out early.</p></div><span class="when"><b>Nikon SCM</b>monthly</span></div>
+      <div class="ask rv"><span class="pr p2">Medium</span><div><h4>Brand content rights</h4><p>Permission to use Nikon Asia campaign imagery in TikTok ads and affiliate content, and access to regional Black Friday and year-end assets.</p></div><span class="when"><b>Nikon Asia</b>Nov</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROADMAP ============ -->
+<section class="slide" id="close" data-title="Roadmap">
+  <div class="wrap">
+    <div class="chap rv">
+      <div class="eyebrow">Next 90 days<span class="rule"></span>Commitments from VHG B2C</div>
+      <h2 class="h-l">Hold the momentum through Tết.</h2>
+    </div>
+    <div class="road rv">
+      <div><span class="m">Oct</span><ul><li>Shopee Mall documents submitted</li><li>Halloween "After Dark" campaign</li><li>Insider list set up with Marketing</li></ul></div>
+      <div><span class="m y">Nov</span><ul><li>11.11 on both Malls</li><li>Z5IIC launch on Shopee + TikTok</li><li>Black Friday Insider Private Sale</li></ul></div>
+      <div><span class="m">Dec</span><ul><li>12.12 + "Gift a Nikon"</li><li>Listing wave 2: binoculars and lenses</li><li>TikTok affiliate creators onboarded</li></ul></div>
+      <div><span class="m">Jan–Feb</span><ul><li>Tết "Capture the reunion"</li><li>Q4 review and 2027 plan with Nikon</li><li>Listing wave 3: new bodies</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPENDIX ============ -->
+<section class="slide" id="ux" data-title="Design notes">
+  <div class="wrap">
+    <div class="chap rv">
+      <div class="eyebrow">Appendix<span class="rule"></span>How this deck is built</div>
+      <h2 class="h-m">UX/UI implementation plan, after Apple Liquid Glass</h2>
+      <p class="body">This page follows Apple's Liquid Glass guidance: glass is a separate functional layer for navigation and controls that floats above the content, used sparingly. The motion vocabulary takes cues from product launch pages such as OXVA's: pinned storytelling, horizontal galleries and count-ups.</p>
+    </div>
+    <div class="ux">
+      <div><span class="ap">1 · Hierarchy</span><h4>Glass only on the navigation layer</h4><p>The dock, segmented controls, tooltips and sheets are glass. Data panels stay solid so numbers keep full contrast. Applies "avoid overusing Liquid Glass effects".</p></div>
+      <div><span class="ap">2 · Navigation</span><h4>Floating dock that minimises on scroll</h4><p>The chapter dock shrinks to a counter when scrolling down and expands when scrolling up, like the iOS tab bar minimise behaviour. A yellow lens slides to the active chapter.</p></div>
+      <div><span class="ap">3 · Concentricity</span><h4>Rounded shapes nest</h4><p>Pills sit inside pills, and sheets and panels use one radius scale (12/20/28) so inner corners stay concentric with their containers.</p></div>
+      <div><span class="ap">4 · Colour</span><h4>Colour belongs to content</h4><p>Controls are neutral glass. Nikon yellow marks the active state, the 2026 series and the one number that matters on each slide.</p></div>
+      <div><span class="ap">5 · Motion</span><h4>One signature moment, then restraint</h4><p>An aperture-iris opening and a viewfinder HUD in the hero. After that, scroll-linked reveals, a pinned campaign wall and a pinned listing story.</p></div>
+      <div><span class="ap">6 · Accessibility</span><h4>Respects system settings</h4><p>Reduce Motion removes animation, and Reduce Transparency turns glass solid. Content is readable at rest, focus rings are visible, and charts carry text labels.</p></div>
+      <div><span class="ap">7 · Present mode</span><h4>Meeting-room ready</h4><p>Press P or the Present button for slide snapping. Arrow keys and Page Up/Down move between slides, and F goes full screen where the browser allows.</p></div>
+      <div><span class="ap">8 · Next iteration</span><h4>Live data</h4><p>Connect the charts to the Forecast sheet so numbers refresh before each meeting, and add October once the month closes.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">Prepared by VHG B2C E-commerce for the Nikon Singapore visit · Data: Shopee Seller Centre exports (orders Jan 2024 – Sep 2026, Flash Sale to 15 Oct, Ads Jun–Sep, Live, Video), Mall tracker as of 16 Oct 2026 · NMV in VND, buyer-paid, excluding cancellations.</div></footer>
+
+<!-- dock -->
+<div class="dock glass" id="dock">
+  <a class="mark" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="#FFE100" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="#FFE100"/></svg></a>
+  <nav id="dnav" aria-label="Chapters">
+    <span class="lens"></span>
+    <a href="#results">Results</a><a href="#promo">Promotions</a><a href="#live">Live &amp; video</a><a href="#listing">Listing</a><a href="#mall">Mall</a><a href="#next">Q4 plan</a><a href="#support">Support</a>
+  </nav>
+  <span class="count num" id="dcount">01 / 14</span>
+  <button class="act" id="present" type="button" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 3h12v8H2z M6 14h4 M8 11v3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Present</button>
+</div>
+
+<div class="tip glass" id="tip" role="status"></div>
+<div class="sheet" id="sheet" hidden><div class="box glass" role="dialog" aria-modal="true" aria-label="Image preview"><img id="sheetImg" alt=""><div class="cap"><span id="sheetCap"></span><button class="x" id="sheetX" type="button">Close · Esc</button></div></div></div>
+
+<script>
+(function(){
+const D=document, R=D.documentElement; R.classList.add('js');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $=(s,c=D)=>c.querySelector(s), $$=(s,c=D)=>[...c.querySelectorAll(s)];
+const NS='http://www.w3.org/2000/svg';
+function el(tag,attrs,parent){const e=D.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+const fmt=(v,d=1)=>v.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
+
+/* ---------- data ---------- */
+const MON={"2025-01":[164031200,25],"2025-02":[295177700,32],"2025-03":[273373090,27],"2025-04":[77549000,14],"2025-05":[26959000,5],"2025-06":[31799000,9],"2025-07":[30680000,8],"2025-08":[22850000,8],"2025-09":[28029000,10],
+"2026-01":[8200000,5],"2026-02":[14399000,5],"2026-03":[13339000,9],"2026-04":[25599000,7],"2026-05":[26409000,15],"2026-06":[86840000,14],"2026-07":[295433500,29],"2026-08":[197120400,26],"2026-09":[159693000,16]};
+const MN=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep'];
+const DAILY=[0,0,0,0,0,0,54,0,2,417,18,0,18,0,0,0,284,0,0,34,0,0,0,0,23,0,0,17,0,0,628,0,192,18,168,17,1395,0,0,168,0,34,58,0,0,0,0,0,0,203,18,0,18,0,34,0,0,0,0,0,0,18,0,0,47,0,52,17,453,52,992,13,18,0,0,0,0,0,0,59,0,0,0,0,0,224,0,11,11,0,0,0,0,0,0,0,0,0,32,0,810,82,0,0,0,306,364,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+const HOURS={0:24.3,6:.5,7:2.5,8:4.6,9:4.1,10:13.9,11:8.7,12:6.2,13:4.1,14:.2,15:4.1,16:.5,17:6.3,18:.6,19:.4,20:8.4,21:.1,22:4.7,23:5.7};
+
+/* ---------- tooltip ---------- */
+const tip=$('#tip');
+function showTip(e,html){tip.innerHTML=html;tip.classList.add('on');moveTip(e)}
+function moveTip(e){const x=Math.min(innerWidth-tip.offsetWidth-12,e.clientX+14),y=Math.max(12,e.clientY-tip.offsetHeight-14);tip.style.left=x+'px';tip.style.top=y+'px'}
+function hideTip(){tip.classList.remove('on')}
+function bindTip(node,html){node.addEventListener('pointerenter',e=>showTip(e,html));node.addEventListener('pointermove',moveTip);node.addEventListener('pointerleave',hideTip)}
+
+/* ---------- YoY chart ---------- */
+function yoy(mode){
+  const host=$('#yoy');host.innerHTML='';
+  const W=900,H=360,L=56,Rr=16,T=34,B=40,iw=W-L-Rr,ih=H-T-B;
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`},host);
+  const step=iw/9, rows=MN.map((m,i)=>{const k=String(i+1).padStart(2,'0');const a=MON['2025-'+k],b=MON['2026-'+k];return{m,a,b,g:(b[0]/a[0]-1)*100,go:(b[1]/a[1]-1)*100}});
+  // band Jun–Sep
+  el('rect',{class:'band',x:L+step*5,y:T-22,width:step*4,height:ih+22,rx:10},svg);
+  const bt=el('text',{class:'band-l',x:L+step*9-12,y:T-7,'text-anchor':'end'},svg);bt.textContent='ACTIVATION · JUN–SEP';
+  const leg=$('#yoyLeg');
+  if(mode==='g'){
+    $('#yoyTitle').textContent='Year-over-year growth by month, 2026 vs 2025';
+    $('#yoySub').textContent='Growth rate of monthly NMV. Shaded: the activation period, June to September.';
+    leg.innerHTML='<span><i style="background:var(--nikon)"></i>Growth</span><span><i style="background:var(--coral)"></i>Decline</span>';
+    const mn=-100,mx=1000,y=v=>T+ih*(mx-v)/(mx-mn);
+    [-100,0,300,600,900].forEach(v=>{el('line',{class:v===0?'zero':'grid-l',x1:L,x2:W-Rr,y1:y(v),y2:y(v)},svg);const t=el('text',{x:L-10,y:y(v)+4,'text-anchor':'end','font-size':11},svg);t.textContent=(v>0?'+':'')+v+'%'});
+    rows.forEach((r,i)=>{const cx=L+step*i+step/2,bw=step*.5,pos=r.g>=0,y0=y(0),y1=y(r.g);
+      const b=el('rect',{class:'bar '+(pos?'pos':'neg')+(i<5&&pos?' dim':''),x:cx-bw/2,y:Math.min(y0,y1),width:bw,height:Math.max(1.5,Math.abs(y1-y0)),rx:4},svg);
+      const lab=el('text',{class:'vlab'+(i>=5?' y':''),x:cx,y:pos?y1-8:y0-8,'text-anchor':'middle',fill:pos?'':'var(--coral)'},svg);lab.textContent=(pos?'+':'')+Math.round(r.g)+'%';
+      const xl=el('text',{class:'xl',x:cx,y:H-14,'text-anchor':'middle'},svg);xl.textContent=r.m;
+      bindTip(b,`<b>${r.m}</b><br>2026: ₫${fmt(r.b[0]/1e6)}M<br>2025: ₫${fmt(r.a[0]/1e6)}M<br>YoY: ${(pos?'+':'')}${fmt(r.g,0)}%`)});
+  } else {
+    const isN=mode==='n';
+    $('#yoyTitle').textContent=isN?'Monthly NMV, 2025 vs 2026 (₫M)':'Monthly orders, 2025 vs 2026';
+    $('#yoySub').textContent=isN?'Same months side by side. Shaded: the activation period.':'Completed and in-progress orders, cancellations excluded.';
+    leg.innerHTML='<span><i style="background:#4A463C"></i>2025</span><span><i style="background:var(--nikon)"></i>2026</span>';
+    const mx=isN?300:35,y=v=>T+ih*(1-v/mx),ticks=isN?[0,100,200,300]:[0,10,20,30];
+    ticks.forEach(v=>{el('line',{class:v?'grid-l':'zero',x1:L,x2:W-Rr,y1:y(v),y2:y(v)},svg);const t=el('text',{x:L-10,y:y(v)+4,'text-anchor':'end','font-size':11},svg);t.textContent=v+(isN?'M':'')});
+    rows.forEach((r,i)=>{const cx=L+step*i+step/2,bw=step*.3;
+      const va=isN?r.a[0]/1e6:r.a[1],vb=isN?r.b[0]/1e6:r.b[1];
+      const a=el('rect',{class:'bar y25',x:cx-bw-2,y:y(va),width:bw,height:Math.max(1,y(0)-y(va)),rx:3},svg);
+      const b=el('rect',{class:'bar y26',x:cx+2,y:y(vb),width:bw,height:Math.max(1,y(0)-y(vb)),rx:3},svg);
+      if(i>=5){const t=el('text',{class:'vlab y',x:cx+2+bw/2,y:y(vb)-8,'text-anchor':'middle'},svg);t.textContent=isN?Math.round(vb):vb}
+      const xl=el('text',{class:'xl',x:cx,y:H-14,'text-anchor':'middle'},svg);xl.textContent=r.m;
+      const h=`<b>${r.m}</b><br>2025: ${isN?'₫'+fmt(va)+'M':va+' orders'}<br>2026: ${isN?'₫'+fmt(vb)+'M':vb+' orders'}`;bindTip(a,h);bindTip(b,h)});
+  }
+}
+yoy('g');
+function seg(id,cb){const g=$(id),lens=$('.lens',g),bs=$$('button',g);
+  function place(b){lens.style.width=b.offsetWidth+'px';lens.style.transform=`translateX(${b.offsetLeft}px)`}
+  bs.forEach(b=>b.addEventListener('click',()=>{bs.forEach(x=>x.setAttribute('aria-pressed',x===b));place(b);cb(b.dataset.v)}));
+  requestAnimationFrame(()=>place(bs.find(b=>b.getAttribute('aria-pressed')==='true')));addEventListener('resize',()=>place(bs.find(b=>b.getAttribute('aria-pressed')==='true')))}
+seg('#yoySeg',v=>yoy(v));
+
+/* ---------- daily chart ---------- */
+(function(){
+  const host=$('#daily'),W=640,H=280,L=40,Rr=10,T=40,B=30,iw=W-L-Rr,ih=H-T-B,n=DAILY.length,mx=140;
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`},host);const y=v=>T+ih*(1-v/mx),bw=iw/n;
+  [0,50,100].forEach(v=>{el('line',{class:v?'grid-l':'zero',x1:L,x2:W-Rr,y1:y(v),y2:y(v)},svg);const t=el('text',{x:L-8,y:y(v)+4,'text-anchor':'end','font-size':10.5},svg);t.textContent=v+'M'});
+  const start=new Date(2026,5,1);
+  const ev={'7.7':36,'10.8':70,'9.9':100,'10.6':9,'1.7':30,'8.8':68,'15.9':106};
+  DAILY.forEach((v,i)=>{const m=v/10;const dt=new Date(start);dt.setDate(dt.getDate()+i);const d=dt.getDate(),mo=dt.getMonth()+1;
+    const peak=(d===mo)||[10,15,25,14].includes(d);
+    const r=el('rect',{class:'bar '+(peak?'pos':'dim'),x:L+i*bw+.5,y:y(m),width:Math.max(1,bw-1),height:Math.max(m>0?1.5:0,y(0)-y(m)),rx:1},svg);
+    if(m>0)bindTip(r,`<b>${d}.${mo}</b><br>₫${fmt(m)}M${peak?'<br>campaign day':''}`)});
+  Object.entries(ev).forEach(([k,i])=>{const m=DAILY[i]/10,x=L+i*bw+bw/2;if(m<15)return;const t=el('text',{class:'ev',x,y:y(m)-7,'text-anchor':'middle'},svg);t.textContent=k});
+  [['Jun',0],['Jul',30],['Aug',61],['Sep',92]].forEach(([m,i])=>{const t=el('text',{class:'xl',x:L+i*bw,y:H-8},svg);t.textContent=m;el('line',{class:'grid-l',x1:L+i*bw,x2:L+i*bw,y1:T,y2:y(0)},svg)});
+})();
+
+/* ---------- hour dial ---------- */
+(function(){
+  const svg=$('#dial'),r0=52,rmax=132,mx=25;
+  for(const rr of [r0,r0+(rmax-r0)*.5,rmax])el('circle',{cx:0,cy:0,r:rr,fill:'none',stroke:'var(--line)'},svg);
+  for(let h=0;h<24;h++){const v=HOURS[h]||0,a0=(h/24)*Math.PI*2-Math.PI/2,a1=((h+1)/24)*Math.PI*2-Math.PI/2-.03,rr=r0+(rmax-r0)*Math.min(1,v/mx);
+    const p=(a,r)=>[Math.cos(a)*r,Math.sin(a)*r];const [x0,y0]=p(a0,r0),[x1,y1]=p(a0,rr),[x2,y2]=p(a1,rr),[x3,y3]=p(a1,r0);
+    const big=v>=8;const path=el('path',{d:`M${x0},${y0} L${x1},${y1} A${rr},${rr} 0 0 1 ${x2},${y2} L${x3},${y3} A${r0},${r0} 0 0 0 ${x0},${y0}Z`,fill:big?'var(--nikon)':v>0?'#6b6340':'var(--ink-3)'},svg);
+    bindTip(path,`<b>${String(h).padStart(2,'0')}:00–${String(h+1).padStart(2,'0')}:00</b><br>${v}% of NMV`);
+    if(h%3===0){const [tx,ty]=p((h/24)*Math.PI*2-Math.PI/2,rmax+12);const t=el('text',{x:tx,y:ty+4,'text-anchor':'middle','font-size':11},svg);t.textContent=String(h).padStart(2,'0')}}
+  const c=el('text',{x:0,y:-4,'text-anchor':'middle','font-size':22,'font-weight':600,fill:'var(--nikon)'},svg);c.textContent='24h';
+  const c2=el('text',{x:0,y:16,'text-anchor':'middle','font-size':10,'letter-spacing':'.1em'},svg);c2.textContent='NMV SHARE';
+})();
+
+/* ---------- flash sale chart ---------- */
+(function(){
+  const d=[['Jun*',59.6,3.4],['Jul',215.2,141.5],['Aug',169.2,88.1],['Sep',163.4,143.5],['Oct*',67.7,38.5]];
+  const host=$('#fs'),W=600,H=260,L=44,Rr=10,T=24,B=30,iw=W-L-Rr,ih=H-T-B,mx=250,y=v=>T+ih*(1-v/mx),step=iw/d.length;
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`},host);
+  [0,100,200].forEach(v=>{el('line',{class:v?'grid-l':'zero',x1:L,x2:W-Rr,y1:y(v),y2:y(v)},svg);const t=el('text',{x:L-8,y:y(v)+4,'text-anchor':'end','font-size':10.5},svg);t.textContent=v+'M'});
+  d.forEach(([m,p,c],i)=>{const cx=L+step*i+step/2,bw=step*.28;
+    const a=el('rect',{class:'bar y25',x:cx-bw-2,y:y(p),width:bw,height:y(0)-y(p),rx:3},svg);
+    const b=el('rect',{class:'bar y26',x:cx+2,y:y(c),width:bw,height:Math.max(1,y(0)-y(c)),rx:3},svg);
+    const t=el('text',{class:'vlab y',x:cx+2+bw/2,y:y(c)-6,'text-anchor':'middle','font-size':11},svg);t.textContent=fmt(c);
+    const x=el('text',{class:'xl',x:cx,y:H-8,'text-anchor':'middle'},svg);x.textContent=m;
+    const h=`<b>${m.replace('*','')}</b><br>Placed ₫${fmt(p)}M<br>Confirmed ₫${fmt(c)}M`;bindTip(a,h);bindTip(b,h)});
+  const n=el('text',{x:W-Rr,y:12,'text-anchor':'end','font-size':10},svg);n.textContent='* Jun from 25.06 · Oct to 15.10';
+})();
+
+/* ---------- ads chart ---------- */
+(function(){
+  const d=[['Jun',1.44,39.9],['Jul',2.65,112.0],['Aug',1.90,65.5],['Sep',2.30,111.3]];
+  const host=$('#adsc'),W=600,H=260,L=44,Rr=44,T=26,B=30,iw=W-L-Rr,ih=H-T-B,step=iw/d.length;
+  const ys=v=>T+ih*(1-v/3),yr=v=>T+ih*(1-v/120);
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`},host);
+  [0,1,2,3].forEach(v=>{el('line',{class:v?'grid-l':'zero',x1:L,x2:W-Rr,y1:ys(v),y2:ys(v)},svg);const t=el('text',{x:L-8,y:ys(v)+4,'text-anchor':'end','font-size':10.5},svg);t.textContent=v+'M';const t2=el('text',{x:W-Rr+8,y:ys(v)+4,'font-size':10.5,fill:'var(--nikon)'},svg);t2.textContent=(v*40)+'×'});
+  let pts=[];
+  d.forEach(([m,s,r],i)=>{const cx=L+step*i+step/2,bw=step*.36;
+    const b=el('rect',{class:'bar y25',x:cx-bw/2,y:ys(s),width:bw,height:ys(0)-ys(s),rx:4},svg);
+    const t=el('text',{class:'vlab',x:cx,y:ys(s)+18,'text-anchor':'middle','font-size':11},svg);t.textContent='₫'+fmt(s,2)+'M';
+    const x=el('text',{class:'xl',x:cx,y:H-8,'text-anchor':'middle'},svg);x.textContent=m;pts.push([cx,yr(r),r]);bindTip(b,`<b>${m}</b><br>Spend ₫${fmt(s,2)}M<br>ROAS ${fmt(r)}×`)});
+  el('path',{class:'line',d:'M'+pts.map(p=>p[0]+','+p[1]).join(' L')},svg);
+  pts.forEach(p=>{el('circle',{class:'dot',cx:p[0],cy:p[1],r:5},svg);const t=el('text',{class:'vlab y',x:p[0],y:p[1]-12,'text-anchor':'middle','font-size':11},svg);t.textContent=fmt(p[2])+'×'});
+})();
+
+/* ---------- videos ---------- */
+(function(){const v=[['NIKON Z30, the vlogging sidekick for content creators','30.06',1414],['NIKON Z30, the vlogging sidekick (cut 2)','30.06',639],['ZFC, retro design in Mint Green and Coral Pink','02.07',296],['ZFC, the everyday camera in every colour','30.06',126],['NIKON Zf, retro full frame, genuine stock','30.06',40],['NIKON Zf, retro full frame (cut 2)','30.06',30]];
+  const host=$('#vids');v.forEach(([t,d,n])=>{const r=D.createElement('div');r.className='vid';r.innerHTML=`<span class="pl"><svg viewBox="0 0 10 10"><path d="M2 1 L9 5 L2 9Z"/></svg></span><div class="t">${t}<small>Posted ${d}.2026</small><div class="bar" style="width:${Math.max(3,n/1414*100)}%"></div></div><span class="n">${n.toLocaleString('en-US')}</span>`;host.appendChild(r)})})();
+
+/* ---------- listing story ---------- */
+const PRODS={
+  z30:{n:'Máy ảnh Nikon Z30 kit 16-50mm',p:'₫22.400.000',imgs:[1,2,3,4,5,6,7,8].map(i=>'l-nikon-z30--'+i)},
+  zf:{n:'Máy ảnh Nikon Zf kèm lens Z 40mm SE',p:'₫50.000.000',imgs:[1,2,3,4,5,6,7,8].map(i=>'l-nikon-zf--'+i)},
+  zfc:{n:'Máy ảnh Nikon Zfc kit 16-50mm',p:'₫25.400.000',imgs:[1,2,3,4,5,6,7,8].map(i=>'l-nikon-zfc--'+i)},
+  act:{n:'Ống nhòm Nikon Action 10x50',p:'₫5.800.000',imgs:[1,2,3,4,5,6,7].map(i=>'l-ong-nhom-nikon-action-10x50--action-10x50-'+i)}
+};
+let cur='z30',curI=0;
+function buildPhone(){const p=PRODS[cur],box=$('#pimg'),th=$('#pthumbs');$$('img',box).forEach(x=>x.remove());th.innerHTML='';
+  p.imgs.forEach((s,i)=>{const im=D.createElement('img');im.src='assets/'+s+'.webp';im.alt='';im.loading=i?'lazy':'eager';box.insertBefore(im,$('#pcnt'));
+    const t=D.createElement('img');t.src='assets/'+s+'.webp';t.alt='';t.loading='lazy';th.appendChild(t)});
+  $('#pname').textContent=p.n;$('#pprice').textContent=p.p;setI(curI)}
+function setI(i){const p=PRODS[cur];i=Math.min(i,p.imgs.length-1);curI=i;$$('#pimg img').forEach((x,k)=>x.classList.toggle('on',k===i));$$('#pthumbs img').forEach((x,k)=>x.classList.toggle('on',k===i));$('#pcnt').textContent=(i+1)+'/'+p.imgs.length}
+$$('#ptabs button').forEach(b=>b.addEventListener('click',()=>{$$('#ptabs button').forEach(x=>x.setAttribute('aria-pressed',x===b));cur=b.dataset.p;buildPhone()}));
+buildPhone();
+// thumbs clickable
+$('#pthumbs').addEventListener('click',e=>{const k=$$('#pthumbs img').indexOf(e.target);if(k>=0)setI(k)});
+// cycle lifestyle frames while step 3 is active
+let cyc=null;
+const stepIO=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){$$('.step').forEach(s=>s.classList.toggle('on',s===e.target));const i=+e.target.dataset.i;clearInterval(cyc);setI(i);
+  if(i===2&&!reduce){let k=2;cyc=setInterval(()=>{k=k>=6?2:k+1;setI(k)},1400)}}})},{rootMargin:'-45% 0px -45% 0px'});
+$$('.step').forEach(s=>stepIO.observe(s));
+
+/* mosaic */
+(function(){const all=[];['z30','zf','zfc'].forEach(k=>PRODS[k].imgs.forEach(s=>all.push(s)));
+  ['variation-2-kit','variation-body','variation-creator-kit'].forEach(v=>all.push('l-nikon-z30--'+v));
+  ['variation-classic-black','variation-coral-pink','variation-mint-green'].forEach(v=>all.push('l-nikon-zfc--'+v));
+  ['7x50','10x50','16x50'].forEach(m=>{for(let i=1;i<=7;i++)all.push(`l-ong-nhom-nikon-action-${m}--action-${m}-${i}`)});
+  for(let i=32;i<=69;i++)all.push('l-phu-kien--'+i);
+  const host=$('#mosaic');all.forEach(s=>{const b=D.createElement('button');b.type='button';b.dataset.img='assets/'+s+'.webp';b.dataset.cap='Listing image · '+s.replace('l-','').replace(/--/,' · ');b.setAttribute('aria-label','Open listing image');b.innerHTML=`<img src="assets/${s}.webp" alt="" loading="lazy">`;host.appendChild(b)})})();
+
+/* ---------- lightbox sheet ---------- */
+const sheet=$('#sheet');let lastFocus=null;
+D.addEventListener('click',e=>{const t=e.target.closest('[data-img]');if(!t)return;lastFocus=t;$('#sheetImg').src=t.dataset.img;$('#sheetImg').alt=t.dataset.cap||'';$('#sheetCap').textContent=t.dataset.cap||'';sheet.hidden=false;$('#sheetX').focus()});
+function closeSheet(){sheet.hidden=true;lastFocus&&lastFocus.focus()}
+$('#sheetX').addEventListener('click',closeSheet);sheet.addEventListener('click',e=>{if(e.target===sheet)closeSheet()});
+
+/* ---------- reveal + count-up + chart enter ---------- */
+const vh=innerHeight;
+$$('.rv,.chart').forEach(x=>{if(x.getBoundingClientRect().top>vh*0.92)x.classList.add('pre')});
+$$('.chart').forEach(x=>{if(x.getBoundingClientRect().top<=vh*0.92)x.classList.remove('pre')});
+let pend=$$('.rv.pre,.chart.pre');
+function reveal(){if(!pend.length)return;const lim=innerHeight*0.9;pend=pend.filter(x=>{const r=x.getBoundingClientRect();if(r.top<lim&&r.bottom>0){x.classList.remove('pre');$$('[data-count]',x).forEach(count);return false}return true})}
+$$('.rv:not(.pre)').forEach(x=>{const r=x.getBoundingClientRect();if(r.top<innerHeight)$$('[data-count]',x).forEach(count)});
+function count(n){if(reduce||n.dataset.done)return;n.dataset.done=1;const to=+n.dataset.count,dec=+(n.dataset.dec||0),small=n.querySelector('small'),suf=small?small.outerHTML:'';const t0=performance.now(),dur=1400;
+  (function f(t){const k=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-k,4);n.innerHTML=(to*e).toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf;if(k<1)requestAnimationFrame(f)})(t0)}
+
+/* ---------- horizontal pinned wall ---------- */
+const hw=$('#hwall'),ht=$('#htrack');
+function sizeWall(){if(innerWidth<=760){hw.style.height='';return}const over=ht.scrollWidth-innerWidth+64;hw.style.height=(innerHeight+Math.max(0,over))+'px'}
+sizeWall();addEventListener('resize',sizeWall);addEventListener('load',sizeWall);
+
+/* ---------- scroll: progress, hero parallax, wall, dock ---------- */
+const prog=$('#prog'),dock=$('#dock'),hero=$('.hero');let lastY=scrollY,ticking=false;
+function onScroll(){const y=scrollY,max=R.scrollHeight-innerHeight;prog.style.transform=`scaleX(${max>0?y/max:0})`;
+  hero.style.setProperty('--hp',Math.min(1,y/innerHeight).toFixed(3));
+  if(innerWidth>760){const r=hw.getBoundingClientRect(),span=hw.offsetHeight-innerHeight;const p=span>0?Math.min(1,Math.max(0,-r.top/span)):0;ht.style.transform=`translateX(${-p*Math.max(0,ht.scrollWidth-innerWidth+64)}px)`}
+  if(Math.abs(y-lastY)>6){dock.classList.toggle('min',y>lastY&&y>innerHeight*.6);lastY=y}
+  reveal();ticking=false}
+addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});onScroll();
+
+/* active chapter + dock lens */
+const slides=[$('#top'),...$$('.slide')];const links=$$('#dnav a');const nlens=$('#dnav .lens');
+function placeLens(a){if(!a){nlens.style.width='0px';return}nlens.style.width=a.offsetWidth+'px';nlens.style.transform=`translateX(${a.offsetLeft}px)`}
+const map={results:'results',promo:'promo',voucher:'promo',live:'live',ads:'live',listing:'listing',mall:'mall',next:'next',content:'next',support:'support'};
+const secIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const id=e.target.id,k=map[id];links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+k));placeLens(links.find(a=>a.classList.contains('on')));
+  const idx=slides.indexOf(e.target);$('#dcount').textContent=String(idx+1).padStart(2,'0')+' / '+slides.length}}),{rootMargin:'-50% 0px -50% 0px'});
+slides.forEach(s=>secIO.observe(s));
+
+/* glass specular follows pointer */
+$$('.glass').forEach(g=>g.addEventListener('pointermove',e=>{const r=g.getBoundingClientRect();g.style.setProperty('--mx',(e.clientX-r.left)+'px');g.style.setProperty('--my',(e.clientY-r.top)+'px')}));
+
+/* hero AF point drifts toward pointer */
+const af=$('.vf');hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();af.style.setProperty('--afx',((e.clientX-r.left)/r.width*100)+'%');af.style.setProperty('--afy',((e.clientY-r.top)/r.height*100)+'%')});
+
+/* ---------- present mode ---------- */
+const pb=$('#present');
+function present(on){R.classList.toggle('present',on);pb.setAttribute('aria-pressed',on);pb.lastChild.textContent=on?'Exit':'Present';if(on&&R.requestFullscreen){R.requestFullscreen().catch(()=>{})}else if(!on&&D.fullscreenElement){D.exitFullscreen().catch(()=>{})}}
+pb.addEventListener('click',()=>present(!R.classList.contains('present')));
+function go(dir){const y=scrollY+2;let i=slides.findIndex(s=>s.offsetTop>y+innerHeight*.1);if(dir<0){i=slides.findLastIndex(s=>s.offsetTop<y-innerHeight*.1)}else{i=i<0?slides.length-1:i}
+  if(i>=0&&slides[i])slides[i].scrollIntoView({behavior:reduce?'auto':'smooth'})}
+D.addEventListener('keydown',e=>{if(e.target.closest('input,textarea'))return;
+  if(e.key==='Escape'&&!sheet.hidden){closeSheet();return}
+  if(e.key==='p'||e.key==='P'){present(!R.classList.contains('present'))}
+  if(e.key==='f'||e.key==='F'){R.requestFullscreen&&R.requestFullscreen().catch(()=>{})}
+  if(R.classList.contains('present')){if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();go(1)}if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();go(-1)}}});
+
+/* marquee duplicate for seamless loop */
+const mq=$('#marq');mq.innerHTML+=mq.innerHTML;
+})();
+</script>
