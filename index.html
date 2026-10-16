@@ -264,22 +264,40 @@ h1,h2,h3,h4{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spaci
 @media (max-width:560px){.stack .row{grid-template-columns:1fr auto}.stack .row .track{grid-column:1/-1}}
 
 /* horizontal campaign wall */
-.hwall{position:relative}
-.hwall .stick{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr);align-content:center;gap:28px}
-.hwall .track{display:flex;gap:22px;will-change:transform;padding-left:max(32px,var(--gut-l));width:max-content}
-.card-b{flex:0 0 auto;width:clamp(260px,26vw,360px);display:grid;gap:12px;cursor:zoom-in;border:0;background:none;padding:0;text-align:left}
+.camp{display:grid;gap:18px;margin-top:8px;margin-bottom:28px}
+.camp-h{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap}
+.camp-ctl{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.arr{width:42px;height:42px;border-radius:50%;border:1px solid var(--line-2);background:var(--ink-2);display:grid;place-items:center;cursor:pointer;transition:background .2s,border-color .2s}
+.arr:hover{background:var(--ink-3);border-color:var(--nikon)}
+.arr svg{width:16px;height:16px}
+.arr:disabled{opacity:.35;cursor:default}
+.camp-track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x proximity;scroll-behavior:smooth;padding:4px 2px 14px;scrollbar-width:none;cursor:grab;overscroll-behavior-x:contain}
+.camp-track::-webkit-scrollbar{display:none}
+.camp-track.drag{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto}
+.camp-track.drag *{pointer-events:none}
+.mgroup{display:flex;gap:18px;flex:0 0 auto;padding-left:18px;border-left:1px solid var(--line-2)}
+.mgroup:first-child{border-left:0;padding-left:0}
+.mlabel{flex:0 0 150px;display:grid;align-content:start;gap:10px;scroll-snap-align:start;padding-top:6px}
+.mlabel b{font:800 44px/0.9 var(--f-display);font-stretch:120%;letter-spacing:-.03em}
+.mlabel .k{font:500 10.5px/1.3 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute-2)}
+.mlabel .v{font:600 18px/1 var(--f-mono);color:var(--nikon)}
+.mlabel .v.w{color:var(--paper)}
+.card-b{flex:0 0 auto;width:clamp(230px,22vw,300px);display:grid;gap:10px;align-content:start;cursor:zoom-in;border:0;background:none;padding:0;text-align:left;scroll-snap-align:start}
 .card-b .ph{aspect-ratio:4/5;border-radius:var(--r-m);overflow:hidden;background:var(--ink-3);border:1px solid var(--line)}
 .card-b .ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.card-b .ph.fit{background:#f4f4f4;display:grid;place-items:center}
+.card-b .ph.fit img{object-fit:contain}
 .card-b:hover .ph img{transform:scale(1.04)}
 .card-b .d{font:600 12px/1 var(--f-mono);color:var(--nikon);letter-spacing:.1em}
-.card-b h4{font-size:17px;font-weight:700;font-stretch:104%;line-height:1.25}
+.card-b h4{font-size:16.5px;font-weight:700;font-stretch:104%;line-height:1.25}
 .card-b p{margin:0;font-size:13.5px;color:var(--mute);line-height:1.5}
-@media (max-width:760px){
-  .hwall{height:auto!important}
-  .hwall .stick{position:relative;height:auto;padding-block:8px}
-  .hwall .track{overflow-x:auto;scroll-snap-type:x mandatory;transform:none!important;padding-bottom:12px;padding-right:var(--gut-r)}
-  .card-b{scroll-snap-align:start;width:78vw}
-}
+.card-b .tag{display:inline-block;font:600 10px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute);border:1px solid var(--line-2);border-radius:99px;padding:4px 7px;margin-right:4px}
+.card-b.txt{cursor:default}
+.card-b.txt .ph{display:grid;align-content:space-between;padding:22px;background:linear-gradient(160deg,#1b1a17,#000);}
+.camp-range{display:flex;align-items:center;gap:14px}
+.camp-range input{flex:1;accent-color:var(--nikon);height:4px;cursor:pointer}
+.camp-range span{font:500 12px/1 var(--f-mono);color:var(--mute);white-space:nowrap}
+@media (max-width:640px){.mlabel{flex-basis:110px}.mlabel b{font-size:34px}.card-b{width:72vw}.camp-ctl .seg{width:100%}}
 
 /* table */
 .tbl{width:100%;border-collapse:collapse;font-size:14px}
@@ -330,6 +348,25 @@ h1,h2,h3,h4{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spaci
 .vid .bar{height:6px;border-radius:3px;background:var(--nikon);margin-top:6px}
 .vid .n{font:600 15px/1 var(--f-mono)}
 
+/* live & video */
+.mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:12px}
+.mg{border:1px solid var(--line);border-radius:var(--r-m);padding:14px;display:grid;gap:10px;align-content:start;background:var(--ink)}
+.mg h5{margin:0;font:600 11px/1.2 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--nikon)}
+.mg dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:6px 10px;font-size:13px}
+.mg dt{color:var(--mute)}
+.mg dd{margin:0;font:600 13.5px/1.3 var(--f-mono);text-align:right;font-variant-numeric:tabular-nums}
+.sub{border:1px solid var(--line);border-radius:var(--r-m);padding:16px;background:var(--ink);min-width:0;display:grid;gap:6px;align-content:start}
+.sub h4{font-size:15.5px;font-weight:700}
+.hbar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;align-items:center;font-size:13px;margin-top:8px}
+.hbar .t{color:var(--mute)}
+.hbar .n{font:600 12.5px/1 var(--f-mono)}
+.hbar .b{grid-column:1/-1;height:6px;border-radius:3px;background:var(--ink-3);overflow:hidden}
+.hbar .b i{display:block;height:100%;background:var(--nikon);border-radius:3px}
+.split{display:flex;height:12px;border-radius:99px;overflow:hidden;gap:2px;margin:8px 0 6px}
+.split span{display:block;height:100%}
+.tbl.cmp td .bx{display:flex;align-items:center;gap:8px;justify-content:flex-end}
+.tbl.cmp td .bx i{display:block;height:6px;border-radius:3px}
+
 /* listing sticky story */
 .story{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);gap:clamp(24px,5vw,80px)}
 .story .steps{display:grid}
@@ -367,6 +404,12 @@ h1,h2,h3,h4{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spaci
 .ba figcaption{font:500 12px/1.4 var(--f-mono);color:var(--mute);letter-spacing:.04em}
 .ba .after{aspect-ratio:1;border-radius:var(--r-m);overflow:hidden;border:1px solid var(--line)}
 .ba .after img{width:100%;height:100%;object-fit:cover}
+.lib{display:grid;gap:26px}
+.libg{display:grid;gap:12px}
+.libg-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:10px}
+.libg-h h4{font-size:18px;font-weight:750;font-stretch:108%}
+.libg-h span{font:500 12px/1.3 var(--f-mono);color:var(--mute)}
+.libsub{font:500 11px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute-2);margin-top:4px}
 .mosaic{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:6px}
 .mosaic button{padding:0;border:0;border-radius:10px;overflow:hidden;aspect-ratio:1;cursor:zoom-in;background:var(--ink-3)}
 .mosaic img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
@@ -660,18 +703,24 @@ html.present .slide{display:grid;align-content:center}
     </div>
   </div>
 
-  <div class="hwall" id="hwall">
-    <div class="stick">
-      <div class="wrap"><div class="eyebrow">Campaign wall<span class="rule"></span>Scroll to move · tap to enlarge</div></div>
-      <div class="track" id="htrack">
-        <button class="card-b" data-img="assets/b-0625.webp" data-cap="25.6 & 7.7 · Mega Sale, up to 35% on Nikon Z"><div class="ph"><img src="assets/b-0625.webp" alt="25.6 and 7.7 Nikon Mega Sale banner" loading="lazy"></div><span class="d">25.06 · 07.07</span><h4>Mid-year Mega Sale</h4><p>Up to 35% on Zfc, Zf and Z30. July 7 became the best day of the year: ₫139.5M.</p></button>
-        <button class="card-b" data-img="assets/b-0808.webp" data-cap="8.8 · Săn deal"><div class="ph"><img src="assets/b-0808.webp" alt="8.8 Nikon deal banner" loading="lazy"></div><span class="d">08.08 · 10.08</span><h4>8.8 deal hunt</h4><p>Flash Sale plus Private Voucher. Peak voucher day 10.8 delivered ₫99.2M.</p></button>
-        <button class="card-b" data-img="assets/b-0825.webp" data-cap="25.8 · Z30 creator gift set"><div class="ph"><img src="assets/b-0825.webp" alt="25.8 Z30 creator gift banner" loading="lazy"></div><span class="d">25.08</span><h4>Z30 creator gift set</h4><p>Payday sale with a creator gift set, run alongside the 25.8 livestream.</p></button>
-        <button class="card-b" data-img="assets/b-0909.webp" data-cap="9.9 · Z30 creator gift set"><div class="ph"><img src="assets/b-0909.webp" alt="9.9 Z30 banner" loading="lazy"></div><span class="d">09.09</span><h4>9.9 Z30 push</h4><p>The same creator offer, refreshed for 9.9: ₫81.0M on the day.</p></button>
-        <button class="card-b" data-img="assets/b-sandisk.webp" data-cap="Nikon × SanDisk bundle · 25.09 – 15.10"><div class="ph"><img src="assets/b-sandisk.webp" alt="Nikon and SanDisk bundle banner" loading="lazy"></div><span class="d">25.09 – 15.10</span><h4>Nikon × SanDisk bundle</h4><p>Co-brand collab: buy a Nikon camera or lens, add SanDisk memory at a bundle price.</p></button>
-        <button class="card-b" data-img="assets/b-sandisk-guide.webp" data-cap="Bundle buying guide"><div class="ph"><img src="assets/b-sandisk-guide.webp" alt="Bundle buying guide" loading="lazy"></div><span class="d">How-to</span><h4>4-step bundle guide</h4><p>Shopper education creative so the bundle converts without chat support.</p></button>
-        <button class="card-b" data-img="assets/b-sandisk-4.webp" data-cap="Bundle KV · Zfc"><div class="ph"><img src="assets/b-sandisk-4.webp" alt="Zfc SanDisk bundle KV" loading="lazy"></div><span class="d">Per-SKU KVs</span><h4>One KV per hero SKU</h4><p>Zfc, Z 28mm f/2.8 (SE) and Z DX MC 35mm, each with its bundle price.</p></button>
+  <div class="wrap">
+    <div class="camp rv" id="camp">
+      <div class="camp-h">
+        <div class="eyebrow">Campaign wall<span class="rule"></span>By month · swipe, drag or use the arrows</div>
+        <div class="camp-ctl">
+          <div class="seg glass" role="group" aria-label="Jump to month" id="campSeg"><span class="lens"></span><button type="button" aria-pressed="true" data-v="jun">Jun</button><button type="button" aria-pressed="false" data-v="jul">Jul</button><button type="button" aria-pressed="false" data-v="aug">Aug</button><button type="button" aria-pressed="false" data-v="sep">Sep</button><button type="button" aria-pressed="false" data-v="oct">Oct</button></div>
+          <button class="arr" id="campPrev" type="button" aria-label="Previous campaigns"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="arr" id="campNext" type="button" aria-label="Next campaigns"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
       </div>
+      <div class="camp-track" id="ctrack" tabindex="0" aria-label="Campaigns by month">
+        <div class="mgroup" data-m="jun"><div class="mlabel"><b>Jun</b><div><div class="k">Shopee NMV</div><div class="v">₫86.8M</div></div><div><div class="k">Flash Sale slots</div><div class="v w">14</div></div></div><button class="card-b" type="button" data-img="assets/b-0625.webp" data-cap="25.6 Mid-year Mega Sale · up to 35% on Nikon Z"><div class="ph"><img src="assets/b-0625.webp" alt="25.6 Mid-year Mega Sale · up to 35% on Nikon Z" loading="lazy" draggable="false"></div><span class="d">25.06</span><h4>Mid-year Mega Sale</h4><p>Up to 35% on Zfc, Zf and Z30: Shopee voucher + Nikon subsidy. First Flash Sale slots go live.</p></button><button class="card-b" type="button" data-img="assets/s-ads-jun.webp" data-cap="Shopee Ads · June"><div class="ph fit"><img src="assets/s-ads-jun.webp" alt="Shopee Ads · June" loading="lazy" draggable="false"></div><span class="d">20 – 30.06</span><h4>Ads switched on</h4><p>GMV Max auto-bidding for the shop plus custom-ROAS product ads on hero SKUs. ROAS 40×.</p></button><button class="card-b" type="button" data-img="assets/s-video.webp" data-cap="Shopee Video library"><div class="ph fit"><img src="assets/s-video.webp" alt="Shopee Video library" loading="lazy" draggable="false"></div><span class="d">30.06</span><h4>Shoppable video launch</h4><p>5 product-tagged videos posted for Z30, Zfc and Zf. The Z30 vlog cut reached 1,414 views.</p></button></div>
+        <div class="mgroup" data-m="jul"><div class="mlabel"><b>Jul</b><div><div class="k">Shopee NMV</div><div class="v">₫295.4M</div></div><div><div class="k">Flash Sale slots</div><div class="v w">37</div></div></div><button class="card-b" type="button" data-img="assets/s-live77.webp" data-cap="Shopee Live · 7.7 analytics"><div class="ph fit"><img src="assets/s-live77.webp" alt="Shopee Live · 7.7 analytics" loading="lazy" draggable="false"></div><span class="d">07.07</span><h4>7.7 Mega Sale + first livestream</h4><p>Same mid-year KV re-run with a 3-hour live: 3,201 viewers, ₫67.6M placed. Best day of the year, ₫139.5M.</p></button><button class="card-b" type="button" data-img="assets/l-nikon-zfc--variation-coral-pink.webp" data-cap="ZFC colour video · 02.07"><div class="ph"><img src="assets/l-nikon-zfc--variation-coral-pink.webp" alt="ZFC colour video · 02.07" loading="lazy" draggable="false"></div><span class="d">02.07</span><h4>ZFC colour story</h4><p>Short video on Mint Green and Coral Pink; Zfc listed as one variation listing in three colours.</p></button><button class="card-b" type="button" data-img="assets/s-ads-jul.webp" data-cap="Shopee Ads · July"><div class="ph fit"><img src="assets/s-ads-jul.webp" alt="Shopee Ads · July" loading="lazy" draggable="false"></div><span class="d">Jul</span><h4>Ads peak: ROAS 112×</h4><p>Budget pulsed into 1.7 and 7.7. ₫2.65M spend, ₫296.7M ads-attributed sales.</p></button></div>
+        <div class="mgroup" data-m="aug"><div class="mlabel"><b>Aug</b><div><div class="k">Shopee NMV</div><div class="v">₫197.1M</div></div><div><div class="k">Flash Sale slots</div><div class="v w">43</div></div></div><button class="card-b" type="button" data-img="assets/b-0808.webp" data-cap="8.8 Săn deal"><div class="ph"><img src="assets/b-0808.webp" alt="8.8 Săn deal" loading="lazy" draggable="false"></div><span class="d">08.08 · 10.08</span><h4>8.8 deal hunt</h4><p>Flash Sale plus Private Voucher. Peak voucher day 10.8 delivered ₫99.2M.</p></button><button class="card-b" type="button" data-img="assets/doc-pv.webp" data-cap="Private Voucher mechanism"><div class="ph fit"><img src="assets/doc-pv.webp" alt="Private Voucher mechanism" loading="lazy" draggable="false"></div><span class="d">From 10.08</span><h4>Private Voucher for Z30</h4><p>Deep discount moved off the public page after dealer complaints. Listed price stays at ₫22.4M.</p></button><button class="card-b" type="button" data-img="assets/b-0825.webp" data-cap="25.8 Z30 creator gift set"><div class="ph"><img src="assets/b-0825.webp" alt="25.8 Z30 creator gift set" loading="lazy" draggable="false"></div><span class="d">25.08</span><h4>Z30 creator gift set</h4><p>Payday sale with a creator gift set and a Nikon tote for live buyers.</p></button><button class="card-b" type="button" data-img="assets/s-live825.webp" data-cap="Shopee Live · 25.8 analytics"><div class="ph fit"><img src="assets/s-live825.webp" alt="Shopee Live · 25.8 analytics" loading="lazy" draggable="false"></div><span class="d">25.08</span><h4>Payday livestream</h4><p>Two sessions, 350 viewers, 0 orders. Lesson: lives need a high platform-voucher day.</p></button></div>
+        <div class="mgroup" data-m="sep"><div class="mlabel"><b>Sep</b><div><div class="k">Shopee NMV</div><div class="v">₫159.7M</div></div><div><div class="k">Flash Sale slots</div><div class="v w">32</div></div></div><button class="card-b" type="button" data-img="assets/v-contest.webp" data-cap="Photo contest 2.9 prize voucher"><div class="ph fit"><img src="assets/v-contest.webp" alt="Photo contest 2.9 prize voucher" loading="lazy" draggable="false"></div><span class="d">02.09 → 30.09</span><h4>Photo contest vouchers</h4><p>8 prize vouchers (₫2–3M) on the Z30 kit, redeemable on Shopee or at the Showroom.</p></button><button class="card-b" type="button" data-img="assets/b-0909.webp" data-cap="9.9 Z30 creator gift set"><div class="ph"><img src="assets/b-0909.webp" alt="9.9 Z30 creator gift set" loading="lazy" draggable="false"></div><span class="d">09.09</span><h4>9.9 Z30 push</h4><p>Creator offer refreshed for 9.9: ₫81.0M on the day.</p></button><button class="card-b" type="button" data-img="assets/v-workshop.webp" data-cap="Workshop 19.9 voucher"><div class="ph fit"><img src="assets/v-workshop.webp" alt="Workshop 19.9 voucher" loading="lazy" draggable="false"></div><span class="d">19.09</span><h4>Workshop vouchers</h4><p>7 vouchers, top prize ₫3M on orders from ₫25M, for full-frame buyers.</p></button><button class="card-b" type="button" data-img="assets/b-sandisk.webp" data-cap="Nikon × SanDisk bundle"><div class="ph"><img src="assets/b-sandisk.webp" alt="Nikon × SanDisk bundle" loading="lazy" draggable="false"></div><span class="d">25.09 → 15.10</span><h4>Nikon × SanDisk bundle</h4><p>Co-brand collab: buy a Nikon camera or lens, add SanDisk memory at a bundle price.</p></button><button class="card-b" type="button" data-img="assets/b-sandisk-guide.webp" data-cap="Bundle buying guide"><div class="ph"><img src="assets/b-sandisk-guide.webp" alt="Bundle buying guide" loading="lazy" draggable="false"></div><span class="d">25.09</span><h4>4-step bundle guide</h4><p>Shopper education creative so the bundle converts without chat support.</p></button></div>
+        <div class="mgroup" data-m="oct"><div class="mlabel"><b>Oct</b><div><div class="k">Shopee NMV</div><div class="v">—</div></div><div><div class="k">Flash Sale slots</div><div class="v w">22</div></div><div><div class="k">Note</div><div class="small">1–15 Oct</div></div></div><button class="card-b" type="button" data-img="assets/b-sandisk-4.webp" data-cap="Bundle KV · Zfc"><div class="ph"><img src="assets/b-sandisk-4.webp" alt="Bundle KV · Zfc" loading="lazy" draggable="false"></div><span class="d">to 15.10</span><h4>Bundle KV · Zfc</h4><p>One KV per hero SKU with its SanDisk bundle price.</p></button><button class="card-b" type="button" data-img="assets/b-sandisk-1.webp" data-cap="Bundle KV · Z DX MC 35mm"><div class="ph"><img src="assets/b-sandisk-1.webp" alt="Bundle KV · Z DX MC 35mm" loading="lazy" draggable="false"></div><span class="d">to 15.10</span><h4>Bundle KV · Z DX MC 35mm</h4><p>Lens buyers get the same SanDisk add-on price.</p></button><button class="card-b" type="button" data-img="assets/b-sandisk-2.webp" data-cap="Bundle KV · Z 28mm f/2.8 SE"><div class="ph"><img src="assets/b-sandisk-2.webp" alt="Bundle KV · Z 28mm f/2.8 SE" loading="lazy" draggable="false"></div><span class="d">to 15.10</span><h4>Bundle KV · Z 28mm SE</h4><p>Retro prime for Zfc and Zf owners.</p></button><div class="card-b txt"><div class="ph"><span class="chip live" style="justify-self:start">TikTok Shop Mall</span><div><div style="font:900 64px/.9 var(--f-display);font-stretch:122%;color:var(--nikon)">10.10</div><div style="margin-top:12px;font-size:14px;color:var(--mute)">Electronics Superstar Voucher<br>Extra Special Voucher (Upsized)</div></div></div><span class="d">10.10</span><h4>First TikTok Mall campaign</h4><p>Mall store live since 21.09 with 23 products; joined both 10.10 platform voucher programmes.</p></div></div>
+      </div>
+      <div class="camp-range"><span>Jun</span><input type="range" id="campRange" min="0" max="1000" value="0" aria-label="Scroll through campaigns"><span>Oct</span></div>
     </div>
   </div>
 
@@ -755,35 +804,54 @@ html.present .slide{display:grid;align-content:center}
       <h2 class="h-l">Live selling started on 7.7 and pulled in 3,201 viewers.</h2>
       <p class="lede">Livestreams run on peak days with a live-only voucher and a gift (Nikon tote). Short shoppable videos keep working between campaigns: in September they produced ₫61.2M of confirmed sales.</p>
     </div>
-    <div class="livegrid">
-      <div class="panel rv">
-        <div class="panel-h"><div><span class="chip live">7.7 · 3h 09m</span><h3 class="h-m" style="margin-top:12px">"Săn deal Nikon cực đã"</h3></div></div>
-        <div class="metrics">
-          <div><span class="k">Viewers</span><span class="v">3,201</span></div>
-          <div><span class="k">Views</span><span class="v">3,924</span></div>
-          <div><span class="k">Peak concurrent</span><span class="v">85</span></div>
-          <div><span class="k">Likes</span><span class="v">2,417</span></div>
-          <div><span class="k">Add to cart</span><span class="v">52</span></div>
-          <div><span class="k">New followers</span><span class="v">16</span></div>
-          <div><span class="k">Placed sales</span><span class="v y">₫67.6M</span></div>
-          <div><span class="k">Confirmed</span><span class="v">₫33.6M</span></div>
+    <div class="panel rv" id="livePanel">
+      <div class="panel-h">
+        <div><span class="chip live" id="liveChip">7.7 · 3h 09m</span><h3 class="h-m" style="margin-top:12px" id="liveTitle">"Săn deal Nikon cực đã"</h3><p id="liveSub">One session, 18:19–21:28 on the 7.7 Mega Sale day.</p></div>
+        <div class="seg glass" role="group" aria-label="Livestream session" id="liveSeg"><span class="lens"></span><button type="button" aria-pressed="true" data-v="l77">7.7</button><button type="button" aria-pressed="false" data-v="l825">25.8</button><button type="button" aria-pressed="false" data-v="cmp">Compare</button></div>
+      </div>
+      <div id="liveOne">
+        <div class="mgrid" id="liveMetrics"></div>
+        <div class="grid g3" style="margin-top:18px">
+          <div class="sub"><h4>Conversion funnel</h4><p class="small">Product impressions → clicks → orders</p><div class="chart" id="liveFunnel"></div></div>
+          <div class="sub"><h4>Traffic sources</h4><p class="small" id="trafNote">Where viewers entered the live</p><div id="liveTraffic"></div></div>
+          <div class="sub"><h4>Audience</h4><p class="small">Viewer profile (≈ read from Seller Centre charts)</p><div id="liveAud"></div></div>
         </div>
-        <p class="body" style="font-size:14px;margin-top:16px"><strong>25.8 follow-up:</strong> two shorter sessions (1h 37m), 350 viewers and 0 orders. Learning: lives only convert when they coincide with a high platform-voucher day and carry a live-exclusive price. The Q4 plan schedules them that way.</p>
-        <button class="shot" style="margin-top:16px" data-img="assets/s-live77.webp" data-cap="Shopee Live analytics · 7.7"><img src="assets/s-live77.webp" alt="Shopee live analytics screenshot" loading="lazy"></button>
+        <div class="sub" style="margin-top:18px"><h4>Products pinned in the live</h4><p class="small" id="prodNote"></p><div class="tscroll"><table class="tbl" id="liveProds"></table></div></div>
       </div>
-      <div class="panel rv">
-        <div class="panel-h"><div><span class="chip">6 shoppable videos</span><h3 class="h-m" style="margin-top:12px">Video keeps selling between peaks</h3></div></div>
-        <div class="tscroll"><table class="tbl" style="margin-bottom:16px">
-          <thead><tr><th>Month</th><th class="num">Views</th><th class="num">Product CTR</th><th class="num">Confirmed ₫M</th></tr></thead>
-          <tbody>
-            <tr><td><b>Jul</b></td><td class="num">585</td><td class="num">30.2%</td><td class="num">0</td></tr>
-            <tr><td><b>Aug</b></td><td class="num">942</td><td class="num">43.8%</td><td class="num">19.5</td></tr>
-            <tr><td><b>Sep</b></td><td class="num">647</td><td class="num">43.1%</td><td class="num"><b class="y">61.2</b></td></tr>
-          </tbody>
-        </table></div>
-        <div class="vids" id="vids"></div>
-        <p class="src">Source: Shopee Video monthly overview; video list as of 16 Oct 2026.</p>
+      <div id="liveCmp" hidden>
+        <p class="body" style="font-size:14px;margin-bottom:14px">Same store, same mechanic, very different outcome. 7.7 ran on a Mega Sale day with high platform vouchers; 25.8 ran as two short sessions on a payday with low platform vouchers.</p>
+        <div class="tscroll"><table class="tbl cmp" id="cmpTbl"></table></div>
       </div>
+      <div class="grid g2" style="margin-top:18px">
+        <button class="shot" data-img="assets/s-live77.webp" data-cap="Shopee Live analytics · 7.7"><img src="assets/s-live77.webp" alt="Shopee live analytics 7.7" loading="lazy"></button>
+        <button class="shot" data-img="assets/s-live825.webp" data-cap="Shopee Live · 25.8 traffic analysis"><img src="assets/s-live825.webp" alt="Shopee live analytics 25.8" loading="lazy"></button>
+      </div>
+      <p class="src">Source: Shopee Live overview exports (7.7 and 25.8) and Seller Centre live analytics screenshots.</p>
+    </div>
+
+    <div class="panel rv" style="margin-top:20px" id="videoPanel">
+      <div class="panel-h"><div><span class="chip">Shopee Video · Jun–Sep 2026</span><h3 class="h-m" style="margin-top:12px">Video keeps selling between peaks</h3><p>Six product-tagged videos posted 30.06–02.07. They started converting in August, after the Private Voucher and peak-day push.</p></div></div>
+      <div class="kpis" style="border-radius:var(--r-m)">
+        <div class="kpi"><span class="lab">Views · Jul–Sep</span><span class="val num" data-count="2174">2,174</span><span class="cmp">833 viewers · 766 views &gt;3s</span></div>
+        <div class="kpi"><span class="lab">Product clicks</span><span class="val num" data-count="277">277</span><span class="cmp">from 711 impressions · 39% CTR</span></div>
+        <div class="kpi"><span class="lab">Add to cart</span><span class="val num" data-count="46">46</span><span class="cmp">6 orders placed · 3 confirmed</span></div>
+        <div class="kpi hero-k"><span class="lab">Confirmed sales</span><span class="val num" data-count="80.7" data-dec="1">80.7<small>M ₫</small></span><span class="cmp">₫148.8M placed · all new buyers</span></div>
+      </div>
+      <div class="grid g3" style="margin-top:18px">
+        <div class="sub"><h4>Reach</h4><p class="small">Views, viewers and effective views (&gt;3s)</p><div class="chart" id="vReach"></div><div class="legend" id="vReachLeg"></div></div>
+        <div class="sub"><h4>Product funnel</h4><p class="small">Impressions, clicks and add-to-cart</p><div class="chart" id="vFunnel"></div><div class="legend" id="vFunnelLeg"></div></div>
+        <div class="sub"><h4>Sales &amp; GPM</h4><p class="small">Placed vs confirmed (₫M); GPM = confirmed sales per 1,000 views</p><div class="chart" id="vSales"></div><div class="legend" id="vSalesLeg"></div></div>
+      </div>
+      <div class="grid g2" style="margin-top:18px">
+        <div class="sub"><h4>Quality signals</h4><div class="tscroll"><table class="tbl">
+          <thead><tr><th>Month</th><th class="num">Video CTR</th><th class="num">Product CTR</th><th class="num">Avg watch</th><th class="num">Completion</th><th class="num">New followers</th></tr></thead>
+          <tbody><tr><td><b>Jul</b></td><td class="num">32.9%</td><td class="num">30.2%</td><td class="num">6s</td><td class="num">13.5%</td><td class="num">0</td></tr>
+          <tr><td><b>Aug</b></td><td class="num">45.3%</td><td class="num">43.8%</td><td class="num">4s</td><td class="num">10.8%</td><td class="num">5</td></tr>
+          <tr><td><b>Sep</b></td><td class="num">41.8%</td><td class="num">43.1%</td><td class="num">4s</td><td class="num">10.7%</td><td class="num">0</td></tr></tbody></table></div>
+          <p class="body" style="font-size:14px;margin-top:12px">Clicks are strong (over 40% product CTR) but watch time is short. Next videos should open with the price or the product in the first 2 seconds.</p></div>
+        <div class="sub"><h4>Views by video</h4><div class="vids" id="vids"></div></div>
+      </div>
+      <p class="src">Source: Shopee Video monthly overview exports Jun–Sep 2026; video list as of 16 Oct 2026. June shows 5 tagged videos posted on 30.06 with no views yet in that month.</p>
     </div>
   </div>
 </section>
@@ -839,6 +907,7 @@ html.present .slide{display:grid;align-content:center}
           <button type="button" aria-pressed="false" data-p="zf">Zf</button>
           <button type="button" aria-pressed="false" data-p="zfc">Zfc</button>
           <button type="button" aria-pressed="false" data-p="act">Action 10x50</button>
+          <button type="button" aria-pressed="false" data-p="acc">Accessories</button>
         </div>
         <div class="phone" aria-label="Shopee product page preview">
           <div class="scr">
@@ -878,8 +947,9 @@ html.present .slide{display:grid;align-content:center}
       </div>
     </div>
     <div class="panel rv" style="margin-top:20px">
-      <div class="panel-h"><div><h3 class="h-s">The new library</h3><p>All 89 images, tap any to open.</p></div></div>
-      <div class="mosaic" id="mosaic"></div>
+      <div class="panel-h"><div><h3 class="h-s">The new library</h3><p>89 images across 25 SKUs, grouped by category. Tap any image to open it.</p></div>
+        <div class="seg glass" role="group" aria-label="Category" id="libSeg"><span class="lens"></span><button type="button" aria-pressed="true" data-v="all">All</button><button type="button" aria-pressed="false" data-v="cam">Cameras</button><button type="button" aria-pressed="false" data-v="bin">Binoculars</button><button type="button" aria-pressed="false" data-v="acc">Accessories</button></div></div>
+      <div id="mosaic" class="lib"></div>
     </div>
   </div>
 </section>
@@ -1294,16 +1364,92 @@ function adsChart(){
 adsChart();
 let lastW=innerWidth;addEventListener('resize',()=>{if(Math.abs(innerWidth-lastW)<40&&!(lastW<640!==innerWidth<640))return;lastW=innerWidth;yoy();daily();fsChart();adsChart()});
 
-/* ---------- videos ---------- */
+/* ---------- livestream ---------- */
+const LIVE={
+ l77:{chip:'7.7 · 3h 09m',title:'"Săn deal Nikon cực đã"',sub:'One session, 18:19–21:28 on the 7.7 Mega Sale day.',
+  groups:[['Sales',[['Placed sales','₫67.6M'],['Confirmed sales','₫33.6M'],['Orders placed / confirmed','4 / 2'],['Avg order value','₫16.8M'],['GPM (confirmed)','₫8.57M']]],
+   ['Traffic',[['Viewers','3,201'],['Total views','3,924'],['Engaged viewers','96'],['Peak concurrent (PCU)','85'],['Avg watch time','26s']]],
+   ['Conversion',[['Live CTR','3.70%'],['Product impressions','2,886'],['Product clicks','33'],['Add to cart','52'],['Click → order','2.76% / 1.38%']]],
+   ['Engagement & promo',[['Likes','2,417'],['Comments','33'],['Shares','4'],['New followers','16'],['Voucher claims','35']]]],
+  funnel:[['Impressions',2886],['Product clicks',33],['Orders placed',4],['Confirmed',2]],
+  traffic:[['Live tab',70.0,2742],['Shopee Live home',21.0,827],['Search',1.0,48],['Video',1.0,38],['Shop page',1.0,28],['Other',6.0,219]],
+  aud:{f:63.5,m:35.9,u:.6,fol:.8,age:[['18–24',14],['25–34',26],['35–44',20],['45+',14],['Unknown',27]]},
+  prodNote:'17 products pinned. Top six by product clicks:',
+  prods:[['Z30 Creator body',58,27,2,'33.6'],['Zfc kit 28mm f/2.8 SE',23,5,0,'0'],['Z30 kit 16-50mm',17,6,0,'0'],['Zfc kit 16-50mm',17,6,0,'0'],['Zf kit 40mm SE · Moss Green',10,3,0,'0'],['EN-EL15c battery',4,1,0,'0']]},
+ l825:{chip:'25.8 · 2 sessions · 1h 37m',title:'"Săn deal Nikon cực đã" · payday',sub:'Two short sessions from 19:01 on the 25.8 payday sale.',
+  groups:[['Sales',[['Placed sales','₫0'],['Confirmed sales','₫0'],['Orders placed / confirmed','0 / 0'],['Avg order value','—'],['GPM (confirmed)','₫0']]],
+   ['Traffic',[['Viewers','350'],['Total views','429'],['Engaged viewers','17'],['Peak concurrent (PCU)','13'],['Avg watch time','21s']]],
+   ['Conversion',[['Live CTR','3.73%'],['Product impressions','330'],['Product clicks','5'],['Add to cart','4'],['Click → order','0%']]],
+   ['Engagement & promo',[['Likes','38'],['Comments','2'],['Shares','0'],['New followers','2'],['Voucher claims','1']]]],
+  funnel:[['Impressions',330],['Product clicks',5],['Orders placed',0],['Confirmed',0]],
+  traffic:[['Shopee Live home',65.0,277],['Live tab',21.0,90],['Search',2.0,8],['Recommended',2.0,8],['Shop page',1.0,6],['Video',1.0,5],['Other',8.0,31]],
+  aud:{f:66.7,m:29.1,u:4.2,fol:1.8,age:[['18–24',12],['25–34',24],['35–44',23],['45+',15],['Unknown',25]]},
+  prodNote:'7 products pinned, including the ML-L7 vlog grip and Action 10x50 for the first time:',
+  prods:[['Z30 Creator body',8,3,0,'0'],['Z30 kit 16-50mm',2,0,0,'0'],['ML-L7 vlog grip kit',2,0,0,'0'],['Action 10x50 binoculars',1,0,0,'0'],['Zf kit 40mm SE',1,0,0,'0'],['ML-L7 remote',1,0,0,'0'],['EN-EL20a battery',1,0,0,'0']]}
+};
+const CMP=[['Session length','3h 09m','1h 37m',189,97],['Viewers','3,201','350',3201,350],['Total views','3,924','429',3924,429],['Peak concurrent','85','13',85,13],['Avg watch time','26s','21s',26,21],['Product impressions','2,886','330',2886,330],['Product clicks','33','5',33,5],['Add to cart','52','4',52,4],['Orders placed','4','0',4,0],['Confirmed sales','₫33.6M','₫0',33.6,0],['Likes','2,417','38',2417,38],['New followers','16','2',16,2]];
+function funnelSvg(host,steps){host.innerHTML='';const W=hostW(host,300)||300,rh=44,H=steps.length*rh+4,mx=steps[0][1]||1;
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`},host);
+  steps.forEach(([k,v],i)=>{const y=i*rh,w=Math.max(3,(W-64)*Math.sqrt(v/mx)),last=i===steps.length-1;
+    const l=el('text',{x:0,y:y+12,'font-size':11},svg);l.textContent=k+(i&&steps[i-1][1]?` · ${fmt(v/steps[i-1][1]*100,1)}%`:'');
+    el('rect',{class:'bar '+(last?'pos':i?'y25':'dim'),x:0,y:y+18,width:w,height:18,rx:5},svg);
+    const t=el('text',{x:w+8,y:y+32,'font-size':12.5,class:'vlab'+(last?' y':'')},svg);t.textContent=v.toLocaleString('en-US')});
+}
+function hbars(rows,fmtv){return rows.map(([t,v,n])=>`<div class="hbar"><span class="t">${t}</span><span class="n">${fmtv?fmtv(v,n):v+'%'}</span><span class="b"><i style="width:${Math.max(1,v)}%"></i></span></div>`).join('')}
+function renderLive(k){
+  const one=$('#liveOne'),cmp=$('#liveCmp');
+  if(k==='cmp'){one.hidden=true;cmp.hidden=false;$('#liveChip').textContent='7.7 vs 25.8';$('#liveTitle').textContent='Two lives, side by side';$('#liveSub').textContent='Bars are scaled to the larger session for each metric.';
+    $('#cmpTbl').innerHTML='<thead><tr><th>Metric</th><th class="num">7.7</th><th class="num">25.8</th></tr></thead><tbody>'+CMP.map(([m,a,b,x,y])=>{const mx=Math.max(x,y)||1;return `<tr><td><b>${m}</b></td><td class="num"><span class="bx">${a}<i style="width:${Math.max(2,x/mx*90)}px;background:var(--nikon)"></i></span></td><td class="num"><span class="bx">${b}<i style="width:${Math.max(2,y/mx*90)}px;background:#6b6340"></i></span></td></tr>`}).join('')+'</tbody>';return}
+  one.hidden=false;cmp.hidden=true;const L=LIVE[k];
+  $('#liveChip').textContent=L.chip;$('#liveTitle').textContent=L.title;$('#liveSub').textContent=L.sub;
+  $('#liveMetrics').innerHTML=L.groups.map(([h,rows])=>`<div class="mg"><h5>${h}</h5><dl>${rows.map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join('')}</dl></div>`).join('');
+  funnelSvg($('#liveFunnel'),L.funnel);
+  $('#trafNote').textContent='Share of live page views by entry point';
+  $('#liveTraffic').innerHTML=L.traffic?hbars(L.traffic,(v,n)=>`${fmt(v,0)}% · ${n.toLocaleString('en-US')}`):'<p class="small" style="margin-top:10px">Traffic sources were not captured for 25.8. On 7.7, 91% of viewers came from Shopee Live placements (Live tab and Live home), so platform feed slots matter more than our own shop traffic.</p>';
+  const A=L.aud;
+  $('#liveAud').innerHTML=`<div class="split"><span style="width:${A.f}%;background:var(--nikon)"></span><span style="width:${A.m}%;background:#C9B54A"></span><span style="width:${A.u}%;background:#4A463C"></span></div>
+   <div class="legend"><span><i style="background:var(--nikon)"></i>Female ${A.f}%</span><span><i style="background:#C9B54A"></i>Male ${A.m}%</span></div>
+   ${hbars(A.age.map(([t,v])=>[t,v*3.2,v]),(v,n)=>'≈'+n+'%')}
+   <p class="small" style="margin-top:10px">Followers among viewers: <b style="color:var(--paper)">${A.fol}%</b>. Almost all viewers were new to the store.</p>`;
+  $('#prodNote').textContent=L.prodNote;
+  $('#liveProds').innerHTML='<thead><tr><th>Product</th><th class="num">Clicks</th><th class="num">ATC</th><th class="num">Orders</th><th class="num">Sales ₫M</th></tr></thead><tbody>'+L.prods.map(r=>`<tr><td><b>${r[0]}</b></td><td class="num">${r[1]}</td><td class="num">${r[2]}</td><td class="num">${r[3]}</td><td class="num">${r[4]}</td></tr>`).join('')+'</tbody>';
+}
+let liveK='l77';seg('#liveSeg',v=>{liveK=v;renderLive(v)});renderLive('l77');
+
+/* ---------- video ---------- */
+const VM=['Jun','Jul','Aug','Sep'];
+const VD={views:[0,585,942,647],viewers:[0,259,315,259],eff:[0,249,315,202],impr:[0,242,251,218],clicks:[0,73,110,94],atc:[0,9,19,18],sp:[0,0,58.5,90.3],sc:[0,0,19.5,61.2],gpm:[0,0,20.7,94.7]};
+function groupChart(id,legId,series,opt={}){const host=$('#'+id);host.innerHTML='';
+  const W=hostW(host,380)||380,H=200,L=34,Rr=opt.right?36:6,T=18,B=24,iw=W-L-Rr,ih=H-T-B,n=VM.length,step=iw/n;
+  const mx=opt.max,y=v=>T+ih*(1-v/mx);const svg=el('svg',{viewBox:`0 0 ${W} ${H}`},host);
+  opt.ticks.forEach(v=>{el('line',{class:v?'grid-l':'zero',x1:L,x2:W-Rr,y1:y(v),y2:y(v)},svg);const t=el('text',{x:L-5,y:y(v)+4,'text-anchor':'end','font-size':9.5},svg);t.textContent=opt.tf?opt.tf(v):v});
+  const bw=step*.7/series.length;
+  VM.forEach((m,i)=>{const x0=L+step*i+step*.15;
+    series.forEach((s,j)=>{const v=s.v[i];const r=el('rect',{class:'bar',x:x0+j*bw,y:y(v),width:bw-2,height:Math.max(v?1.5:0,y(0)-y(v)),rx:2,fill:s.c},svg);r.style.fill=s.c;bindTip(r,`<b>${m} · ${s.n}</b><br>${opt.vf?opt.vf(v):v.toLocaleString('en-US')}`)});
+    const t=el('text',{class:'xl',x:L+step*i+step/2,y:H-6,'text-anchor':'middle','font-size':10.5},svg);t.textContent=m});
+  if(opt.line){const l=opt.line,yr=v=>T+ih*(1-v/l.max);const pts=VM.map((m,i)=>[L+step*i+step/2,yr(l.v[i]),l.v[i]]);
+    el('path',{class:'line',d:'M'+pts.map(p=>p[0]+','+p[1]).join(' L')},svg);
+    pts.forEach(p=>{el('circle',{class:'dot',cx:p[0],cy:p[1],r:4},svg);if(p[2]){const t=el('text',{class:'vlab y',x:p[0],y:p[1]-9,'text-anchor':'middle','font-size':10.5},svg);t.textContent=fmt(p[2],1)}});
+    [0,l.max/2,l.max].forEach(v=>{const t=el('text',{x:W-Rr+5,y:yr(v)+4,'font-size':9.5,fill:'var(--nikon)'},svg);t.textContent=v+'M'})}
+  $('#'+legId).innerHTML=series.map(s=>`<span><i style="background:${s.c}"></i>${s.n}</span>`).join('')+(opt.line?`<span><i style="background:var(--nikon);height:3px"></i>${opt.line.n}</span>`:'');
+}
+function videoCharts(){
+  groupChart('vReach','vReachLeg',[{n:'Views',v:VD.views,c:'#FFE100'},{n:'Viewers',v:VD.viewers,c:'#C9B54A'},{n:'Views >3s',v:VD.eff,c:'#6b6340'}],{max:1000,ticks:[0,500,1000]});
+  groupChart('vFunnel','vFunnelLeg',[{n:'Impressions',v:VD.impr,c:'#6b6340'},{n:'Clicks',v:VD.clicks,c:'#C9B54A'},{n:'Add to cart',v:VD.atc,c:'#FFE100'}],{max:300,ticks:[0,150,300]});
+  groupChart('vSales','vSalesLeg',[{n:'Placed ₫M',v:VD.sp,c:'#4A463C'},{n:'Confirmed ₫M',v:VD.sc,c:'#C9B54A'}],{max:100,ticks:[0,50,100],tf:v=>v+'M',vf:v=>'₫'+fmt(v,1)+'M',right:true,line:{n:'GPM ₫M',v:VD.gpm,max:100}});
+}
+videoCharts();
 (function(){const v=[['NIKON Z30, the vlogging sidekick for content creators','30.06',1414],['NIKON Z30, the vlogging sidekick (cut 2)','30.06',639],['ZFC, retro design in Mint Green and Coral Pink','02.07',296],['ZFC, the everyday camera in every colour','30.06',126],['NIKON Zf, retro full frame, genuine stock','30.06',40],['NIKON Zf, retro full frame (cut 2)','30.06',30]];
   const host=$('#vids');v.forEach(([t,d,n])=>{const r=D.createElement('div');r.className='vid';r.innerHTML=`<span class="pl"><svg viewBox="0 0 10 10"><path d="M2 1 L9 5 L2 9Z"/></svg></span><div class="t">${t}<small>Posted ${d}.2026</small><div class="bar" style="width:${Math.max(3,n/1414*100)}%"></div></div><span class="n">${n.toLocaleString('en-US')}</span>`;host.appendChild(r)})})();
+addEventListener('resize',()=>{clearTimeout(window.__vr);window.__vr=setTimeout(()=>{videoCharts();if(liveK!=='cmp')funnelSvg($('#liveFunnel'),LIVE[liveK].funnel)},150)});
 
 /* ---------- listing story ---------- */
 const PRODS={
   z30:{n:'Máy ảnh Nikon Z30 kit 16-50mm',p:'₫22.400.000',imgs:[1,2,3,4,5,6,7,8].map(i=>'l-nikon-z30--'+i)},
   zf:{n:'Máy ảnh Nikon Zf kèm lens Z 40mm SE',p:'₫50.000.000',imgs:[1,2,3,4,5,6,7,8].map(i=>'l-nikon-zf--'+i)},
   zfc:{n:'Máy ảnh Nikon Zfc kit 16-50mm',p:'₫25.400.000',imgs:[1,2,3,4,5,6,7,8].map(i=>'l-nikon-zfc--'+i)},
-  act:{n:'Ống nhòm Nikon Action 10x50',p:'₫5.800.000',imgs:[1,2,3,4,5,6,7].map(i=>'l-ong-nhom-nikon-action-10x50--action-10x50-'+i)}
+  act:{n:'Ống nhòm Nikon Action 10x50',p:'₫5.800.000',imgs:[1,2,3,4,5,6,7].map(i=>'l-ong-nhom-nikon-action-10x50--action-10x50-'+i)},
+  acc:{n:'Pin Nikon EN-EL15c · +18 phụ kiện chính hãng',p:'₫1.800.000',imgs:Array.from({length:38},(_,i)=>'l-phu-kien--'+(32+i))}
 };
 let cur='z30',curI=0;
 function buildPhone(){const p=PRODS[cur],box=$('#pimg'),th=$('#pthumbs');$$('img',box).forEach(x=>x.remove());th.innerHTML='';
@@ -1321,13 +1467,24 @@ const stepIO=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){$
   if(i===2&&!reduce){let k=2;cyc=setInterval(()=>{k=k>=6?2:k+1;setI(k)},1400)}}})},{rootMargin:'-45% 0px -45% 0px'});
 $$('.step').forEach(s=>stepIO.observe(s));
 
-/* mosaic */
-(function(){const all=[];['z30','zf','zfc'].forEach(k=>PRODS[k].imgs.forEach(s=>all.push(s)));
-  ['variation-2-kit','variation-body','variation-creator-kit'].forEach(v=>all.push('l-nikon-z30--'+v));
-  ['variation-classic-black','variation-coral-pink','variation-mint-green'].forEach(v=>all.push('l-nikon-zfc--'+v));
-  ['7x50','10x50','16x50'].forEach(m=>{for(let i=1;i<=7;i++)all.push(`l-ong-nhom-nikon-action-${m}--action-${m}-${i}`)});
-  for(let i=32;i<=69;i++)all.push('l-phu-kien--'+i);
-  const host=$('#mosaic');all.forEach(s=>{const b=D.createElement('button');b.type='button';b.dataset.img='assets/'+s+'.webp';b.dataset.cap='Listing image · '+s.replace('l-','').replace(/--/,' · ');b.setAttribute('aria-label','Open listing image');b.innerHTML=`<img src="assets/${s}.webp" alt="" loading="lazy">`;host.appendChild(b)})})();
+/* mosaic, grouped by category */
+(function(){
+  const cam=[['Nikon Z30',[...PRODS.z30.imgs,'l-nikon-z30--variation-2-kit','l-nikon-z30--variation-body','l-nikon-z30--variation-creator-kit']],
+    ['Nikon Zf',PRODS.zf.imgs],
+    ['Nikon Zfc',[...PRODS.zfc.imgs,'l-nikon-zfc--variation-classic-black','l-nikon-zfc--variation-coral-pink','l-nikon-zfc--variation-mint-green']]];
+  const bin=['7x50','10x50','16x50'].map(m=>['Action '+m,Array.from({length:7},(_,i)=>`l-ong-nhom-nikon-action-${m}--action-${m}-${i+1}`)]);
+  const acc=[['19 SKUs · batteries, chargers, caps, filters, remotes, teleconverters',Array.from({length:38},(_,i)=>'l-phu-kien--'+(32+i))]];
+  const cats=[['cam','Cameras','3 bodies · 30 images',cam],['bin','Binoculars','3 models · 21 images',bin],['acc','Accessories','19 SKUs · 38 images',acc]];
+  const host=$('#mosaic');
+  cats.forEach(([k,t,sub,sets])=>{const g=D.createElement('div');g.className='libg';g.dataset.c=k;
+    g.innerHTML=`<div class="libg-h"><h4>${t}</h4><span>${sub}</span></div>`;
+    sets.forEach(([name,imgs])=>{const l=D.createElement('div');l.className='libsub';l.textContent=name;g.appendChild(l);
+      const m=D.createElement('div');m.className='mosaic';
+      imgs.forEach(s=>{const b=D.createElement('button');b.type='button';b.dataset.img='assets/'+s+'.webp';b.dataset.cap=t+' · '+name;b.setAttribute('aria-label','Open '+name+' image');b.innerHTML=`<img src="assets/${s}.webp" alt="" loading="lazy">`;m.appendChild(b)});
+      g.appendChild(m)});
+    host.appendChild(g)});
+  seg('#libSeg',v=>$$('.libg',host).forEach(g=>g.hidden=!(v==='all'||g.dataset.c===v)));
+})();
 
 /* ---------- lightbox sheet ---------- */
 const sheet=$('#sheet');let lastFocus=null;
@@ -1346,15 +1503,32 @@ function count(n){if(reduce||n.dataset.done)return;n.dataset.done=1;const to=+n.
   (function f(t){const k=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-k,4);n.innerHTML=(to*e).toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf;if(k<1)requestAnimationFrame(f)})(t0)}
 
 /* ---------- horizontal pinned wall ---------- */
-const hw=$('#hwall'),ht=$('#htrack');
-function sizeWall(){if(innerWidth<=760){hw.style.height='';return}const over=ht.scrollWidth-innerWidth+64;hw.style.height=(innerHeight+Math.max(0,over))+'px'}
-sizeWall();addEventListener('resize',sizeWall);addEventListener('load',sizeWall);
+/* ---------- campaign wall: month chips, arrows, range slider, drag ---------- */
+const ct=$('#ctrack'),cr=$('#campRange'),groupsEl=$$('.mgroup',ct);
+let campSet=null;
+seg('#campSeg',m=>{const g=groupsEl.find(x=>x.dataset.m===m);if(g)ct.scrollTo({left:g.offsetLeft-ct.offsetLeft,behavior:reduce?'auto':'smooth'})});
+campSet=v=>{const bs=$$('#campSeg button');const b=bs.find(x=>x.dataset.v===v);if(!b||b.getAttribute('aria-pressed')==='true')return;bs.forEach(x=>x.setAttribute('aria-pressed',x===b));const lens=$('#campSeg .lens');lens.style.width=b.offsetWidth+'px';lens.style.transform=`translateX(${b.offsetLeft}px)`};
+function campSync(){const max=ct.scrollWidth-ct.clientWidth;cr.value=max>0?Math.round(ct.scrollLeft/max*1000):0;
+  $('#campPrev').disabled=ct.scrollLeft<4;$('#campNext').disabled=ct.scrollLeft>max-4;
+  let cur=groupsEl[0];groupsEl.forEach(g=>{if(g.offsetLeft-ct.offsetLeft<=ct.scrollLeft+ct.clientWidth*.35)cur=g});campSet(cur.dataset.m)}
+ct.addEventListener('scroll',()=>requestAnimationFrame(campSync),{passive:true});
+cr.addEventListener('input',()=>{const max=ct.scrollWidth-ct.clientWidth;ct.style.scrollBehavior='auto';ct.scrollLeft=cr.value/1000*max;ct.style.scrollBehavior=''});
+const stepW=()=>Math.max(260,ct.clientWidth*.8);
+$('#campPrev').addEventListener('click',()=>ct.scrollBy({left:-stepW(),behavior:reduce?'auto':'smooth'}));
+$('#campNext').addEventListener('click',()=>ct.scrollBy({left:stepW(),behavior:reduce?'auto':'smooth'}));
+ct.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();ct.scrollBy({left:stepW()})}if(e.key==='ArrowLeft'){e.preventDefault();ct.scrollBy({left:-stepW()})}});
+(function(){let down=false,sx=0,sl=0,moved=0;
+  ct.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;down=true;moved=0;sx=e.clientX;sl=ct.scrollLeft});
+  addEventListener('pointermove',e=>{if(!down)return;const dx=e.clientX-sx;moved=Math.max(moved,Math.abs(dx));if(moved>5)ct.classList.add('drag');ct.scrollLeft=sl-dx});
+  addEventListener('pointerup',()=>{if(!down)return;down=false;setTimeout(()=>ct.classList.remove('drag'),0)});
+  ct.addEventListener('click',e=>{if(moved>5){e.stopPropagation();e.preventDefault();moved=0}},true);
+})();
+campSync();
 
 /* ---------- scroll: progress, hero parallax, wall, dock ---------- */
 const prog=$('#prog'),dock=$('#dock'),hero=$('.hero');let lastY=scrollY,ticking=false;
 function onScroll(){const y=scrollY,max=R.scrollHeight-innerHeight;prog.style.transform=`scaleX(${max>0?y/max:0})`;
   hero.style.setProperty('--hp',Math.min(1,y/innerHeight).toFixed(3));
-  if(innerWidth>760){const r=hw.getBoundingClientRect(),span=hw.offsetHeight-innerHeight;const p=span>0?Math.min(1,Math.max(0,-r.top/span)):0;ht.style.transform=`translateX(${-p*Math.max(0,ht.scrollWidth-innerWidth+64)}px)`}
   if(Math.abs(y-lastY)>6){dock.classList.toggle('min',y>lastY&&y>innerHeight*.6);lastY=y}
   reveal();ticking=false}
 addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});onScroll();
