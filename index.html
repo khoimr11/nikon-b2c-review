@@ -1,4 +1,13 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0C0B09">
+<meta name="description" content="Nikon Singapore × VHG — B2C Activation & Channel Development, October 2026">
 <title>Nikon B2C Review</title>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
+
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
 /* Layout concept: a cinematic, dark "through-the-viewfinder" story. Content sits on the ink layer;
@@ -122,10 +131,24 @@ h1,h2,h3,h4{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spaci
 .dock .act{border:0;background:rgba(255,255,255,.08);border-radius:999px;height:38px;padding:0 14px;display:inline-flex;gap:8px;align-items:center;cursor:pointer;font:600 12px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;flex:0 0 auto}
 .dock .act:hover{background:rgba(255,255,255,.16)}
 .dock .act svg{width:14px;height:14px}
-.dock .count{font:500 12px/1 var(--f-mono);color:var(--mute);padding:0 10px;white-space:nowrap;display:none}
+.dock .count{font:500 12px/1 var(--f-mono);color:var(--mute);padding:0 10px;white-space:nowrap;display:none;border:0;background:none;height:38px;cursor:pointer;align-items:center;gap:6px}
+.dock .count::after{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-135deg) translate(-1px,-1px);opacity:.7}
+.dock .step-b{display:none;border:0;background:rgba(255,255,255,.08);width:38px;height:38px;border-radius:50%;cursor:pointer;place-items:center;flex:0 0 auto}
+.dock .step-b svg{width:16px;height:16px}
+.menu.glass{background:rgba(22,20,15,.86)}
+.menu{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:55;border-radius:24px;padding:8px;width:min(340px,calc(100vw - 32px));max-height:min(70svh,560px);overflow:auto;display:grid;gap:2px;animation:pop .35s cubic-bezier(.2,1.2,.3,1)}
+.menu a{display:flex;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:14px;text-decoration:none;font:500 15px/1.2 var(--f-body);color:var(--paper)}
+.menu a span{font:500 12px/1.2 var(--f-mono);color:var(--mute-2)}
+.menu a.on{background:var(--nikon);color:var(--nikon-ink)}
+.menu a.on span{color:rgba(20,17,0,.6)}
 .dock.min nav{max-width:0;opacity:0}
-.dock.min .count{display:inline}
-@media (max-width:760px){.dock nav{display:none}.dock .count{display:inline}}
+.dock.min .count{display:inline-flex}
+@media (max-width:760px){
+  .dock nav,.dock #present{display:none}
+  .dock .count{display:inline-flex;color:var(--paper);min-width:96px;justify-content:center}
+  .dock .step-b{display:grid}
+  .dock.min{padding:4px}
+}
 .prog{position:fixed;left:0;top:env(safe-area-inset-top,0px);height:2px;background:var(--nikon);width:100%;transform-origin:0 50%;transform:scaleX(0);z-index:61}
 
 /* ---------- hero ---------- */
@@ -188,7 +211,7 @@ h1,h2,h3,h4{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spaci
 .seg button[aria-pressed="true"]{color:var(--nikon-ink)}
 .seg .lens{position:absolute;top:4px;bottom:4px;left:0;border-radius:999px;background:var(--nikon);transition:transform .45s cubic-bezier(.2,1.25,.3,1),width .45s cubic-bezier(.2,1.25,.3,1);z-index:0;box-shadow:inset 0 1px 0 rgba(255,255,255,.55)}
 .chart{position:relative;width:100%;overflow-x:auto}
-.chart svg{display:block;width:100%;height:auto;min-width:560px;overflow:visible}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
 .chart text{font-family:var(--f-mono);fill:var(--mute)}
 .chart .grid-l{stroke:var(--line);stroke-width:1}
 .chart .zero{stroke:var(--line-2);stroke-width:1}
@@ -454,6 +477,32 @@ html.present{scroll-snap-type:y proximity}
 html.present .slide,html.present .hero{scroll-snap-align:start;min-height:100svh}
 html.present .slide{display:grid;align-content:center}
 
+@media (max-width:640px){
+  .slide{padding-block:64px}
+  .chap{gap:16px;margin-bottom:28px}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kpi{padding:16px 14px;gap:6px}
+  .kpi .val{font-size:26px}
+  .kpi .cmp{font-size:12px}
+  .panel{padding:18px 16px;border-radius:22px}
+  .panel-h{margin-bottom:12px}
+  .seg{width:100%}.seg button{flex:1;padding:9px 6px}
+  .tbl{font-size:13px}.tbl td,.tbl th{padding:10px 6px}
+  .tbl.slots td:first-child{white-space:nowrap}
+  .phone{max-width:290px;border-radius:40px;padding:10px}.phone .scr{border-radius:31px}
+  .step{cursor:pointer}
+  .story .steps{gap:0}
+  .mosaic{grid-template-columns:repeat(4,1fr);gap:4px}
+  .proof .v{font-size:19px}
+  .ladder{gap:10px}
+  .ev{padding:18px}
+  .ask{padding:18px 16px;gap:10px}
+  .road div{padding:18px}
+  .vf i{width:24px;height:24px}
+  .hero{padding-block:96px 48px}
+  .marq{padding-block:12px}
+  footer{padding-bottom:140px}
+}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   html{scroll-behavior:auto}
@@ -464,6 +513,9 @@ html.present .slide{display:grid;align-content:center}
   .marq .tr{animation:none}
 }
 </style>
+</head>
+<body>
+
 
 <div class="iris" aria-hidden="true">
   <svg viewBox="-100 -100 200 200" preserveAspectRatio="xMidYMid slice">
@@ -632,7 +684,7 @@ html.present .slide{display:grid;align-content:center}
       </div>
       <div class="panel rv">
         <div class="panel-h"><div><h3 class="h-s">Best Flash Sale slots</h3><p>Ranked by sales placed in the slot.</p></div></div>
-        <div class="tscroll"><table class="tbl">
+        <div class="tscroll"><table class="tbl slots">
           <thead><tr><th>Slot</th><th class="num">Views</th><th class="num">Orders</th><th class="num">Placed ₫M</th></tr></thead>
           <tbody>
             <tr><td><b>01.07</b> · 12:00–12:30</td><td class="num">19</td><td class="num">3</td><td class="num"><b>56.3</b></td></tr>
@@ -1060,7 +1112,7 @@ html.present .slide{display:grid;align-content:center}
       <div><span class="ap">4 · Colour</span><h4>Colour belongs to content</h4><p>Controls are neutral glass. Nikon yellow marks the active state, the 2026 series and the one number that matters on each slide.</p></div>
       <div><span class="ap">5 · Motion</span><h4>One signature moment, then restraint</h4><p>An aperture-iris opening and a viewfinder HUD in the hero. After that, scroll-linked reveals, a pinned campaign wall and a pinned listing story.</p></div>
       <div><span class="ap">6 · Accessibility</span><h4>Respects system settings</h4><p>Reduce Motion removes animation, and Reduce Transparency turns glass solid. Content is readable at rest, focus rings are visible, and charts carry text labels.</p></div>
-      <div><span class="ap">7 · Present mode</span><h4>Meeting-room ready</h4><p>Press P or the Present button for slide snapping. Arrow keys and Page Up/Down move between slides, and F goes full screen where the browser allows.</p></div>
+      <div><span class="ap">7 · Present mode</span><h4>Meeting-room ready</h4><p>Press P or the Present button for slide snapping. Arrow keys and Page Up/Down move between slides, and F goes full screen where the browser allows. On phones the dock turns into previous / next buttons and a chapter menu, and charts redraw at the screen's real width.</p></div>
       <div><span class="ap">8 · Next iteration</span><h4>Live data</h4><p>Connect the charts to the Forecast sheet so numbers refresh before each meeting, and add October once the month closes.</p></div>
     </div>
   </div>
@@ -1075,10 +1127,13 @@ html.present .slide{display:grid;align-content:center}
     <span class="lens"></span>
     <a href="#results">Results</a><a href="#promo">Promotions</a><a href="#live">Live &amp; video</a><a href="#listing">Listing</a><a href="#mall">Mall</a><a href="#next">Q4 plan</a><a href="#support">Support</a>
   </nav>
-  <span class="count num" id="dcount">01 / 14</span>
+  <button class="step-b" id="dprev" type="button" aria-label="Previous section"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <button class="count num" id="dcount" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="menu">01 / 14</button>
+  <button class="step-b" id="dnext" type="button" aria-label="Next section"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   <button class="act" id="present" type="button" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 3h12v8H2z M6 14h4 M8 11v3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Present</button>
 </div>
 
+<nav class="menu glass" id="menu" aria-label="All sections" hidden></nav>
 <div class="tip glass" id="tip" role="status"></div>
 <div class="sheet" id="sheet" hidden><div class="box glass" role="dialog" aria-modal="true" aria-label="Image preview"><img id="sheetImg" alt=""><div class="cap"><span id="sheetCap"></span><button class="x" id="sheetX" type="button">Close · Esc</button></div></div></div>
 
@@ -1105,41 +1160,65 @@ function moveTip(e){const x=Math.min(innerWidth-tip.offsetWidth-12,e.clientX+14)
 function hideTip(){tip.classList.remove('on')}
 function bindTip(node,html){node.addEventListener('pointerenter',e=>showTip(e,html));node.addEventListener('pointermove',moveTip);node.addEventListener('pointerleave',hideTip)}
 
-/* ---------- YoY chart ---------- */
+/* ---------- charts (responsive: drawn at the host's real width on phones) ---------- */
+const narrow=()=>innerWidth<640;
+const hostW=(h,def)=>narrow()?Math.max(300,Math.round(h.clientWidth||340)):def;
+let yoyMode='g';
 function yoy(mode){
+  yoyMode=mode=mode||yoyMode;
   const host=$('#yoy');host.innerHTML='';
+  const rows=MN.map((m,i)=>{const k=String(i+1).padStart(2,'0');const a=MON['2025-'+k],b=MON['2026-'+k];return{m,a,b,g:(b[0]/a[0]-1)*100}});
+  const leg=$('#yoyLeg');
+  const T1={g:'Year-over-year growth by month, 2026 vs 2025',n:'Monthly NMV, 2025 vs 2026 (₫M)',o:'Monthly orders, 2025 vs 2026'};
+  const S1={g:'Growth rate of monthly NMV. Shaded: the activation period, June to September.',n:'Same months side by side. Shaded: the activation period.',o:'Completed orders, cancellations excluded.'};
+  $('#yoyTitle').textContent=T1[mode];$('#yoySub').textContent=S1[mode];
+  leg.innerHTML=mode==='g'?'<span><i style="background:var(--nikon)"></i>Growth</span><span><i style="background:var(--coral)"></i>Decline</span>':'<span><i style="background:#4A463C"></i>2025</span><span><i style="background:var(--nikon)"></i>2026</span>';
+  if(narrow()) return yoyNarrow(host,rows,mode);
   const W=900,H=360,L=56,Rr=16,T=34,B=40,iw=W-L-Rr,ih=H-T-B;
-  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`},host);
-  const step=iw/9, rows=MN.map((m,i)=>{const k=String(i+1).padStart(2,'0');const a=MON['2025-'+k],b=MON['2026-'+k];return{m,a,b,g:(b[0]/a[0]-1)*100,go:(b[1]/a[1]-1)*100}});
-  // band Jun–Sep
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`},host);const step=iw/9;
   el('rect',{class:'band',x:L+step*5,y:T-22,width:step*4,height:ih+22,rx:10},svg);
   const bt=el('text',{class:'band-l',x:L+step*9-12,y:T-7,'text-anchor':'end'},svg);bt.textContent='ACTIVATION · JUN–SEP';
-  const leg=$('#yoyLeg');
   if(mode==='g'){
-    $('#yoyTitle').textContent='Year-over-year growth by month, 2026 vs 2025';
-    $('#yoySub').textContent='Growth rate of monthly NMV. Shaded: the activation period, June to September.';
-    leg.innerHTML='<span><i style="background:var(--nikon)"></i>Growth</span><span><i style="background:var(--coral)"></i>Decline</span>';
     const mn=-100,mx=1000,y=v=>T+ih*(mx-v)/(mx-mn);
     [-100,0,300,600,900].forEach(v=>{el('line',{class:v===0?'zero':'grid-l',x1:L,x2:W-Rr,y1:y(v),y2:y(v)},svg);const t=el('text',{x:L-10,y:y(v)+4,'text-anchor':'end','font-size':11},svg);t.textContent=(v>0?'+':'')+v+'%'});
     rows.forEach((r,i)=>{const cx=L+step*i+step/2,bw=step*.5,pos=r.g>=0,y0=y(0),y1=y(r.g);
-      const b=el('rect',{class:'bar '+(pos?'pos':'neg')+(i<5&&pos?' dim':''),x:cx-bw/2,y:Math.min(y0,y1),width:bw,height:Math.max(1.5,Math.abs(y1-y0)),rx:4},svg);
+      const b=el('rect',{class:'bar '+(pos?'pos':'neg'),x:cx-bw/2,y:Math.min(y0,y1),width:bw,height:Math.max(1.5,Math.abs(y1-y0)),rx:4},svg);
       const lab=el('text',{class:'vlab'+(i>=5?' y':''),x:cx,y:pos?y1-8:y0-8,'text-anchor':'middle',fill:pos?'':'var(--coral)'},svg);lab.textContent=(pos?'+':'')+Math.round(r.g)+'%';
       const xl=el('text',{class:'xl',x:cx,y:H-14,'text-anchor':'middle'},svg);xl.textContent=r.m;
-      bindTip(b,`<b>${r.m}</b><br>2026: ₫${fmt(r.b[0]/1e6)}M<br>2025: ₫${fmt(r.a[0]/1e6)}M<br>YoY: ${(pos?'+':'')}${fmt(r.g,0)}%`)});
+      bindTip(b,`<b>${r.m}</b><br>2026: ₫${fmt(r.b[0]/1e6)}M<br>2025: ₫${fmt(r.a[0]/1e6)}M<br>YoY: ${pos?'+':''}${fmt(r.g,0)}%`)});
   } else {
-    const isN=mode==='n';
-    $('#yoyTitle').textContent=isN?'Monthly NMV, 2025 vs 2026 (₫M)':'Monthly orders, 2025 vs 2026';
-    $('#yoySub').textContent=isN?'Same months side by side. Shaded: the activation period.':'Completed and in-progress orders, cancellations excluded.';
-    leg.innerHTML='<span><i style="background:#4A463C"></i>2025</span><span><i style="background:var(--nikon)"></i>2026</span>';
-    const mx=isN?300:35,y=v=>T+ih*(1-v/mx),ticks=isN?[0,100,200,300]:[0,10,20,30];
+    const isN=mode==='n',mx=isN?300:35,y=v=>T+ih*(1-v/mx),ticks=isN?[0,100,200,300]:[0,10,20,30];
     ticks.forEach(v=>{el('line',{class:v?'grid-l':'zero',x1:L,x2:W-Rr,y1:y(v),y2:y(v)},svg);const t=el('text',{x:L-10,y:y(v)+4,'text-anchor':'end','font-size':11},svg);t.textContent=v+(isN?'M':'')});
-    rows.forEach((r,i)=>{const cx=L+step*i+step/2,bw=step*.3;
-      const va=isN?r.a[0]/1e6:r.a[1],vb=isN?r.b[0]/1e6:r.b[1];
+    rows.forEach((r,i)=>{const cx=L+step*i+step/2,bw=step*.3,va=isN?r.a[0]/1e6:r.a[1],vb=isN?r.b[0]/1e6:r.b[1];
       const a=el('rect',{class:'bar y25',x:cx-bw-2,y:y(va),width:bw,height:Math.max(1,y(0)-y(va)),rx:3},svg);
       const b=el('rect',{class:'bar y26',x:cx+2,y:y(vb),width:bw,height:Math.max(1,y(0)-y(vb)),rx:3},svg);
       if(i>=5){const t=el('text',{class:'vlab y',x:cx+2+bw/2,y:y(vb)-8,'text-anchor':'middle'},svg);t.textContent=isN?Math.round(vb):vb}
       const xl=el('text',{class:'xl',x:cx,y:H-14,'text-anchor':'middle'},svg);xl.textContent=r.m;
       const h=`<b>${r.m}</b><br>2025: ${isN?'₫'+fmt(va)+'M':va+' orders'}<br>2026: ${isN?'₫'+fmt(vb)+'M':vb+' orders'}`;bindTip(a,h);bindTip(b,h)});
+  }
+}
+/* phone layout: one row per month, bars run horizontally */
+function yoyNarrow(host,rows,mode){
+  const W=hostW(host,340),L=38,Rr=8,RH=mode==='g'?34:40,T=10,H=T+RH*9+8,iw=W-L-Rr;
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,width:W,height:H},host);
+  el('rect',{class:'band',x:0,y:T+RH*5-4,width:W,height:RH*4+4,rx:10},svg);
+  const bt=el('text',{class:'band-l',x:W-10,y:T+RH*9-2,'text-anchor':'end','font-size':9.5},svg);bt.textContent='ACTIVATION';
+  if(mode==='g'){
+    const vw=56,mn=-100,mx=900,x=v=>L+(iw-vw)*(v-mn)/(mx-mn);
+    el('line',{class:'zero',x1:x(0),x2:x(0),y1:T-4,y2:T+RH*9},svg);
+    rows.forEach((r,i)=>{const yc=T+RH*i+RH/2,pos=r.g>=0,x0=x(0),x1=x(r.g);
+      const t=el('text',{class:'xl',x:0,y:yc+4,'font-size':12},svg);t.textContent=r.m;
+      const b=el('rect',{class:'bar '+(pos?'pos':'neg'),x:Math.min(x0,x1),y:yc-8,width:Math.max(2,Math.abs(x1-x0)),height:16,rx:4},svg);b.style.transformOrigin=pos?'0% 50%':'100% 50%';
+      const lab=el('text',{class:'vlab'+(pos?' y':''),x:pos?x1+6:x0+6,y:yc+4,'font-size':12,fill:pos?'':'var(--coral)'},svg);lab.textContent=(pos?'+':'')+Math.round(r.g)+'%';
+      bindTip(b,`<b>${r.m}</b><br>2026: ₫${fmt(r.b[0]/1e6)}M<br>2025: ₫${fmt(r.a[0]/1e6)}M`)});
+  } else {
+    const isN=mode==='n',mx=isN?300:35,vw=44,x=v=>L+(iw-vw)*v/mx;
+    rows.forEach((r,i)=>{const yc=T+RH*i+RH/2,va=isN?r.a[0]/1e6:r.a[1],vb=isN?r.b[0]/1e6:r.b[1];
+      const t=el('text',{class:'xl',x:0,y:yc+4,'font-size':12},svg);t.textContent=r.m;
+      el('rect',{class:'bar y25',x:L,y:yc-11,width:Math.max(2,x(va)-L),height:9,rx:3},svg);
+      el('rect',{class:'bar y26',x:L,y:yc+2,width:Math.max(2,x(vb)-L),height:9,rx:3},svg);
+      const a=el('text',{x:x(va)+5,y:yc-3,'font-size':10},svg);a.textContent=isN?Math.round(va):va;
+      const b=el('text',{class:'vlab y',x:x(vb)+5,y:yc+10,'font-size':11},svg);b.textContent=isN?Math.round(vb):vb});
   }
 }
 yoy('g');
@@ -1150,19 +1229,21 @@ function seg(id,cb){const g=$(id),lens=$('.lens',g),bs=$$('button',g);
 seg('#yoySeg',v=>yoy(v));
 
 /* ---------- daily chart ---------- */
-(function(){
-  const host=$('#daily'),W=640,H=280,L=40,Rr=10,T=40,B=30,iw=W-L-Rr,ih=H-T-B,n=DAILY.length,mx=140;
+function daily(){
+  const host=$('#daily');host.innerHTML='';const nw=narrow();
+  const W=hostW(host,640),H=nw?230:280,L=nw?34:40,Rr=6,T=34,B=28,iw=W-L-Rr,ih=H-T-B,n=DAILY.length,mx=140;
   const svg=el('svg',{viewBox:`0 0 ${W} ${H}`},host);const y=v=>T+ih*(1-v/mx),bw=iw/n;
-  [0,50,100].forEach(v=>{el('line',{class:v?'grid-l':'zero',x1:L,x2:W-Rr,y1:y(v),y2:y(v)},svg);const t=el('text',{x:L-8,y:y(v)+4,'text-anchor':'end','font-size':10.5},svg);t.textContent=v+'M'});
+  [0,50,100].forEach(v=>{el('line',{class:v?'grid-l':'zero',x1:L,x2:W-Rr,y1:y(v),y2:y(v)},svg);const t=el('text',{x:L-6,y:y(v)+4,'text-anchor':'end','font-size':10},svg);t.textContent=v+'M'});
   const start=new Date(2026,5,1);
   const ev={'7.7':36,'10.8':70,'9.9':100,'10.6':9,'1.7':30,'8.8':68,'15.9':106};
   DAILY.forEach((v,i)=>{const m=v/10;const dt=new Date(start);dt.setDate(dt.getDate()+i);const d=dt.getDate(),mo=dt.getMonth()+1;
     const peak=(d===mo)||[10,15,25,14].includes(d);
-    const r=el('rect',{class:'bar '+(peak?'pos':'dim'),x:L+i*bw+.5,y:y(m),width:Math.max(1,bw-1),height:Math.max(m>0?1.5:0,y(0)-y(m)),rx:1},svg);
+    const r=el('rect',{class:'bar '+(peak?'pos':'dim'),x:L+i*bw+.25,y:y(m),width:Math.max(1,bw-.5),height:Math.max(m>0?1.5:0,y(0)-y(m)),rx:1},svg);
     if(m>0)bindTip(r,`<b>${d}.${mo}</b><br>₫${fmt(m)}M${peak?'<br>campaign day':''}`)});
-  Object.entries(ev).forEach(([k,i])=>{const m=DAILY[i]/10,x=L+i*bw+bw/2;if(m<15)return;const t=el('text',{class:'ev',x,y:y(m)-7,'text-anchor':'middle'},svg);t.textContent=k});
-  [['Jun',0],['Jul',30],['Aug',61],['Sep',92]].forEach(([m,i])=>{const t=el('text',{class:'xl',x:L+i*bw,y:H-8},svg);t.textContent=m;el('line',{class:'grid-l',x1:L+i*bw,x2:L+i*bw,y1:T,y2:y(0)},svg)});
-})();
+  Object.entries(ev).forEach(([k,i])=>{const m=DAILY[i]/10,x=L+i*bw+bw/2;if(m<(nw?40:15))return;const t=el('text',{class:'ev',x,y:y(m)-7,'text-anchor':'middle'},svg);t.textContent=k});
+  [['Jun',0],['Jul',30],['Aug',61],['Sep',92]].forEach(([m,i])=>{const t=el('text',{class:'xl',x:L+i*bw+2,y:H-8,'font-size':10.5},svg);t.textContent=m;el('line',{class:'grid-l',x1:L+i*bw,x2:L+i*bw,y1:T,y2:y(0)},svg)});
+}
+daily();
 
 /* ---------- hour dial ---------- */
 (function(){
@@ -1178,35 +1259,40 @@ seg('#yoySeg',v=>yoy(v));
 })();
 
 /* ---------- flash sale chart ---------- */
-(function(){
+function fsChart(){
   const d=[['Jun*',59.6,3.4],['Jul',215.2,141.5],['Aug',169.2,88.1],['Sep',163.4,143.5],['Oct*',67.7,38.5]];
-  const host=$('#fs'),W=600,H=260,L=44,Rr=10,T=24,B=30,iw=W-L-Rr,ih=H-T-B,mx=250,y=v=>T+ih*(1-v/mx),step=iw/d.length;
+  const host=$('#fs');host.innerHTML='';const nw=narrow();
+  const W=hostW(host,600),H=nw?230:260,L=nw?36:44,Rr=6,T=26,B=30,iw=W-L-Rr,ih=H-T-B,mx=250,y=v=>T+ih*(1-v/mx),step=iw/d.length;
   const svg=el('svg',{viewBox:`0 0 ${W} ${H}`},host);
-  [0,100,200].forEach(v=>{el('line',{class:v?'grid-l':'zero',x1:L,x2:W-Rr,y1:y(v),y2:y(v)},svg);const t=el('text',{x:L-8,y:y(v)+4,'text-anchor':'end','font-size':10.5},svg);t.textContent=v+'M'});
-  d.forEach(([m,p,c],i)=>{const cx=L+step*i+step/2,bw=step*.28;
+  [0,100,200].forEach(v=>{el('line',{class:v?'grid-l':'zero',x1:L,x2:W-Rr,y1:y(v),y2:y(v)},svg);const t=el('text',{x:L-6,y:y(v)+4,'text-anchor':'end','font-size':10},svg);t.textContent=v+'M'});
+  d.forEach(([m,p,c],i)=>{const cx=L+step*i+step/2,bw=step*.3;
     const a=el('rect',{class:'bar y25',x:cx-bw-2,y:y(p),width:bw,height:y(0)-y(p),rx:3},svg);
     const b=el('rect',{class:'bar y26',x:cx+2,y:y(c),width:bw,height:Math.max(1,y(0)-y(c)),rx:3},svg);
-    const t=el('text',{class:'vlab y',x:cx+2+bw/2,y:y(c)-6,'text-anchor':'middle','font-size':11},svg);t.textContent=fmt(c);
-    const x=el('text',{class:'xl',x:cx,y:H-8,'text-anchor':'middle'},svg);x.textContent=m;
+    const t=el('text',{class:'vlab y',x:cx+2+bw/2,y:y(c)-6,'text-anchor':'middle','font-size':nw?10:11},svg);t.textContent=nw?Math.round(c):fmt(c);
+    const x=el('text',{class:'xl',x:cx,y:H-8,'text-anchor':'middle','font-size':11},svg);x.textContent=m;
     const h=`<b>${m.replace('*','')}</b><br>Placed ₫${fmt(p)}M<br>Confirmed ₫${fmt(c)}M`;bindTip(a,h);bindTip(b,h)});
-  const n=el('text',{x:W-Rr,y:12,'text-anchor':'end','font-size':10},svg);n.textContent='* Jun from 25.06 · Oct to 15.10';
-})();
+  const n=el('text',{x:W-Rr,y:12,'text-anchor':'end','font-size':9.5},svg);n.textContent='* Jun from 25.06 · Oct to 15.10';
+}
+fsChart();
 
 /* ---------- ads chart ---------- */
-(function(){
+function adsChart(){
   const d=[['Jun',1.44,39.9],['Jul',2.65,112.0],['Aug',1.90,65.5],['Sep',2.30,111.3]];
-  const host=$('#adsc'),W=600,H=260,L=44,Rr=44,T=26,B=30,iw=W-L-Rr,ih=H-T-B,step=iw/d.length;
+  const host=$('#adsc');host.innerHTML='';const nw=narrow();
+  const W=hostW(host,600),H=nw?230:260,L=nw?34:44,Rr=nw?38:44,T=26,B=30,iw=W-L-Rr,ih=H-T-B,step=iw/d.length;
   const ys=v=>T+ih*(1-v/3),yr=v=>T+ih*(1-v/120);
   const svg=el('svg',{viewBox:`0 0 ${W} ${H}`},host);
-  [0,1,2,3].forEach(v=>{el('line',{class:v?'grid-l':'zero',x1:L,x2:W-Rr,y1:ys(v),y2:ys(v)},svg);const t=el('text',{x:L-8,y:ys(v)+4,'text-anchor':'end','font-size':10.5},svg);t.textContent=v+'M';const t2=el('text',{x:W-Rr+8,y:ys(v)+4,'font-size':10.5,fill:'var(--nikon)'},svg);t2.textContent=(v*40)+'×'});
+  [0,1,2,3].forEach(v=>{el('line',{class:v?'grid-l':'zero',x1:L,x2:W-Rr,y1:ys(v),y2:ys(v)},svg);const t=el('text',{x:L-6,y:ys(v)+4,'text-anchor':'end','font-size':10},svg);t.textContent=v+'M';const t2=el('text',{x:W-Rr+6,y:ys(v)+4,'font-size':10,fill:'var(--nikon)'},svg);t2.textContent=(v*40)+'×'});
   let pts=[];
-  d.forEach(([m,s,r],i)=>{const cx=L+step*i+step/2,bw=step*.36;
+  d.forEach(([m,s,r],i)=>{const cx=L+step*i+step/2,bw=step*.42;
     const b=el('rect',{class:'bar y25',x:cx-bw/2,y:ys(s),width:bw,height:ys(0)-ys(s),rx:4},svg);
-    const t=el('text',{class:'vlab',x:cx,y:ys(s)+18,'text-anchor':'middle','font-size':11},svg);t.textContent='₫'+fmt(s,2)+'M';
-    const x=el('text',{class:'xl',x:cx,y:H-8,'text-anchor':'middle'},svg);x.textContent=m;pts.push([cx,yr(r),r]);bindTip(b,`<b>${m}</b><br>Spend ₫${fmt(s,2)}M<br>ROAS ${fmt(r)}×`)});
+    const t=el('text',{class:'vlab',x:cx,y:ys(0)-8,'text-anchor':'middle','font-size':nw?10:11},svg);t.textContent=(nw?'':'₫')+fmt(s,nw?1:2)+'M';
+    const x=el('text',{class:'xl',x:cx,y:H-8,'text-anchor':'middle','font-size':11},svg);x.textContent=m;pts.push([cx,yr(r),r]);bindTip(b,`<b>${m}</b><br>Spend ₫${fmt(s,2)}M<br>ROAS ${fmt(r)}×`)});
   el('path',{class:'line',d:'M'+pts.map(p=>p[0]+','+p[1]).join(' L')},svg);
-  pts.forEach(p=>{el('circle',{class:'dot',cx:p[0],cy:p[1],r:5},svg);const t=el('text',{class:'vlab y',x:p[0],y:p[1]-12,'text-anchor':'middle','font-size':11},svg);t.textContent=fmt(p[2])+'×'});
-})();
+  pts.forEach(p=>{el('circle',{class:'dot',cx:p[0],cy:p[1],r:5},svg);const t=el('text',{class:'vlab y',x:p[0],y:p[1]-12,'text-anchor':'middle','font-size':11},svg);t.textContent=fmt(p[2],0)+'×'});
+}
+adsChart();
+let lastW=innerWidth;addEventListener('resize',()=>{if(Math.abs(innerWidth-lastW)<40&&!(lastW<640!==innerWidth<640))return;lastW=innerWidth;yoy();daily();fsChart();adsChart()});
 
 /* ---------- videos ---------- */
 (function(){const v=[['NIKON Z30, the vlogging sidekick for content creators','30.06',1414],['NIKON Z30, the vlogging sidekick (cut 2)','30.06',639],['ZFC, retro design in Mint Green and Coral Pink','02.07',296],['ZFC, the everyday camera in every colour','30.06',126],['NIKON Zf, retro full frame, genuine stock','30.06',40],['NIKON Zf, retro full frame (cut 2)','30.06',30]];
@@ -1254,7 +1340,7 @@ const vh=innerHeight;
 $$('.rv,.chart').forEach(x=>{if(x.getBoundingClientRect().top>vh*0.92)x.classList.add('pre')});
 $$('.chart').forEach(x=>{if(x.getBoundingClientRect().top<=vh*0.92)x.classList.remove('pre')});
 let pend=$$('.rv.pre,.chart.pre');
-function reveal(){if(!pend.length)return;const lim=innerHeight*0.9;pend=pend.filter(x=>{const r=x.getBoundingClientRect();if(r.top<lim&&r.bottom>0){x.classList.remove('pre');$$('[data-count]',x).forEach(count);return false}return true})}
+function reveal(){if(!pend.length)return;const lim=innerHeight*0.9;pend=pend.filter(x=>{const r=x.getBoundingClientRect();if(r.top<lim){x.classList.remove('pre');$$('[data-count]',x).forEach(count);return false}return true})}
 $$('.rv:not(.pre)').forEach(x=>{const r=x.getBoundingClientRect();if(r.top<innerHeight)$$('[data-count]',x).forEach(count)});
 function count(n){if(reduce||n.dataset.done)return;n.dataset.done=1;const to=+n.dataset.count,dec=+(n.dataset.dec||0),small=n.querySelector('small'),suf=small?small.outerHTML:'';const t0=performance.now(),dur=1400;
   (function f(t){const k=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-k,4);n.innerHTML=(to*e).toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf;if(k<1)requestAnimationFrame(f)})(t0)}
@@ -1281,6 +1367,15 @@ const secIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){con
   const idx=slides.indexOf(e.target);$('#dcount').textContent=String(idx+1).padStart(2,'0')+' / '+slides.length}}),{rootMargin:'-50% 0px -50% 0px'});
 slides.forEach(s=>secIO.observe(s));
 
+/* mobile: chapter menu + prev/next */
+const menu=$('#menu'),cnt=$('#dcount');
+slides.forEach((sl,i)=>{const a=D.createElement('a');a.href='#'+sl.id;a.innerHTML=`${sl.dataset.title||'Cover'}<span>${String(i+1).padStart(2,'0')}</span>`;a.addEventListener('click',()=>toggleMenu(false));menu.appendChild(a)});
+function toggleMenu(on){on=on===undefined?menu.hidden:on;menu.hidden=!on;cnt.setAttribute('aria-expanded',on);if(on){const cur=slides.findIndex(sl=>sl.getBoundingClientRect().bottom>innerHeight*.5);$$('a',menu).forEach((a,k)=>a.classList.toggle('on',k===cur));const on1=$('a.on',menu);on1&&on1.scrollIntoView({block:'nearest'})}}
+cnt.addEventListener('click',e=>{e.stopPropagation();toggleMenu()});
+D.addEventListener('click',e=>{if(!menu.hidden&&!e.target.closest('#menu'))toggleMenu(false)});
+$('#dprev').addEventListener('click',()=>go(-1));$('#dnext').addEventListener('click',()=>go(1));
+$$('.step').forEach(st=>st.addEventListener('click',()=>{$$('.step').forEach(x=>x.classList.toggle('on',x===st));clearInterval(cyc);setI(+st.dataset.i);if(innerWidth<=900)$('.phone').scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'})}));
+
 /* glass specular follows pointer */
 $$('.glass').forEach(g=>g.addEventListener('pointermove',e=>{const r=g.getBoundingClientRect();g.style.setProperty('--mx',(e.clientX-r.left)+'px');g.style.setProperty('--my',(e.clientY-r.top)+'px')}));
 
@@ -1295,6 +1390,7 @@ function go(dir){const y=scrollY+2;let i=slides.findIndex(s=>s.offsetTop>y+inner
   if(i>=0&&slides[i])slides[i].scrollIntoView({behavior:reduce?'auto':'smooth'})}
 D.addEventListener('keydown',e=>{if(e.target.closest('input,textarea'))return;
   if(e.key==='Escape'&&!sheet.hidden){closeSheet();return}
+  if(e.key==='Escape'&&!menu.hidden){toggleMenu(false);return}
   if(e.key==='p'||e.key==='P'){present(!R.classList.contains('present'))}
   if(e.key==='f'||e.key==='F'){R.requestFullscreen&&R.requestFullscreen().catch(()=>{})}
   if(R.classList.contains('present')){if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();go(1)}if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();go(-1)}}});
@@ -1303,3 +1399,6 @@ D.addEventListener('keydown',e=>{if(e.target.closest('input,textarea'))return;
 const mq=$('#marq');mq.innerHTML+=mq.innerHTML;
 })();
 </script>
+
+</body>
+</html>
